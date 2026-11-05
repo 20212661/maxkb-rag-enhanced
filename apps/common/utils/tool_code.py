@@ -78,9 +78,11 @@ class ToolExecutor:
         allow_subprocess = CONFIG.get("SANDBOX_PYTHON_ALLOW_SUBPROCESS", "0")
         allow_syscall = CONFIG.get("SANDBOX_PYTHON_ALLOW_SYSCALL", "0")
         import _ctypes;
-        ctypes_so_mode = os.stat(_ctypes.__file__).st_mode
-        # 如果不允许打开动态链接库，则去掉sandbox用户对ctypes动态链接库文件的读权限
-        os.chmod(_ctypes.__file__,  ctypes_so_mode & ~0o040 if allow_dl_open == "0" else ctypes_so_mode | 0o040)
+        ctypes_file = getattr(_ctypes, "__file__", None)
+        if ctypes_file:
+            ctypes_so_mode = os.stat(ctypes_file).st_mode
+            # 如果不允许打开动态链接库，则去掉sandbox用户对ctypes动态链接库文件的读权限
+            os.chmod(ctypes_file, ctypes_so_mode & ~0o040 if allow_dl_open == "0" else ctypes_so_mode | 0o040)
         if banned_hosts:
             hostname = socket.gethostname()
             local_ip = socket.gethostbyname(hostname)

@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "split_limit": 1200,
+  "with_filter": true,
+  "documents": [
+    {
+      "publisher": "河南水利与环境职业学院",
+      "source_page": "https://xjzx.hwec.edu.cn/info/1111/1381.htm",
+      "download_url": "https://xjzx.hwec.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1407485423&wbfileid=12FBFA9922AD0E782A0A71A2CEEC2757",
+      "sha256": "a66af5b05220aa7c586fbdd2d21a8e49550c4e6a87a1cbc4a502814e0efb8367",
+      "document_name": "河南水利与环境职业学院_附件 1：网络安全事件情况报告.docx",
+      "file": "corpus/河南水利与环境职业学院_附件 1：网络安全事件情况报告.docx",
+      "kind": "original",
+      "size_bytes": 19613
+    },
+    {
+      "publisher": "河南水利与环境职业学院",
+      "source_page": "https://xjzx.hwec.edu.cn/info/1111/1381.htm",
+      "download_url": "https://xjzx.hwec.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1407485423&wbfileid=7F32C543B4AD5879213B68C94EF00312",
+      "sha256": "d79a25332aa83d4a63bc9b7cb0ef6f5c7492fd125e76d47b9643b79bbac87123",
+      "document_name": "河南水利与环境职业学院_附件 2：网络安全事件分类.docx",
+      "file": "corpus/河南水利与环境职业学院_附件 2：网络安全事件分类.docx",
+      "kind": "original",
+      "size_bytes": 16188
+    },
+    {
+      "publisher": "河南水利与环境职业学院",
+      "source_page": "https://xjzx.hwec.edu.cn/info/1111/1381.htm",
+      "download_url": "https://xjzx.hwec.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1407485423&wbfileid=023278A4B3DFF8B4850126CE0A764E98",
+      "sha256": "3b43ec669ad5b97590ec82b5969dd4e4539365d74535a7ee78e2ad43ac0e919d",
+      "document_name": "河南水利与环境职业学院_附件 3：名词术语.docx",
+      "file": "corpus/河南水利与环境职业学院_附件 3：名词术语.docx",
+      "kind": "original",
+      "size_bytes": 16326
+    },
+    {
+      "publisher": "河南水利与环境职业学院",
+      "source_page": "https://xjzx.hwec.edu.cn/info/1111/1381.htm",
+      "download_url": "https://xjzx.hwec.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1407485423&wbfileid=A9742A33A082544339120846325CB72A",
+      "sha256": "24af7cf014934b935b1a88df7c08ce53988bbe03c8dba64ab93f0265e5507d32",
+      "document_name": "河南水利与环境职业学院_附件 4：网络和信息系统损失程度划分说明.docx",
+      "file": "corpus/河南水利与环境职业学院_附件 4：网络和信息系统损失程度划分说明.docx",
+      "kind": "original",
+      "size_bytes": 16573
+    },
+    {
+      "publisher": "美国国家标准与技术研究院 NIST",
+      "source_page": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1300.pdf",
+      "download_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1300.pdf",
+      "sha256": "1e77c1bd63d1e15c48c870b7c17b7c9a2edf6bd5103b0940e72828515c9f1881",
+      "document_name": "NIST_SP1300_小型企业网络安全框架入门指南_英文.pdf",
+      "file": "corpus/NIST_SP1300_小型企业网络安全框架入门指南_英文.pdf",
+      "kind": "original",
+      "size_bytes": 934230
+    },
+    {
+      "publisher": "中卫市人民政府网站",
+      "source_page": "https://www.nxzw.gov.cn/zwgk/bmxxgkml/swsjkwyh/fdzdgknr_49861/wsyl_49877/201811/P020181121330110409821.pdf",
+      "download_url": "https://www.nxzw.gov.cn/zwgk/bmxxgkml/swsjkwyh/fdzdgknr_49861/wsyl_49877/201811/P020181121330110409821.pdf",
+      "sha256": "adeb7dcecb2f26d1c76645439b7f0bbd0928a577a87cfbcee51a5ba6a444a240",
+      "document_name": "中卫市公开信息安全管理制度.pdf",
+      "file": "corpus/中卫市公开信息安全管理制度.pdf",
+      "kind": "original",
+      "size_bytes": 165913
+    },
+    {
+      "publisher": "广州航海学院网站公开转载",
+      "source_page": "https://netc.gzmtu.edu.cn/__local/6/A0/D2/0E434E09FFE8776973DD07BF388_4847BE57_357E2.pdf?e=.pdf",
+      "download_url": "https://netc.gzmtu.edu.cn/__local/6/A0/D2/0E434E09FFE8776973DD07BF388_4847BE57_357E2.pdf?e=.pdf",
+      "sha256": "37c2ef6a112494338e2b6807ab9187c6611c18e7f70d933644bf46c1f29a5ced",
+      "document_name": "公共互联网网络安全突发事件应急预案_广州航海学院公开版.pdf",
+      "file": "corpus/公共互联网网络安全突发事件应急预案_广州航海学院公开版.pdf",
+      "kind": "original",
+      "size_bytes": 219106
+    },
+    {
+      "publisher": "北方工业大学",
+      "source_page": "https://cic.ncut.edu.cn/__local/F/22/78/AE81ED9E78F19298113C5CFFC35_87C1FFBE_856B0.pdf",
+      "download_url": "https://cic.ncut.edu.cn/__local/F/22/78/AE81ED9E78F19298113C5CFFC35_87C1FFBE_856B0.pdf",
+      "sha256": "e26b66e58ea75bc8e9995e6d22986c2115b39750de7f9c5b63d0da03f3fc085b",
+      "document_name": "北方工业大学_网络与信息安全应急处置预案.pdf",
+      "file": "corpus/北方工业大学_网络与信息安全应急处置预案.pdf",
+      "kind": "original",
+      "size_bytes": 546480
+    },
+    {
+      "publisher": "信阳农林学院",
+      "source_page": "https://www.xyafu.edu.cn/__local/5/FB/B6/17E24625866A836A357C767D47A_A0EFBCB6_16031.pdf",
+      "download_url": "https://www.xyafu.edu.cn/__local/5/FB/B6/17E24625866A836A357C767D47A_A0EFBCB6_16031.pdf",
+      "sha256": "ea601fa8c03550da396388242fb02e5a7b413087100cb7292c863cfa08098222",
+      "document_name": "信阳农林学院_网络信息安全突发事件应急预案.pdf",
+      "file": "corpus/信阳农林学院_网络信息安全突发事件应急预案.pdf",
+      "kind": "original",
+      "size_bytes": 90161
+    },
+    {
+      "document_name": "scan_pages.pdf",
+      "file": "corpus/scan_pages.pdf",
+      "kind": "simulated_scan",
+      "publisher": "浙江财经大学东方学院",
+      "source_page": "https://it.zufedfc.edu.cn/__local/1/80/2D/3E9443B67F1041C17EF3CA2F0DE_5EC7480C_DD562.pdf",
+      "download_url": "https://it.zufedfc.edu.cn/__local/1/80/2D/3E9443B67F1041C17EF3CA2F0DE_5EC7480C_DD562.pdf",
+      "source_sha256": "2ca09bf13226b1767e351ada2e92f022811ce473f619230c4a28b32dacf1df61",
+      "sha256": "41cff54b7c208b30ad172d03a8a4df50d29fe6b9a6030737d9aa0eeccc0ef4b7",
+      "size_bytes": 3252943,
+      "page_map": [
+        {
+          "fixture_page": 1,
+          "source_page": 13
+        },
+        {
+          "fixture_page": 2,
+          "source_page": 14
+        },
+        {
+          "fixture_page": 3,
+          "source_page": 17
+        },
+        {
+          "fixture_page": 4,
+          "source_page": 18
+        },
+        {
+          "fixture_page": 5,
+          "source_page": 20
+        },
+        {
+          "fixture_page": 6,
+          "source_page": 21
+        },
+        {
+          "fixture_page": 7,
+          "source_page": 25
+        },
+        {
+          "fixture_page": 8,
+          "source_page": 34
+        },
+        {
+          "fixture_page": 9,
+          "source_page": 42
+        },
+        {
+          "fixture_page": 10,
+          "source_page": 58
+        }
+      ],
+      "text_layer": false
+    },
+    {
+      "document_name": "image_panels.pdf",
+      "file": "corpus/image_panels.pdf",
+      "kind": "illustrated_pages",
+      "publisher": "新乡学院信息管理中心网站",
+      "source_page": "https://imc.xxu.edu.cn/__local/F/26/81/EA73E6F0B3800D3F49835FD7F81_94437458_1534F8A.pdf",
+      "download_url": "https://imc.xxu.edu.cn/__local/F/26/81/EA73E6F0B3800D3F49835FD7F81_94437458_1534F8A.pdf",
+      "source_sha256": "6b17c0b091e4c95b6f0798dc8be8e97093df3d71ff8822317fcc3c244208947f",
+      "sha256": "2e69c1bb893db8a88f2a544000e399472c28241ea9a6702cbd08bfbc054bb9ff",
+      "size_bytes": 5253160,
+      "page_map": [
+        {
+          "fixture_page": 1,
+          "source_page": 1
+        },
+        {
+          "fixture_page": 2,
+          "source_page": 2
+        },
+        {
+          "fixture_page": 3,
+          "source_page": 3
+        },
+        {
+          "fixture_page": 4,
+          "source_page": 4
+        },
+        {
+          "fixture_page": 5,
+          "source_page": 5
+        },
+        {
+          "fixture_page": 6,
+          "source_page": 6
+        },
+        {
+          "fixture_page": 7,
+          "source_page": 7
+        },
+        {
+          "fixture_page": 8,
+          "source_page": 9
+        },
+        {
+          "fixture_page": 9,
+          "source_page": 18
+        },
+        {
+          "fixture_page": 10,
+          "source_page": 24
+        }
+      ],
+      "text_layer": false
+    }
+  ],
+  "notes": [
+    "扫描题为公开制度原页栅格化模拟扫描，无文本层。",
+    "图片题为公开安全漫画原页，以无文本层 PDF 容器导入。",
+    "原浙江制度整本文本未导入本评测库，以免扫描题答案从文本副本泄漏。",
+    "gold 标注仅用于离线评分，不导入知识库。"
+  ]
+}
