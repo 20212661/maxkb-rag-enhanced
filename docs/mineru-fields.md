@@ -263,15 +263,16 @@ MaxKB 最终段落使用现有 `title`、`content`、`problem_list` 等字段。
 
 | 持久化对象 | 最少字段 |
 | --- | --- |
-| 解析任务 | ID、知识库／工作空间／创建者、原件 ID 与哈希、稳定逻辑文件名、请求／任务 ID、路由及参数快照、状态、时间预算、尝试版本、错误原因 |
-| 解析缓存 | 所属知识库、原件 SHA-256、有效参数与引擎签名、原始结果引用、完整性标记、生成时间 |
-| 文档解析元数据 | 任务引用、`parse_status`、`engine`、`fallback_used`、失败代码／原因 |
+| `MinerUParseJob` | 首次提交知识库及原件、SHA-256、tier、引擎和协议版本、路由快照、请求／任务 ID、状态、截止时间、次数及版本、错误 |
+| `MinerUParseCache` | SHA-256、tier、引擎和协议版本四元组唯一，File ID 列表、命中次数及最后命中时间 |
+| `MinerUDocumentBuild` | 唯一文档 ID、任务及本次原件、独立分段参数、pending/succeeded/fallback/failed、版本、错误、向量化待投递标记 |
+| `ParagraphSource` | 唯一段落、文档、去重排序的页码及源块索引数组 |
 
-成功缓存按知识库、原始字节 SHA-256、规范化输入格式、实际档位、OCR 选项、引擎／模型签名及 8004 协议版本匹配。分段参数与转换器版本用于分段产物身份，原始解析缓存可供不同分段参数复用。只有完整成功结果可发布为 MinerU 成功缓存。
+成功缓存按原始字节 SHA-256、tier、engine_version、protocol_version 全局匹配，只有完整成功结果可发布。第一个 File 保存结果 JSON 和资产路径映射，其他 File 保存图片字节。文件保留发布知识库归属，跨库构建时物化目标知识库图片。缺失资产按缓存失效处理。相同四元组的处理中任务通过条件唯一约束复用，分段参数独立存入每份文档的构建记录。
 
 待解析保存创建文档及任务关联，段落写入阶段使用真实结果。单个保存和批量保存的自动向量化回调均按解析状态分流。Celery 投递通过 `transaction.on_commit()` 执行，任务参数使用持久化 ID。
 
-新增任务进入 `model` 队列，由只消费该队列的 worker 以并发 1 执行。普通 worker 消费 `celery` 队列，部署检查覆盖现有混合消费配置。
+任务进入独立 `mineru` 队列，worker 可设并发 2–4。`run_parse_job` 每次查询一次状态，未完成时以 10 秒 countdown 重试，总预算为基础 30 秒加每页 10 秒。8004 对上游解析生命周期使用独立信号量，默认 1，结果转换另有信号量。
 
 后台先查成功缓存，再查询原任务。成功后物化图片，在数据库事务中写入真实段落、位置、字数及解析状态，事务提交后调用 `embedding_by_document`。向量化继续使用现有状态机制。
 
@@ -279,15 +280,14 @@ MaxKB 最终段落使用现有 `title`、`content`、`problem_list` 等字段。
 
 ## 七、状态、失败与回退
 
-`Document.meta.mineru.parse_status` 表达解析阶段，现有 `Document.status` 表达向量化等已有任务。解析阶段的文案接入现有文档状态展示位置，优先展示解析状态。
+解析任务状态为 submitted/running/succeeded/failed/orphaned。文档解析状态存入 `MinerUDocumentBuild`，`list_document.sql` 通过 LEFT JOIN 返回 `mineru_parse_status`、`mineru_parse_error`、`mineru_parse_version`。该记录独立于文档 meta，文档迁移后构建时重新校验当前知识库与原件归属，失配则明确失败。
 
 | 解析状态 | 展示与处理 |
 | --- | --- |
-| `PENDING` | 等待解析，已保存并等待后台任务 |
-| `RUNNING` | 解析中，正在取得或转换结果 |
-| `SUCCEEDED` | MinerU 真实段落已写入，后续展示向量化状态 |
-| `FALLBACK_SUCCEEDED` | 原生回退段落已写入，记录回退原因并继续向量化 |
-| `FAILED` | 解析失败，保留原件、任务身份及失败原因 |
+| `pending` | 等待或正在构建 |
+| `succeeded` | MinerU 真实段落已写入，后续展示向量化状态 |
+| `fallback` | 原生回退段落已写入，记录回退原因并继续向量化 |
+| `failed` | 解析失败，保留原件、任务身份及失败原因 |
 
 MinerU 的提交、轮询、结果协议、资产处理、转换失败及超时统一进入失败分流。PDF、DOCX、XLSX、XLS、CSV 等存在对应原生处理器的格式直接调用该处理器，重置文件流并复用当前分段参数。原生回退同样没有可用内容时记录解析失败。
 

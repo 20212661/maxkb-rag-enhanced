@@ -7,9 +7,13 @@ SELECT
     (SELECT "count"("id") FROM "paragraph" WHERE document_id = "document"."id") as "paragraph_count",
     tag_agg.tag_count as "tag_count",
     COALESCE(tag_agg.tags, '[]'::json) as "tags"
+    , mineru_build.parse_status AS mineru_parse_status
+    , mineru_build.error AS mineru_parse_error
+    , mineru_build.version AS mineru_parse_version
 FROM
     "document" "document"
 LEFT JOIN "user" "user" ON "user"."id" = "document"."user_id"
+LEFT JOIN "mineru_document_build" mineru_build ON mineru_build.document_id = "document"."id"
 LEFT JOIN LATERAL (
     SELECT
         COUNT(*)::int as tag_count,
