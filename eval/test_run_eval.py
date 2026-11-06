@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock
 
-from run_eval import APIError, MaxKBAPI, load_dataset, score_question, summarize, summarize_chat
+from run_eval import APIError, MaxKBAPI, load_dataset, normalize, score_question, summarize, summarize_chat
 
 
 class EvaluationTests(unittest.TestCase):
@@ -51,6 +51,37 @@ class EvaluationTests(unittest.TestCase):
         self.assertEqual(score_question(question, hits)["recall_at_1"], 1)
         hits[0]["content"] = "Win+L不锁屏。"
         self.assertEqual(score_question(question, hits)["recall_at_1"], 0)
+
+    def test_supported_math_and_slash_representations_match(self):
+        temperature = r"机房环境温度应控制在 $1 8 ^ { \circ } \mathrm { C } \sim 2 4 ^ { \circ } \mathrm { C }$"
+        self.assertEqual(normalize(temperature), normalize("机房环境温度应控制在18℃～24℃"))
+        self.assertEqual(normalize("不同网站∕应用"), normalize("不同网站/应用"))
+        for expression in (r"$18^{\circ}\mathrm{C}$", r"$$18^{\circ}\mathrm{C}$$",
+                           r"\(18^{\circ}\mathrm{C}\)", r"\[18^{\circ}\mathrm{C}\]"):
+            with self.subTest(expression=expression):
+                self.assertEqual(normalize(expression), normalize("18℃"))
+        self.assertEqual(normalize(r"$2\times3\leq6\pm0$"), normalize("2×3≤6±0"))
+        self.assertEqual(normalize(r"$18^\circ C \sim 24^\circ C$"), normalize("18℃～24℃"))
+        self.assertEqual(normalize("\\(18^{\\circ}\n\\mathrm{C}\\)"), normalize("18℃"))
+
+    def test_normalization_preserves_ocr_errors_numbers_and_unknown_math(self):
+        for left, right in [("U盘", "∪盘"), ("18℃～24℃", "18℃～25℃"),
+                            ("直接打电话", "直接电话"), ("可以备份", "不可以备份")]:
+            with self.subTest(left=left, right=right):
+                self.assertNotEqual(normalize(left), normalize(right))
+        for expression in (r"$\frac{1}{2}$", r"$$\sqrt{2}$$", "$100", "100$"):
+            with self.subTest(expression=expression):
+                self.assertEqual(normalize(expression), expression)
+
+    def test_frozen_week2_hits_with_corrected_dataset(self):
+        directory = Path(__file__).parent
+        questions = {question["id"]: question for question in load_dataset(directory / "dataset.jsonl")}
+        after = json.loads((directory / "results/after.json").read_text(encoding="utf-8"))
+        rows = {row["id"]: row for row in after["queries"]}
+        for question_id in ("q048", "q054", "q059"):
+            with self.subTest(question_id=question_id):
+                self.assertEqual(score_question(questions[question_id], rows[question_id]["top5"])["recall_at_1"], 1)
+        self.assertEqual(score_question(questions["q058"], rows["q058"]["top5"])["recall_at_5"], 0)
 
     def test_invalid_gold_and_duplicate_ids_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

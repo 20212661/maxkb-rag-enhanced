@@ -23,6 +23,7 @@ from pathlib import Path
 
 EVAL_DIR = Path(__file__).resolve().parent
 QUESTION_TYPES = {"事实型", "跨段落型", "表格型", "扫描件型", "图片型"}
+NORMALIZATION_VERSION = 2
 
 
 class APIError(RuntimeError):
@@ -95,9 +96,21 @@ def ranking_score(hit):
     return score
 
 
+def _normalize_math(match):
+    value = re.sub(r"\\(?:mathrm|text|operatorname)\s*\{\s*([a-z0-9]+)\s*\}", r"\1", match.group(1))
+    value = re.sub(r"\^\s*(?:\{\s*\\circ\s*\}|\\circ(?![a-z]))", "°", value)
+    symbols = {"sim": "~", "times": "×", "leq": "≤", "geq": "≥", "pm": "±", "div": "÷", "cdot": "·"}
+    value = re.sub(r"\\(sim|times|leq|geq|pm|div|cdot)(?![a-z])", lambda item: symbols[item.group(1)], value)
+    # Preserve unsupported expressions, including their delimiters.
+    return match.group(0) if re.search(r"[\\{}^_]", value) else value
+
+
 def normalize(text):
     text = unicodedata.normalize("NFKC", text).casefold()
-    return re.sub(r"[\s\u200b\ufeff]+", "", text)
+    for pattern in (r"\$\$([^$]+)\$\$", r"(?<!\$)\$([^$]+)\$(?!\$)", r"\\\((.*?)\\\)", r"\\\[(.*?)\\\]"):
+        text = re.sub(pattern, _normalize_math, text, flags=re.DOTALL)
+    text = re.sub(r"[\s\u200b\ufeff]+", "", text)
+    return text.translate(str.maketrans({"∕": "/", "∼": "~"}))
 
 
 def load_dataset(path):
@@ -313,7 +326,9 @@ def main():
                           "knowledge_id": knowledge_id, "search_mode": args.search_mode, "top_k": 5,
                           "similarity": args.similarity, "warmup_excluded": not args.no_warmup,
                           "ranking": "comprehensive_score descending, matching the UI",
-                          "matching": "exact document plus NFKC/case/whitespace-normalized sentence containment",
+                          "matching": "exact document plus NFKC/case/whitespace, slash and supported LaTeX "
+                                      "symbol-normalized sentence containment",
+                          "normalization_version": NORMALIZATION_VERSION,
                           "corpus_sha256": corpus_digest, "embedding_model": embedding_model,
                           "latency_scope": "sequential HTTP hit_test including query embedding, search and JSON parsing",
                           "index_summary": [{key: doc[key] for key in

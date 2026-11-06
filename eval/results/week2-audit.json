@@ -162,5 +162,38 @@
       "parse_job_id": "01a1b161-37e8-7053-9f16-187dcbe09cd8",
       "error": {}
     }
-  ]
+  ],
+  "evaluation_revision": {
+    "version": 2,
+    "previous_git_commit": "5ff686f20",
+    "dataset_sha256": "b862fb7342227a55d9607077ad61c2c79a6ee0ff58045dc634797788ef0be419",
+    "evaluator_sha256": "6f77e6013ff0cde1a4ee4c564635485506c615f9514c60c4f168b533631002d1",
+    "runs": [
+      {
+        "name": "baseline",
+        "created_at": "2026-11-06T16:42:52.587397+00:00",
+        "question_count": 60,
+        "top5_paragraph_ids_unchanged": true,
+        "changed_scoring_ids": []
+      },
+      {
+        "name": "native",
+        "created_at": "2026-11-06T16:43:05.168121+00:00",
+        "question_count": 60,
+        "top5_paragraph_ids_unchanged": true,
+        "changed_scoring_ids": []
+      },
+      {
+        "name": "after",
+        "created_at": "2026-11-06T16:43:15.376898+00:00",
+        "question_count": 60,
+        "top5_paragraph_ids_unchanged": true,
+        "changed_scoring_ids": [
+          "q048",
+          "q054",
+          "q059"
+        ]
+      }
+    ]
+  }
 }

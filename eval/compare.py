@@ -52,6 +52,10 @@ def compare_results(baseline, candidate, baseline_name="baseline", candidate_nam
         lines.append("| " + " | ".join(row) + " |")
     if baseline.get("dataset_sha256") != candidate.get("dataset_sha256"):
         lines.extend(["", "两份结果的 dataset_sha256 不同，指标分别反映各自题集。"])
+    before_version = baseline.get("configuration", {}).get("normalization_version", 1)
+    after_version = candidate.get("configuration", {}).get("normalization_version", 1)
+    if before_version != after_version:
+        lines.extend(["", "两份结果的 normalization_version 不同，需要使用相同归一化规则重跑后对比。"])
     if baseline.get("complete") is False or candidate.get("complete") is False:
         lines.extend(["", "输入包含尚未完成的评测结果，表格使用当前已记录的题目指标。"])
     return "\n".join(lines) + "\n"

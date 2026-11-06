@@ -38,6 +38,11 @@ class CompareTests(unittest.TestCase):
                     with self.assertRaises(ValueError):
                         load_result(path)
 
+    def test_normalization_version_mismatch_is_explicit(self):
+        candidate = {**self.result(), "configuration": {"normalization_version": 2}}
+        self.assertIn("normalization_version 不同", compare_results(self.result(), candidate))
+        self.assertNotIn("normalization_version 不同", compare_results(candidate, candidate))
+
     def test_baseline_round_trip_produces_zero_deltas(self):
         baseline = load_result(Path(__file__).parent / "results/baseline.json")
         report = compare_results(baseline, baseline)

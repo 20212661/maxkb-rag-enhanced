@@ -219,7 +219,22 @@
       ],
       "classification": "retrieval_rank",
       "conclusion": "原生 Word 表格保持一致，目标从第 4 名降到第 6 名，新增扫描段落占据第 1、3 名。",
-      "related_paragraph_rank_in_top20": 6
+      "related_paragraph_rank_in_top20": 6,
+      "current_gold_passages": [
+        {
+          "document_name": "河南水利与环境职业学院_附件 1：网络安全事件情况报告.docx",
+          "key_sentence": "备案号",
+          "locator": "信息系统基本情况 第8项",
+          "verification": "source_text_checked"
+        }
+      ],
+      "current_evaluation": {
+        "recall_at_1": 0.0,
+        "recall_at_5": 0.0,
+        "reciprocal_rank": 0.0,
+        "first_relevant_rank": null,
+        "all_gold_in_top5": false
+      }
     },
     {
       "id": "q048",
@@ -503,7 +518,22 @@
       ],
       "classification": "formula_representation",
       "conclusion": "温度范围进入正文但采用 LaTeX 表示，相关段落第 1 名，严格关键句未匹配。",
-      "related_paragraph_rank_in_top20": 1
+      "related_paragraph_rank_in_top20": 1,
+      "current_gold_passages": [
+        {
+          "document_name": "scan_pages.pdf",
+          "key_sentence": "机房环境温度应控制在18℃～24℃，湿度控制在40%～60%。",
+          "locator": "fixture page 8, source physical page 34",
+          "verification": "visually_checked"
+        }
+      ],
+      "current_evaluation": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "reciprocal_rank": 1.0,
+        "first_relevant_rank": 1,
+        "all_gold_in_top5": true
+      }
     },
     {
       "id": "q049",
@@ -809,7 +839,22 @@
       ],
       "classification": "retrieval_rank",
       "conclusion": "关键句完整处于单个子块内，完整候选检索排名第 21；表格 HTML 被切成 3 个子块。",
-      "related_paragraph_rank_in_top20": null
+      "related_paragraph_rank_in_top20": null,
+      "current_gold_passages": [
+        {
+          "document_name": "scan_pages.pdf",
+          "key_sentence": "本表由信息技术部磁盘管理员负责存查",
+          "locator": "fixture page 9, source physical page 42",
+          "verification": "visually_checked"
+        }
+      ],
+      "current_evaluation": {
+        "recall_at_1": 0.0,
+        "recall_at_5": 0.0,
+        "reciprocal_rank": 0.0,
+        "first_relevant_rank": null,
+        "all_gold_in_top5": false
+      }
     },
     {
       "id": "q054",
@@ -1148,7 +1193,22 @@
       ],
       "classification": "symbol_representation",
       "conclusion": "正文斜杠为 U+2215，标准句为 U+002F，相关段落第 1 名。",
-      "related_paragraph_rank_in_top20": 1
+      "related_paragraph_rank_in_top20": 1,
+      "current_gold_passages": [
+        {
+          "document_name": "image_panels.pdf",
+          "key_sentence": "不同网站/应用的账号设置不同的密码是最安全的",
+          "locator": "fixture page 4, source physical page 4",
+          "verification": "visually_checked"
+        }
+      ],
+      "current_evaluation": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "reciprocal_rank": 1.0,
+        "first_relevant_rank": 1,
+        "all_gold_in_top5": true
+      }
     },
     {
       "id": "q058",
@@ -1478,7 +1538,22 @@
       ],
       "classification": "ocr_substitution",
       "conclusion": "原图 U 盘被识别为 ∪盘，相关段落第 1 名。",
-      "related_paragraph_rank_in_top20": 1
+      "related_paragraph_rank_in_top20": 1,
+      "current_gold_passages": [
+        {
+          "document_name": "image_panels.pdf",
+          "key_sentence": "外部打印时务必在U盘上打开并打印，不要拷贝到打印社电脑上",
+          "locator": "fixture page 8, source physical page 9",
+          "verification": "visually_checked"
+        }
+      ],
+      "current_evaluation": {
+        "recall_at_1": 0.0,
+        "recall_at_5": 0.0,
+        "reciprocal_rank": 0.0,
+        "first_relevant_rank": null,
+        "all_gold_in_top5": false
+      }
     },
     {
       "id": "q059",
@@ -1819,7 +1894,22 @@
       ],
       "classification": "gold_annotation",
       "conclusion": "原图和解析结果均为“直接电话”，标准句多写“打”字，相关段落第 1 名。",
-      "related_paragraph_rank_in_top20": 1
+      "related_paragraph_rank_in_top20": 1,
+      "current_gold_passages": [
+        {
+          "document_name": "image_panels.pdf",
+          "key_sentence": "直接电话向发件人代表的人员确认",
+          "locator": "fixture page 9, source physical page 18",
+          "verification": "visually_checked"
+        }
+      ],
+      "current_evaluation": {
+        "recall_at_1": 1.0,
+        "recall_at_5": 1.0,
+        "reciprocal_rank": 1.0,
+        "first_relevant_rank": 1,
+        "all_gold_in_top5": true
+      }
     }
   ],
   "diagnostic_configuration": {
@@ -1847,5 +1937,11 @@
         "fixture_page": 9
       }
     ]
-  }
+  },
+  "analysis_scope": "Six original v1 failure cases with v2 rerun scores appended.",
+  "original_dataset_sha256": "2b12e69612140c1d9c1e21d7b6034a1ff41beb349a4cba218626103d909da161",
+  "original_evaluator_sha256": "2e1468da765849979c7d0409173fc2dcf405cdbebe57a228443709e76c3721fa",
+  "current_dataset_sha256": "b862fb7342227a55d9607077ad61c2c79a6ee0ff58045dc634797788ef0be419",
+  "current_evaluator_sha256": "6f77e6013ff0cde1a4ee4c564635485506c615f9514c60c4f168b533631002d1",
+  "current_normalization_version": 2
 }
