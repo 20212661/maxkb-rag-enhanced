@@ -44,10 +44,12 @@ PDF 源页数使用 `pypdf` 读取，普通单帧图片按 1 页，PPTX 按 slid
 ### 路由优先级
 
 1. ZIP 返回 `native`，成员继续由 ZIP 原生列表处理。
-2. 知识库的 `Knowledge.meta.mineru.force_route=true` 将支持的文档显式交给 MinerU。该配置由具有知识库管理权限的后端配置或管理接口设置。
+2. 知识库的 `Knowledge.meta.mineru_route` 使用 `auto`、`force_mineru`、`force_native`，缺省为 `auto`。强制原生直接返回 `forced`。强制 MinerU 对支持格式生效，返回 `forced`，不支持的格式返回原生及 `forced_unsupported`。该配置由具有知识库管理权限的后端配置或管理接口设置。
 3. PNG、JPG、JPEG、WEBP、BMP 交给 MinerU Basic。PPTX、PPT 交给 MinerU Flash 文本提取。
 4. PDF 按下述两个条件进行判断，任一条件成立即交给 MinerU Basic。
-5. 其他情况沿原有原生处理循环处理。DOCX、XLSX、XLS、CSV 等支持的 Office／表格格式可由知识库强制路由交给 MinerU 的原生文档档位 Flash。
+5. 其他情况沿原有原生处理循环处理。DOCX、XLSX、XLS 可由知识库强制路由交给 Flash。TXT、MD、CSV 等格式强制 MinerU 时返回 `forced_unsupported`。
+
+扩展名判断不区分大小写。强制 MinerU 的 PDF 仍校验可读性、加密标记和非零页数，校验成功后跳过文字抽取。加密 PDF 即使使用空密码也返回 `probe_failed`。
 
 复杂表格的首版入口为知识库级强制路由。自动判断表格复杂度和逐文件手工切换列入后续扩展。
 
@@ -55,7 +57,7 @@ PDF 源页数使用 `pypdf` 读取，普通单帧图片按 1 页，PPTX 按 slid
 
 对每页 `extract_text()` 的结果清理 NUL，按 Unicode 空白规则去掉空白字符，再统计字符数。页眉、页脚及页码的可提取文字计入该页。图片中文字由此步骤得到的计数为 0。
 
-设第 i 页字符数为 `c_i`，页数为 `N`。
+最多 30 页时全量探测。超过 30 页时取前 10 页，再从剩余页均匀取 20 页，包含最后一页，索引去重排序。`page_count` 为总页数，`probed_pages` 为实际完成探测的零基页索引。以下 `N` 表示实际完成的探测页数，第 i 个探测页字符数为 `c_i`。抽样与软预算提前终止时，指标均以完成页为分母。
 
 ```text
 total_non_whitespace_chars = sum(c_i)
@@ -74,6 +76,7 @@ use_mineru = (
 | `MINERU_SCAN_AVG_CHAR_THRESHOLD` | `100` | 非负有限数 |
 | `MINERU_SCAN_LOW_PAGE_CHAR_THRESHOLD` | `50` | 非负有限数 |
 | `MINERU_SCAN_LOW_PAGE_RATIO_THRESHOLD` | `0.30` | 0–1 的有限数 |
+| `MINERU_PDF_PROBE_TIMEOUT_SECONDS` | `5` | 正有限数，逐页检查的软预算 |
 
 ENV 模式下使用 `MAXKB_` 前缀。判定使用原始统计值，日志中的格式化数值用于展示。探测结束恢复文件读取位置，供后续原生处理或任务提交复用。
 
@@ -86,11 +89,17 @@ ENV 模式下使用 `MAXKB_` 前缀。判定使用原始统计值，日志中的
 | 10 页中 3 页低于 50 字 | 命中 30% 条件 |
 | 平均 100 字且低文字页比例 20% | 原生路由 |
 
-零页、加密后无法读取或文字提取异常产生 `pdf_probe_failed` 原因，并交给原生 PDF 处理器。探测异常单独记录，区分文字计数为 0 的扫描件。
+零页、加密、损坏或文字提取异常产生 `probe_failed` 原因，并交给原生 PDF 处理器。探测异常单独记录，区分文字计数为 0 的扫描件。
 
-路由日志记录 `source_file_id`、`knowledge_id`、`sha256`、`page_count`、`chars_per_page`、`total_non_whitespace_chars`、`avg_chars_per_page`、`low_text_page_count`、`low_text_page_ratio`、三个生效阈值、`engine` 和 `reasons`。正文、图片 Base64 及凭据不进入日志。跳过 PDF 探测的分支使用 null 表达缺省探测值。
+`probe_pdf(file, *, config=None)` 在打开 PDF 前开始计时，每完成一页检查已用时间，超过软预算即停止并返回已完成页的指标。读取元数据或开始下一页前耗尽预算且没有完成页时抛出 `PDFProbeError`。单页完成后即使超过预算，该页仍计入统计。文件读取位置在成功、失败和提前终止路径均通过 `finally` 恢复。已知限制为单页文字提取卡死无法中断，软预算不保证整个请求在 5 秒内返回。
 
-`reasons` 使用稳定代码，包括 `zip_native_only`、`knowledge_force_mineru`、`image_input`、`ppt_flash`、`pdf_low_average_chars`、`pdf_low_text_page_ratio`、`pdf_text_layer_sufficient`、`pdf_probe_failed` 和 `native_default`。两个 PDF 条件同时成立时保留两个命中原因。
+路由日志记录文件名和完整 `RouteDecision`，探测日志另记录 `chars_per_page`、生效阈值、耗时及抽样标记。字符总量和低文字页数量可由逐页计数复核。上传入口接入时补充原件、知识库及哈希身份。正文、图片 Base64 及凭据不进入日志。跳过 PDF 探测的分支使用 null 表达缺省探测值。
+
+`decide(file, knowledge_meta, *, config=None)` 返回 `RouteDecision`，含 `use_mineru`、`tier`、`reason`、`metrics`。`tier` 为 `basic`、`flash` 或 null。`metrics` 含 `avg_chars_per_page`、`low_text_page_ratio`、`page_count` 和 `probed_pages`。跳过文字探测时统计值为 null，完成页列表为空。强制 MinerU 的 PDF 可读性校验返回实际页数。
+
+`reason` 使用稳定代码，包括 `zip_native_only`、`forced`、`forced_unsupported`、`image_ext`、`ppt`、`pptx`、`low_text_avg`、`low_text_ratio`、`probe_failed` 和 `native_default`。两个 PDF 条件同时成立时主原因取 `low_text_avg`，日志同时保留两个条件的命中情况。`config=None` 延迟读取 `CONFIG`，测试可显式传入配置字典。
+
+校准命令为 `python scripts/calibrate_router.py eval/assets/corpus services/mineru/samples --output docs/router-calibration.md`。目录按参数顺序分别成节，递归处理全部 PDF，报告包含实际抽样页、原因、独立的预期路由及标注依据。预期值由已有清单、评测文字核验记录、来源记录或明确文件名推断，未知值留空。末尾分别汇总电子版误送 MinerU 和扫描／图片 PDF 误送原生的清单。
 
 ## 三、现有 8004 HTTP 契约
 
