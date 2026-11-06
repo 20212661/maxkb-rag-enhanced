@@ -153,19 +153,40 @@ HTTP 200 表示状态查询成功，解析结果由 `status` 判断。网络超�
 | 块类型／字段 | v1 转换 |
 | --- | --- |
 | `text.text` | 正文文本，清理 NUL |
-| `text.text_level` | 有效的 1–6 级标题转对应 Markdown 标题，其他值按正文保留并记录告警 |
+| `text.text_level` | 有效的 1–6 级标题保存在 `level`，保留原始 `type=text`，其他值按正文处理 |
 | `table.table_body` | 保留 HTML 表格结构及合并单元格 |
 | `table_caption`、`table_footnote` | 按原顺序保留文字 |
-| `image.img_path` | 通过图片映射替换为 MaxKB OSS 图片链接 |
+| `image.img_path` | 作为 `image_ref` 原样返回，由调用方保存图片并替换引用 |
 | `image_caption`、`image_footnote` | 保留图片说明文字 |
-| `equation.text`、`text_format`、`img_path` | 优先保留公式文本及源格式信息，缺少文本时按图片资产保存和引用 |
+| `equation.text`、`img_path` | 保留公式文本与图片引用，正文优先使用文本，缺少文本时引用图片 |
 | `list.list_items` | 按条目顺序转列表文本 |
 | `header`、`footer`、`page_number` | 作为版面辅助信息保留于原始结果及溯源，正文分块默认过滤 |
-| 其他类型 | 保留原始块并记录 `unsupported_block_type`，可读文字纳入正文；只有未知块的结果转入显式失败处理 |
+| 其他类型 | 转换器保留原始类型名及可读文字，服务调用方负责未知类型日志与整份结果可用性判断 |
 
-公式和列表字段已对照本机 MinerU 4.1.7 的 `mineru/render/_internal/content_list/v1.py` 核验，具体变体在转换器步骤用固定夹具验证。遇到已知块结构损坏、缺失图片资产或无效页索引时抛出转换异常，由外层统一决定回退或失败。
+公式和列表字段已对照本机 MinerU 4.1.7 的 `mineru/render/_internal/content_list/v1.py` 核验。公式文本保存在 `text`，缺少文字时通过 `image_ref` 引用图片。转换器校验字段结构、页索引及图片引用，图片字节和资产完整性由调用方校验。外层统一决定异常后的回退或失败。
 
-转换复用现有分段规则及 `patterns`、`with_filter`、`limit` 语义，保护 HTML 表格和图片引用的完整性。超过单段硬上限的表格按完整行组织后续分段，并保留表头与可追溯的源块信息。单行本身超过硬上限时转为带行列标识的单元格文本分段，记录 `table_row_oversize`，原表保存在解析缓存中。
+### 第二步的纯函数接口
+
+`common.utils.mineru_converter.content_list_to_blocks(content_list, *, page_count=None)` 返回结构化块列表，保持输入不变。它只接受 Content List 数组，收据、结果信封和预览占位对象需由调用方识别。空数组返回空块列表。
+
+| 块字段 | 类型与语义 |
+| --- | --- |
+| `type` | 原始类型名，含页眉、页脚和页码 |
+| `text` | 文本、列表条目、公式或表格原文，清理 NUL |
+| `level` | 1–6 的标题层级，其余为 null |
+| `page` | 非负整数，沿用零基 `page_idx` |
+| `bbox` | 4 项浮点数列表或 null，范围 0–1000，JSON 缓存往返后结构相同 |
+| `image_ref` | 原始图片相对路径或 null |
+| `table_header` | HTML／Markdown 表头原文或 null，支持多行 HTML 表头 |
+| `source_index` | 输入 Content List 数组的零基索引 |
+
+`page_count` 为非负整数或 null。null 跳过页码上限校验，负数、非整数页码仍产生 `MinerUConversionError`。块顺序及原始类型完整保留。表格说明和脚注按顺序纳入 `text`，显式表头单独提取，普通 `<td>` 首行保持原文。
+
+`blocks_to_paragraphs(blocks, *, limit=4096, drop_types=("header", "footer", "page_number"))` 为 v1 默认分块函数。两函数均独立于数据库、网络和文件读写。图片保存与引用替换在两函数之间由调用方完成。
+
+分块按标题划分小节，同一小节内的连续块在长度目标内合并。多级标题以 ` / ` 连接，续段保留当前标题。超长文本优先使用邻近换行分隔并均衡续段长度，避免产生很短的尾段。只有标题或图片的内容也保留。`drop_types=()` 可保留全部块类型，过滤仅发生在分块阶段。
+
+`limit` 默认为 4096，可由调用方传入 1–102400 的整数。它是普通文本段落的长度上限及结构块的软目标。表格、图片引用和公式保持完整，可超过软目标，单块超过 102400 字符时产生显式转换异常。超大表格按行重组与单元格降级纳入第 3 周结构感知分块器。跨页表格保留各页独立源块、表头和阅读顺序。
 
 `handle()` 的结果形态沿用现有处理器。
 
@@ -178,9 +199,11 @@ HTTP 200 表示状态查询成功，解析结果由 `status` 判断。网络超�
 }
 ```
 
-MaxKB 最终段落使用现有 `title`、`content`、`problem_list` 等字段。单段标题上限为 256 字符，正文上限为 102400 字符。`limit` 为用户分段目标值，模型字段上限为硬约束。
+MaxKB 最终段落使用现有 `title`、`content`、`problem_list` 等字段。标题按 Python 字符索引截取前 256 个字符，溢出部分前置到本小节第一段正文，保留可检索文字。正文上限为 102400 字符。
 
-转换服务另行返回段落溯源，字段为 `segment_index`、`page_indices` 和 `source_blocks`。每项源块包含 `block_index`、`type`、`page_idx`、可选 `bbox`。模型服务在得到实际段落 ID 后将溯源关联到文档元数据。用户修改缓存预览正文后，溯源重新核验。
+分块结果同时返回 `page_indices`、`source_block_indices`，均去重排序，包含标题上下文和正文来源。调用方可据此查回块类型及 bbox。溯源存储在第 4 步决定，当前倾向独立 `paragraph_source` 表。用户修改缓存预览正文后，溯源需重新核验。
+
+原生链路继续使用既有分段选项。MinerU 的段落保持小节级粒度，后续保存阶段按现有流程生成 `Paragraph.chunks`，供逐块向量化及整段检索返回。
 
 ### 图片保存
 
@@ -233,7 +256,7 @@ MaxKB 最终段落使用现有 `title`、`content`、`problem_list` 等字段。
 | --- | --- |
 | 解析任务 | ID、知识库／工作空间／创建者、原件 ID 与哈希、稳定逻辑文件名、请求／任务 ID、路由及参数快照、状态、时间预算、尝试版本、错误原因 |
 | 解析缓存 | 所属知识库、原件 SHA-256、有效参数与引擎签名、原始结果引用、完整性标记、生成时间 |
-| 文档解析元数据 | 任务引用、`parse_status`、`engine`、`fallback_used`、失败代码／原因、段落溯源 |
+| 文档解析元数据 | 任务引用、`parse_status`、`engine`、`fallback_used`、失败代码／原因 |
 
 成功缓存按知识库、原始字节 SHA-256、规范化输入格式、实际档位、OCR 选项、引擎／模型签名及 8004 协议版本匹配。分段参数与转换器版本用于分段产物身份，原始解析缓存可供不同分段参数复用。只有完整成功结果可发布为 MinerU 成功缓存。
 

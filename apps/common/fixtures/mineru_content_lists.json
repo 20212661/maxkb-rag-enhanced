@@ -1,0 +1,324 @@
+{
+  "business": {
+    "source": "services/mineru/results/client-business-scan/result.json",
+    "source_sha256": "6952d1d14371b4137065a3a10f7b86e3233cc6120a42f17fe41bbcf2420526e5",
+    "source_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      90
+    ],
+    "page_count": 7,
+    "content_list": [
+      {
+        "type": "text",
+        "text": "中卫市卫生和计划生育局信息安全管理制度",
+        "text_level": 1,
+        "bbox": [
+          296,
+          119,
+          710,
+          194
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "第一章 总则",
+        "bbox": [
+          418,
+          220,
+          590,
+          245
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "第一条为保证信息系统安全可靠稳定运行，降低或阻止人为或自然因素从物理层面对信息系统的保密性、完整性、可用性带来的安全威胁，结合单位及行业实际，特制定本制度。",
+        "bbox": [
+          128,
+          263,
+          880,
+          355
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "第二条本制度适用于中卫市卫生和计划生育局以及市属医疗卫生单位的信息系统安全管理。",
+        "bbox": [
+          129,
+          362,
+          879,
+          421
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "第二章 职责",
+        "text_level": 2,
+        "bbox": [
+          419,
+          438,
+          589,
+          463
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "第三条相关科室、单位职责:",
+        "bbox": [
+          182,
+          480,
+          544,
+          505
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "一、规划信息科",
+        "bbox": [
+          182,
+          514,
+          392,
+          538
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "（一）负责组织和协调中卫市卫生和计划生育局及行业信息系统安全管理工作;",
+        "bbox": [
+          128,
+          547,
+          878,
+          606
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "page_number",
+        "text": "8",
+        "bbox": [
+          496,
+          907,
+          512,
+          919
+        ],
+        "page_idx": 6
+      }
+    ]
+  },
+  "scan": {
+    "source": "services/mineru/results/run-20261105T160205Z/scan_pdf-2/content_list.json",
+    "source_sha256": "42d9f22ee11fccb50d593897817de5a5cde0b56bbeef246ce1f02309428d7b79",
+    "source_indices": [
+      0,
+      1,
+      2,
+      3,
+      18,
+      26,
+      27,
+      159,
+      165
+    ],
+    "page_count": 10,
+    "content_list": [
+      {
+        "type": "header",
+        "text": "网络安全管理制度汇编",
+        "bbox": [
+          396,
+          59,
+          603,
+          76
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "4、负责规范安全设备或系统管理流程，建立管理台帐，明确资产所有者、使用者与维护者，对安全设备或系统进行标记，实现对机房资产购买、使用、变更、报废整个周期的安全管理。",
+        "bbox": [
+          123,
+          109,
+          875,
+          182
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "5、负责制定安全设备或系统的文档化的操作和维护规程，使得相关人员能够采用规范化的形式对系统进行操作，降低和避免因误操作所引发网络安全事件的可能性。",
+        "bbox": [
+          124,
+          191,
+          875,
+          237
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "6、负责对安全设备或系统运行维护管理，对安全设备或系统运转情况进行定期巡检、维护、故障处理和变更管理。负责组织实施安全设备或系统各类事故（故障）的应急处理。",
+        "bbox": [
+          123,
+          246,
+          876,
+          318
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "机房管理员",
+        "text_level": 2,
+        "bbox": [
+          164,
+          218,
+          273,
+          236
+        ],
+        "page_idx": 1
+      },
+      {
+        "type": "text",
+        "text": "系统运维岗人员",
+        "text_level": 2,
+        "bbox": [
+          165,
+          710,
+          313,
+          728
+        ],
+        "page_idx": 1
+      },
+      {
+        "type": "text",
+        "text": "网络管理员",
+        "text_level": 2,
+        "bbox": [
+          165,
+          737,
+          274,
+          755
+        ],
+        "page_idx": 1
+      },
+      {
+        "type": "table",
+        "img_path": "images/page_8_table_4.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>领用人</td><td></td><td>部门</td><td></td><td>领用时间</td><td></td></tr><tr><td>载体类型</td><td colspan=\"3\">移动磁盘□ U盘□ 其它□(           )</td><td>数量</td><td></td></tr><tr><td colspan=\"6\">申请理由:</td></tr><tr><td colspan=\"6\">本部门领导审批意见:签名                                年 月 日</td></tr><tr><td colspan=\"6\">执行机构审批意见:签名                          年月日</td></tr><tr><td colspan=\"6\">注:1、本表由管理员负责填写2、本表由信息技术部磁盘管理员负责存查</td></tr></table>",
+        "bbox": [
+          126,
+          180,
+          873,
+          846
+        ],
+        "page_idx": 8
+      },
+      {
+        "type": "image",
+        "img_path": "images/page_9_image_3.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          199,
+          176,
+          810,
+          261
+        ],
+        "page_idx": 9
+      }
+    ]
+  },
+  "image": {
+    "source": "services/mineru/results/run-20261105T160205Z/image-2/content_list.json",
+    "source_sha256": "dd420f54fe0a06681537ecde3c1e83b3c3441f9444fcb3741742c81170b3c764",
+    "source_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "page_count": 1,
+    "content_list": [
+      {
+        "type": "text",
+        "text": "信息安全意识漫谈——陌生人进入",
+        "text_level": 2,
+        "bbox": [
+          239,
+          68,
+          774,
+          161
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "image",
+        "img_path": "images/page_0_image_1.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          213,
+          234,
+          480,
+          391
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "image",
+        "img_path": "images/page_0_image_2.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          490,
+          195,
+          761,
+          393
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "image",
+        "img_path": "images/page_0_image_3.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          212,
+          400,
+          480,
+          602
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "image",
+        "img_path": "images/page_0_image_4.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          489,
+          400,
+          759,
+          602
+        ],
+        "page_idx": 0
+      }
+    ]
+  }
+}
