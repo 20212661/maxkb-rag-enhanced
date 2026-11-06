@@ -29,6 +29,14 @@ npm run dev
 ### Type-Check, Compile and Minify for Production
 
 ```sh
+NODE_OPTIONS=--max-old-space-size=4096 npm run build
+```
+
+The production build requires a 4 GB Node.js heap. Set `NODE_OPTIONS=--max-old-space-size=4096` in
+the Docker Compose build environment as well. In PowerShell, run the following commands.
+
+```powershell
+$env:NODE_OPTIONS='--max-old-space-size=4096'
 npm run build
 ```
 

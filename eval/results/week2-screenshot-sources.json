@@ -1,0 +1,29 @@
+[
+  {
+    "figure": "scan-body",
+    "document": "scan_pages.pdf",
+    "source_page": 10,
+    "native_paragraph_id": "01a1b15f-8e86-7562-b278-f52f076cbfa9",
+    "mineru_paragraph_id": "01a1b161-33ee-7800-95ba-45ef846870fe",
+    "native_content": "![image](./oss/file/01a1b15f-8e5b-7ea1-8782-86dbb93a4d8d)",
+    "mineru_content": "根据资产识别的结果和备份级别制定备份计划，具体包括:\n\n1、确定备份周期:根据信息更新速度、易损坏成度及备份介质的有效期，确定周期。\n\n2、确定备份介质类型:确定备份使用的介质，一般是光盘、软盘或硬盘，要同时考虑成本与可靠性。\n\n3、确定备份方式:一般采用复制、双系统同步、转储、压缩复制等。\n\n4、确定备份工具:备份使用的工具，如光盘记录机、复印机、软驱、压缩软件等，选择工具时，要确定在信息失效之前，对应的恢复工具可用。\n\n5、确定备份数量:确定备份的数量，一般信息备份一份即可，对于特别重要的信息需要备份多份。\n\n6、存放位置:备份信息须与原始信息分开存放，要根据信息保密级别有相应的保密措施。\n\n7、责任人:确定备份的责任人。\n\n8、备份方案需提交给相关部门负责人，经部门主任确认并批准后予以实施。\n\n9、当责任人没有足够的工具或条件时，可要求相关工程师协助。"
+  },
+  {
+    "figure": "scan-table",
+    "document": "scan_pages.pdf",
+    "source_page": 9,
+    "native_paragraph_id": "01a1b15f-8e86-7562-b278-f51b39d0003f",
+    "mineru_paragraph_id": "01a1b161-33ed-76e0-a1db-058857b381af",
+    "native_content": "![image](./oss/file/01a1b15f-8e1c-7041-9e2f-8bc67ff6d168)",
+    "mineru_content": "编号:\n\n<table><tr><td>领用人</td><td></td><td>部门</td><td></td><td>领用时间</td><td></td></tr><tr><td>载体类型</td><td colspan=\"3\">移动磁盘□ U盘□ 其它□(           )</td><td>数量</td><td></td></tr><tr><td colspan=\"6\">申请理由:</td></tr><tr><td colspan=\"6\">本部门领导审批意见:签名                                年 月 日</td></tr><tr><td colspan=\"6\">执行机构审批意见:签名                          年月日</td></tr><tr><td colspan=\"6\">注:1、本表由管理员负责填写2、本表由信息技术部磁盘管理员负责存查</td></tr></table>"
+  },
+  {
+    "figure": "image-text",
+    "document": "image_panels.pdf",
+    "source_page": 1,
+    "native_paragraph_id": "01a1b15f-950e-7403-bc40-ff515fcf6274",
+    "mineru_paragraph_id": "01a1b162-3405-71e3-9926-21c5f5d11e90",
+    "native_content": "![image](./oss/file/01a1b15f-8fe3-7b61-8ada-369a8bd0e980)",
+    "mineru_content": "收取快递在门外进行;\n\n带外人进入要前台登记并全程陪同;\n\n进出大门时注意是否有尾随人员;\n\n对于不能自动闭合的大门注意随手关门。\n\n![](<./oss/file/01a1b162-32e0-7ad1-a4aa-5ee652dbc23f>)"
+  }
+]

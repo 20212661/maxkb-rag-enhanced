@@ -1,0 +1,166 @@
+{
+  "native_knowledge_id": "01a1b15f-7cd7-7033-9fce-08c7e48f36eb",
+  "auto_knowledge_id": "01a1b161-0c1a-71c1-a542-637425f0ca38",
+  "split_limit": 1200,
+  "with_filter": true,
+  "native_paragraph_equality": [
+    {
+      "document": "河南水利与环境职业学院_附件 1：网络安全事件情况报告.docx",
+      "paragraph_count": 1,
+      "identical": true,
+      "identical_excluding_asset_ids": true
+    },
+    {
+      "document": "河南水利与环境职业学院_附件 2：网络安全事件分类.docx",
+      "paragraph_count": 1,
+      "identical": true,
+      "identical_excluding_asset_ids": true
+    },
+    {
+      "document": "河南水利与环境职业学院_附件 3：名词术语.docx",
+      "paragraph_count": 1,
+      "identical": true,
+      "identical_excluding_asset_ids": true
+    },
+    {
+      "document": "河南水利与环境职业学院_附件 4：网络和信息系统损失程度划分说明.docx",
+      "paragraph_count": 1,
+      "identical": false,
+      "identical_excluding_asset_ids": true
+    },
+    {
+      "document": "NIST_SP1300_小型企业网络安全框架入门指南_英文.pdf",
+      "paragraph_count": 15,
+      "identical": true,
+      "identical_excluding_asset_ids": true
+    },
+    {
+      "document": "中卫市公开信息安全管理制度.pdf",
+      "paragraph_count": 9,
+      "identical": true,
+      "identical_excluding_asset_ids": true
+    },
+    {
+      "document": "公共互联网网络安全突发事件应急预案_广州航海学院公开版.pdf",
+      "paragraph_count": 7,
+      "identical": true,
+      "identical_excluding_asset_ids": true
+    },
+    {
+      "document": "北方工业大学_网络与信息安全应急处置预案.pdf",
+      "paragraph_count": 12,
+      "identical": false,
+      "identical_excluding_asset_ids": true
+    },
+    {
+      "document": "信阳农林学院_网络信息安全突发事件应急预案.pdf",
+      "paragraph_count": 2,
+      "identical": true,
+      "identical_excluding_asset_ids": true
+    }
+  ],
+  "regressions": [
+    {
+      "id": "q015",
+      "type": "事实型",
+      "question": "北方工业大学要求核心网络设备怎样避免单点故障？",
+      "recall_at_5_before": 1.0,
+      "recall_at_5_after": 0.0,
+      "gold_ranks_in_top20": [
+        {
+          "document": "北方工业大学_网络与信息安全应急处置预案.pdf",
+          "key_sentence": "核心设备有冗余，避免单点故障",
+          "first_rank": 6
+        }
+      ],
+      "top5_documents": [
+        "scan_pages.pdf",
+        "北方工业大学_网络与信息安全应急处置预案.pdf",
+        "北方工业大学_网络与信息安全应急处置预案.pdf",
+        "北方工业大学_网络与信息安全应急处置预案.pdf",
+        "北方工业大学_网络与信息安全应急处置预案.pdf"
+      ]
+    },
+    {
+      "id": "q022",
+      "type": "跨段落型",
+      "question": "中卫市机房准入管理和互联网隔离管理分别有哪些限制？",
+      "recall_at_5_before": 0.5,
+      "recall_at_5_after": 0.0,
+      "gold_ranks_in_top20": [
+        {
+          "document": "中卫市公开信息安全管理制度.pdf",
+          "key_sentence": "工作人员需经授权，方能且只能进入中心机房的授权工作区",
+          "first_rank": 10
+        },
+        {
+          "document": "中卫市公开信息安全管理制度.pdf",
+          "key_sentence": "互联网与内部网络必须有相关的逻辑隔离",
+          "first_rank": 6
+        }
+      ],
+      "top5_documents": [
+        "image_panels.pdf",
+        "scan_pages.pdf",
+        "中卫市公开信息安全管理制度.pdf",
+        "北方工业大学_网络与信息安全应急处置预案.pdf",
+        "scan_pages.pdf"
+      ]
+    },
+    {
+      "id": "q028",
+      "type": "跨段落型",
+      "question": "对比中卫市和信阳农林学院的预案，事件处理过程的日志保存与系统恢复前检查日志各有什么要求？",
+      "recall_at_5_before": 1.0,
+      "recall_at_5_after": 0.5,
+      "gold_ranks_in_top20": [
+        {
+          "document": "中卫市公开信息安全管理制度.pdf",
+          "key_sentence": "保存各相关系统日志直至处置工作结束。",
+          "first_rank": 3
+        },
+        {
+          "document": "信阳农林学院_网络信息安全突发事件应急预案.pdf",
+          "key_sentence": "检查信息系统的日志等资料，确定攻击来源",
+          "first_rank": 6
+        }
+      ],
+      "top5_documents": [
+        "信阳农林学院_网络信息安全突发事件应急预案.pdf",
+        "scan_pages.pdf",
+        "中卫市公开信息安全管理制度.pdf",
+        "北方工业大学_网络与信息安全应急处置预案.pdf",
+        "中卫市公开信息安全管理制度.pdf"
+      ]
+    },
+    {
+      "id": "q039",
+      "type": "表格型",
+      "question": "河南水环学院事件报告表中，填写是否备案后还需填哪个编号？",
+      "recall_at_5_before": 1.0,
+      "recall_at_5_after": 0.0,
+      "gold_ranks_in_top20": [
+        {
+          "document": "河南水利与环境职业学院_附件 1：网络安全事件情况报告.docx",
+          "key_sentence": "备案号",
+          "first_rank": 6
+        }
+      ],
+      "top5_documents": [
+        "scan_pages.pdf",
+        "中卫市公开信息安全管理制度.pdf",
+        "scan_pages.pdf",
+        "信阳农林学院_网络信息安全突发事件应急预案.pdf",
+        "北方工业大学_网络与信息安全应急处置预案.pdf"
+      ]
+    }
+  ],
+  "auto_builds": [
+    {
+      "document__name": "image_panels.pdf",
+      "parse_status": "succeeded",
+      "parse_job_id": "01a1b161-37e8-7053-9f16-187dcbe09cd8",
+      "error": {}
+    }
+  ]
+}
