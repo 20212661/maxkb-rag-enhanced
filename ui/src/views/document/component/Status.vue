@@ -6,9 +6,10 @@
     :popper-style="{ width: 'auto' }"
     :persistent="false"
   >
-    <template #default
-      ><StatusTable
-        v-if="visible"
+    <template #default>
+      <span v-if="parseLabel">{{ parseLabel }}</span>
+      <StatusTable
+        v-if="visible && (!parseLabel || parseStatus === 'fallback')"
         :status="status"
         :statusMeta="statusMeta"
         :taskTypeMap="taskTypeMap"
@@ -16,9 +17,20 @@
       ></StatusTable>
     </template>
     <template #reference>
+      <el-text v-if="parseLabel" class="color-text-primary">
+        <el-icon
+          v-if="parseStatus === 'pending' || parseStatus === 'running'"
+          class="is-loading color-primary"
+        >
+          <Loading />
+        </el-icon>
+        <el-icon v-else-if="parseStatus === 'failed'" class="color-danger"><CircleCloseFilled /></el-icon>
+        <el-icon v-else class="color-warning"><SuccessFilled /></el-icon>
+        {{ parseLabel }}
+      </el-text>
       <el-text
         class="color-text-primary"
-        v-if="aggStatus?.value === State.SUCCESS || aggStatus?.value === State.REVOKED"
+        v-else-if="aggStatus?.value === State.SUCCESS || aggStatus?.value === State.REVOKED"
       >
         <el-icon class="color-success"><SuccessFilled /></el-icon>
         {{ stateMap[aggStatus.value](aggStatus.key) }}
@@ -47,7 +59,16 @@ import { computed, ref } from 'vue'
 import { TaskType, State } from '@/utils/status'
 import StatusTable from '@/views/document/component/StatusTable.vue'
 import { t } from '@/locales'
-const props = defineProps<{ status: string; statusMeta: any }>()
+const props = defineProps<{ status: string; statusMeta: any; parseStatus?: string | null }>()
+const parseLabel = computed(() => {
+  const labels: Record<string, string> = {
+    pending: t('views.document.fileStatus.PARSING'),
+    running: t('views.document.fileStatus.PARSING'),
+    fallback: t('views.document.fileStatus.PARSE_FALLBACK'),
+    failed: t('views.document.fileStatus.PARSE_FAILED'),
+  }
+  return labels[props.parseStatus ?? ''] ?? ''
+})
 const visible = ref<boolean>(false)
 const checkList: Array<string> = [
   State.REVOKE,

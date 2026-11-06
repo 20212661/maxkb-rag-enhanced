@@ -131,6 +131,9 @@ export default {
     updateTime: '更新時間',
   },
   fileStatus: {
+    PARSING: '解析中',
+    PARSE_FALLBACK: '已回退',
+    PARSE_FAILED: '解析失敗',
     label: '文件狀態',
     EMBEDDING: '索引中',
     PENDING: '排隊中',

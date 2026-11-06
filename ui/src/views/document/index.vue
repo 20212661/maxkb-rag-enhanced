@@ -307,7 +307,11 @@
                 </div>
               </template>
               <template #default="{ row }">
-                <StatusValue :status="row.status" :status-meta="row.status_meta"></StatusValue>
+                <StatusValue
+                  :status="row.status"
+                  :status-meta="row.status_meta"
+                  :parse-status="row.parse_status ?? row.mineru_parse_status"
+                ></StatusValue>
               </template>
             </el-table-column>
             <el-table-column

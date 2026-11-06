@@ -316,3 +316,9 @@ MinerU 的提交、轮询、结果协议、资产处理、转换失败及超时�
 | 前端 | 白名单、通用图标、解析状态文案、现有保存字段和正常文档流程 |
 
 第 1 周 `eval/results/baseline.json` 的固定 60 题结果作为检索比较起点。新增 MinerU 实验使用单独结果文件记录。
+
+### 第六步前端检查记录
+
+图片与 PPT 的白名单、文件选择器及图标已接入。列表兼容 `parse_status` 和现有 SQL 字段 `mineru_parse_status`，pending/running 展示解析中，fallback 展示已回退，failed 展示解析失败，succeeded 使用原有向量化状态。简体中文、繁体中文和英文均提供对应文案。
+
+2026-11-06 的 `npm run type-check` 通过。全量 `npm run lint` 报告 72 条既有错误，涉及动态表单、工作流等组件的嵌套 prop 修改、未使用的模板变量及生成的 iconfont 脚本。按用户确认保留这些既有问题，本次文件单独执行 ESLint 检查，撤回全量 lint 自动修复产生的旁支改动。

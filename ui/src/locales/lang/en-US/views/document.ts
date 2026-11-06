@@ -136,6 +136,9 @@ export default {
     updateTime: 'Update Time',
   },
   fileStatus: {
+    PARSING: 'Parsing',
+    PARSE_FALLBACK: 'Fallback applied',
+    PARSE_FAILED: 'Parsing failed',
     label: 'File Status',
     SUCCESS: 'Success',
     FAILURE: 'Failure',

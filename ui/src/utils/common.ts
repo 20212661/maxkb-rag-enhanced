@@ -56,18 +56,30 @@ export function fileType(name: string) {
   获得文件对应图片
 */
 const typeList: any = {
-  txt: ['txt', 'pdf', 'docx', 'md', 'html', 'zip', 'xlsx', 'xls', 'csv'],
+  txt: [
+    'txt', 'pdf', 'docx', 'md', 'html', 'zip', 'xlsx', 'xls', 'csv',
+    'png', 'jpg', 'jpeg', 'webp', 'bmp', 'ppt', 'pptx',
+  ],
   table: ['xlsx', 'xls', 'csv'],
   QA: ['xlsx', 'csv', 'xls', 'zip'],
 }
 
 export function getImgUrl(name: string) {
   const list = Object.values(typeList).flat()
+  const iconTypes: Record<string, string> = {
+    png: 'image',
+    jpg: 'image',
+    jpeg: 'image',
+    webp: 'image',
+    bmp: 'image',
+    ppt: 'ppt',
+    pptx: 'ppt',
+  }
 
   const type = list.includes(fileType(name).toLowerCase())
     ? fileType(name).toLowerCase()
     : 'unknown'
-  return new URL(`../assets/fileType/${type}-icon.svg`, import.meta.url).href
+  return new URL(`../assets/fileType/${iconTypes[type] ?? type}-icon.svg`, import.meta.url).href
 }
 
 // 是否是白名单后缀
