@@ -18,10 +18,11 @@ from pypdf.errors import PyPdfError
 
 
 class MinerUError(RuntimeError):
-    def __init__(self, message, *, request_id=None, code=None):
+    def __init__(self, message, *, request_id=None, code=None, status_code=None):
         super().__init__(message)
         self.request_id = request_id
         self.code = code
+        self.status_code = status_code
 
 
 class MinerUTimeoutError(MinerUError):
@@ -145,7 +146,7 @@ class MinerUClient:
             detail = body.get("error") or {}
             code = detail.get("code", f"http_{response.status_code}") if isinstance(detail, dict) else "http_error"
             raise MinerUError(f"MinerU returned HTTP {response.status_code} ({code})",
-                              request_id=request_id, code=code)
+                              request_id=request_id, code=code, status_code=response.status_code)
         if body.get("request_id") != request_id:
             raise MinerUProtocolError("MinerU response request_id does not match", request_id=request_id)
         return body
@@ -153,20 +154,25 @@ class MinerUClient:
     def submit(self, filename, *, request_id=None, page_count=None, tier="basic"):
         path = Path(filename)
         pages = self.count_pages(path, page_count=page_count)
+        with path.open("rb") as source:
+            return self.submit_stream(path.name, source, request_id=request_id, page_count=pages, tier=tier,
+                                      timeout_seconds=self.timeout_for_pages(pages))
+
+    def submit_stream(self, filename, source, *, request_id=None, page_count=None, tier="basic", timeout_seconds=5):
+        """Submit an existing upload stream with a short HTTP budget and a stable request identity."""
         request_id = self._request_id(uuid.uuid4().hex if request_id is None else request_id)
         if tier not in {"flash", "basic", "standard", "advanced"}:
             raise MinerUInputError("Unsupported MinerU tier")
-        if path.suffix.lower() in {".ppt", ".pptx"}:
+        if Path(filename).suffix.lower() in {".ppt", ".pptx"}:
             tier = "flash"
-        budget = self.timeout_for_pages(pages)
-        deadline = time.monotonic() + budget
-        with path.open("rb") as source:
-            receipt = self._request("POST", "/v1/content-list/tasks", deadline, request_id, {202},
-                                    files={"file": (path.name, source, "application/octet-stream")},
-                                    data={"request_id": request_id, "tier": tier, "ocr_mode": "auto"})
+        deadline = time.monotonic() + timeout_seconds
+        receipt = self._request("POST", "/v1/content-list/tasks", deadline, request_id, {202},
+                                files={"file": (filename, source, "application/octet-stream")},
+                                data={"request_id": request_id, "tier": tier, "ocr_mode": "auto"})
         if receipt.get("status") not in self.PENDING_STATES | {"completed", "failed", "canceled", "submission_unknown"}:
             raise MinerUProtocolError("MinerU returned an unknown task state", request_id=request_id)
-        return {**receipt, "page_count": pages, "timeout_seconds": budget}
+        return {**receipt, "page_count": page_count,
+                "timeout_seconds": self.timeout_for_pages(page_count) if page_count else None}
 
     def poll_once(self, request_id, page_count, *, timeout_seconds):
         """Read one upstream status, downloading its result only when it has completed."""

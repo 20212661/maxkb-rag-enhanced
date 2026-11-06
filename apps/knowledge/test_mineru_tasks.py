@@ -10,6 +10,7 @@ from threading import Barrier
 from unittest.mock import MagicMock, patch
 
 from celery.exceptions import Retry
+from common.utils.mineru_client import MinerUError
 from django.test import TransactionTestCase
 from django.db import connections
 from django.utils import timezone
@@ -115,6 +116,24 @@ class MinerUTaskTests(TransactionTestCase):
         retry.assert_called_once_with(countdown=10)
         self.job.refresh_from_db()
         self.assertIsNotNone(self.job.deadline_at)
+        self.assertEqual(self.job.state, "running")
+
+    def test_unaccepted_submission_is_retried_after_capacity_rejection(self):
+        from knowledge.services import mineru_upload
+        client = MagicMock()
+        client.__enter__.return_value = client
+        client.timeout_for_pages.return_value = 40
+        client.poll_once.side_effect = MinerUError("missing", code="upstream_error", status_code=404)
+        with patch.object(tasks, "MinerUClient", return_value=client), \
+                patch.object(mineru_upload, "submit_job", side_effect=MinerUError(
+                    "capacity", code="parse_capacity", status_code=503)) as submit, \
+                patch.object(tasks.run_parse_job, "retry", side_effect=Retry()) as retry:
+            with self.assertRaises(Retry):
+                tasks.run_parse_job.run(str(self.job.id))
+        submit.assert_called_once()
+        retry.assert_called_once()
+        self.assertEqual(retry.call_args.kwargs["countdown"], 10)
+        self.job.refresh_from_db()
         self.assertEqual(self.job.state, "running")
 
     def test_concurrent_builds_commit_only_one_paragraph_set(self):

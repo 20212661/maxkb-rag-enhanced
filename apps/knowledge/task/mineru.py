@@ -20,7 +20,6 @@ from pypdf import PdfReader
 
 from common.chunk import text_to_chunk
 from common.utils.mineru_client import MinerUClient, MinerUError, MinerUProtocolError, MinerUTimeoutError
-from common.utils.mineru_converter import blocks_to_paragraphs, content_list_to_blocks
 from knowledge.models import (
     Document, Embedding, File, FileSourceType, MinerUDocumentBuild, MinerUParseJob, Paragraph,
     ParagraphSource, ProblemParagraphMapping,
@@ -52,6 +51,9 @@ def _page_count(job):
         import re
         with zipfile.ZipFile(io.BytesIO(source.get_bytes())) as archive:
             return sum(bool(re.fullmatch(r"ppt/slides/slide\d+\.xml", name)) for name in archive.namelist())
+    if job.tier == "flash":
+        from maxkb.const import CONFIG
+        return int(CONFIG.get("MINERU_FLASH_BUDGET_PAGES", 10))
     raise service.ParseServiceError("Parse job requires an accurate positive page_count")
 
 
@@ -85,7 +87,16 @@ def run_parse_job(self, job_id):
             remaining = (deadline - timezone.now()).total_seconds()
             if remaining <= 0:
                 raise MinerUTimeoutError("Total parse budget exceeded", code="parse_timeout")
-            receipt, result = client.poll_once(str(job.request_id), pages, timeout_seconds=remaining)
+            try:
+                actual_pages = job.route_decision.get("metrics", {}).get("page_count")
+                receipt, result = client.poll_once(str(job.request_id), actual_pages, timeout_seconds=remaining)
+            except MinerUError as error:
+                if job.task_id is None and (error.status_code == 404 or error.code in {
+                        "http_404", "not_found", "request_not_found"}):
+                    from knowledge.services.mineru_upload import submit_job
+                    submit_job(job)
+                    raise self.retry(countdown=10)
+                raise
         if result is None:
             service.transition(job.id, ["running"], "running", job.version, task_id=receipt.get("task_id"))
             raise self.retry(countdown=10)
@@ -98,7 +109,8 @@ def run_parse_job(self, job_id):
     except MinerUError as error:
         logger.warning("MinerU parse job %s failed: %s", job_id, error)
         if (not isinstance(error, MinerUProtocolError)
-                and error.code in {"http_timeout", "connection_error", "upstream_unreachable"}
+                and (error.code in {"http_timeout", "connection_error", "upstream_unreachable", "parse_capacity"}
+                     or (error.status_code is not None and error.status_code >= 500))
                 and job.deadline_at and timezone.now() < job.deadline_at):
             raise self.retry(countdown=10, exc=error)
         if not service.transition(job.id, [job.state], "failed", job.version, finished_at=timezone.now(),
@@ -150,21 +162,7 @@ def _commit_build(build, *, fallback=False, reason=None):
         cache = service.find_cache(build.parse_job.sha256, build.parse_job.tier, _versions(build.parse_job))
         if cache is None:
             raise service.ParseServiceError("Completed parse cache is missing")
-        result = service.load_cache(cache)
-        blocks = content_list_to_blocks(result["content_list"], page_count=result["page_count"])
-        references = {}
-        for block in blocks:
-            path = block["image_ref"]
-            if path and path not in references:
-                asset = result["images"][path]
-                image = service._save_file(document.knowledge_id, path, File.objects.get(pk=asset["file_id"]).get_bytes(),
-                                           {"mineru_asset_path": path})
-                references[path] = f"./oss/file/{image.id}"
-            if path:
-                block["image_ref"] = references[path]
-        paragraphs = blocks_to_paragraphs(
-            blocks, limit=build.split_params.get("limit", 4096),
-            drop_types=build.split_params.get("drop_types", ("header", "footer", "page_number")))
+        paragraphs = service.cache_to_paragraphs(cache, document.knowledge_id, build.split_params)
     if not paragraphs or not any(paragraph["content"].strip() for paragraph in paragraphs):
         raise service.ParseServiceError("Parser returned no usable paragraphs")
     Embedding.objects.filter(document_id=document.id).delete()

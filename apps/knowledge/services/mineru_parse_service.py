@@ -61,6 +61,26 @@ def load_cache(cache):
     return json.loads(File.objects.get(pk=cache.file_ids[0]).get_bytes())
 
 
+def cache_to_paragraphs(cache, knowledge_id, split_params):
+    from common.utils.mineru_converter import blocks_to_paragraphs, content_list_to_blocks
+    result = load_cache(cache)
+    blocks = content_list_to_blocks(result["content_list"], page_count=result["page_count"])
+    references = {}
+    for path, asset in result["images"].items():
+        image = _save_file(knowledge_id, path, File.objects.get(pk=asset["file_id"]).get_bytes(),
+                           {"mineru_asset_path": path})
+        references[path] = f"./oss/file/{image.id}"
+    for block in blocks:
+        if block["image_ref"]:
+            block["image_ref"] = references[block["image_ref"]]
+        for path, reference in references.items():
+            for old, new in ((f'="{path}"', f'="{reference}"'), (f"='{path}'", f"='{reference}'"),
+                             (f"]({path})", f"]({reference})"), (f"](<{path}>)", f"](<{reference}>)")):
+                block["text"] = block["text"].replace(old, new)
+    return blocks_to_paragraphs(blocks, limit=split_params.get("limit", 4096),
+                                drop_types=split_params.get("drop_types", ("header", "footer", "page_number")))
+
+
 def _save_file(knowledge_id, name, data, meta):
     file = File(file_name=name[-256:], source_type=FileSourceType.KNOWLEDGE, source_id=str(knowledge_id),
                 meta={"debug": False, "knowledge_id": str(knowledge_id), **meta})

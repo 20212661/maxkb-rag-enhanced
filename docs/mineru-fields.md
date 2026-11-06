@@ -251,11 +251,17 @@ MaxKB 最终段落使用现有 `title`、`content`、`problem_list` 等字段。
 
 现有前端保存请求只发送 `name`、`paragraphs` 和 `source_file_id`。v1 以原件 `File.meta.mineru` 及解析任务表中的服务器绑定传递权威状态，段落里的 `mineru` 用于展示和辅助校验。后端根据原件绑定识别待解析保存，覆盖占位字段被编辑、删去或前端重建的情况。
 
-服务器绑定至少包含 `preview_kind`、`parse_job_id`、知识库及创建者、原件哈希、`request_id`、确认后的 `task_id`、路由快照、`split_options` 和协议版本。`split_options` 保存已应用的 `patterns`、`with_filter`、`limit`，后续后台按该快照分块。
+原件的 `File.meta.mineru` 保存 `preview_kind=pending`、`parse_job_id`、`split_params`。任务表保存原件哈希、首次知识库、路由、版本和上游标识。`split_params` 保存规范化后的 `patterns`、`with_filter`、`limit`，表单字符串通过既有 `DocumentSplitRequest` 转为正确类型，后续后台按每份文档的参数快照分块。
 
 保存时排除待解析预览的占位正文及占位问题。关联标题问题的选项按现有保存字段记录，实际问题从真实段落标题生成。v1 最终正文以绑定原件的后台解析结果生成，占位预览锁定属于 v2。
 
 预览提交预算由 `MINERU_PREVIEW_SUBMIT_TIMEOUT_SECONDS` 配置，建议默认 5 秒。后台等待预算使用已有基础 30 秒加每页 10 秒。任务记录保存预算、开始时间及本轮截止时间，重投同一轮任务时复用截止时间。排队、执行和用户保存时间分别记录。
+
+第五步入口在保存原件后查询缓存。命中时同步物化本知识库图片并返回真实段落，未命中时复用解析任务，仅首次创建执行短提交。`parse_capacity`、连接错误或不确定提交均返回单条占位，并投递 `run_parse_job`。worker 按稳定请求 ID 查询，404 且没有上游 task_id 时重试提交，容量仍满则按 10 秒重排队。总截止时间持续生效。
+
+单个和批量保存均按服务端原件标记排除占位正文及问题，创建构建记录并在提交后投递 `build_document`。缓存已完成时也能立即触发构建。新建的异步文档通过构建任务投递向量化。普通原生文档沿现有保存和向量化流程处理。
+
+缓存版本由 `MINERU_ENGINE_VERSION`（默认 4.1.7）、`MINERU_PROTOCOL_VERSION`（默认 1）配置。无法准确计页的 Flash 文件使用 `MINERU_FLASH_BUDGET_PAGES`（默认 10）作为时间预算单位，输出实际页数单独校验为有效正整数。
 
 `get_content()` 使用已有结果做纯内容转换或返回可恢复的待解析异常。耗时轮询由后台任务承担。该处理器的调用范围由知识库上传入口控制。
 

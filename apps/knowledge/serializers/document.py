@@ -91,6 +91,8 @@ from knowledge.task.embedding import (
 )
 from knowledge.task.generate import generate_related_by_document_id
 from knowledge.task.sync import sync_web_document
+from common.utils import mineru_router
+from knowledge.services import mineru_upload
 
 default_split_handle = TextSplitHandle()
 split_handles = [
@@ -1008,12 +1010,15 @@ class DocumentSerializers(serializers.Serializer):
 
         @staticmethod
         def post_embedding(result, document_id, knowledge_id):
+            if mineru_upload.is_async_document(document_id):
+                return result
             DocumentSerializers.Operate(data={"knowledge_id": knowledge_id, "document_id": document_id}).refresh()
             return result
 
         @post(post_function=post_embedding)
         @transaction.atomic
         def save(self, instance: Dict, with_valid=True, **kwargs):
+            instance = mineru_upload.prepare_save(instance, self.initial_data.get("knowledge_id"))
             if with_valid:
                 DocumentInstanceSerializer(data=instance).is_valid(raise_exception=True)
                 self.is_valid(raise_exception=True)
@@ -1029,6 +1034,7 @@ class DocumentSerializers(serializers.Serializer):
             ).to_problem_model_list()
             # 插入文档
             document_model.save()
+            mineru_upload.attach_saved(document_model)
             # 批量插入段落
             if len(paragraph_model_list) > 0:
                 max_position = (
@@ -1256,6 +1262,8 @@ class DocumentSerializers(serializers.Serializer):
                     file.save(file_bytes)
 
         def file_to_paragraph(self, file, pattern_list: List, with_filter: bool, limit: int):
+            knowledge = Knowledge.objects.get(pk=self.data.get("knowledge_id"))
+            decision = mineru_router.decide(file, knowledge.meta)
             # 保存源文件
             file_id = uuid.uuid7()
             raw_file = File(
@@ -1267,6 +1275,14 @@ class DocumentSerializers(serializers.Serializer):
             )
             raw_file.save(file.read())
             file.seek(0)
+
+            if decision["use_mineru"]:
+                options = {"patterns": pattern_list, "with_filter": with_filter, "limit": limit}
+                params = DocumentSplitRequest(data={"file": [file], **{
+                    key: value for key, value in options.items() if value is not None}})
+                params.is_valid(raise_exception=True)
+                split_params = {key: value for key, value in params.validated_data.items() if key != "file"}
+                return mineru_upload.preview(raw_file, knowledge.id, decision, split_params)
 
             get_buffer = FileBufferHandle().get_buffer
             for split_handle in split_handles:
@@ -1347,6 +1363,8 @@ class DocumentSerializers(serializers.Serializer):
         @staticmethod
         def post_embedding(document_list, knowledge_id, workspace_id):
             for document_dict in document_list:
+                if mineru_upload.is_async_document(document_dict.get("id")):
+                    continue
                 DocumentSerializers.Operate(
                     data={
                         "knowledge_id": knowledge_id,
@@ -1359,6 +1377,8 @@ class DocumentSerializers(serializers.Serializer):
         @post(post_function=post_embedding)
         @transaction.atomic
         def batch_save(self, instance_list: List[Dict], with_valid=True):
+            instance_list = [mineru_upload.prepare_save(instance, self.initial_data.get("knowledge_id"))
+                             for instance in instance_list]
             if with_valid:
                 self.is_valid(raise_exception=True)
             DocumentInstanceSerializer(many=True, data=instance_list).is_valid(raise_exception=True)
@@ -1386,6 +1406,8 @@ class DocumentSerializers(serializers.Serializer):
             ).to_problem_model_list()
             # 插入文档
             QuerySet(Document).bulk_create(document_model_list) if len(document_model_list) > 0 else None
+            for document_model in document_model_list:
+                mineru_upload.attach_saved(document_model)
             # 批量插入段落
             if len(paragraph_model_list) > 0:
                 for document in document_model_list:
