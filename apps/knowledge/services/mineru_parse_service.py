@@ -102,6 +102,7 @@ def publish_cache(*, sha256, tier, versions, knowledge_id, result):
                                    {"mineru_cache_id": str(cache.id)})
             cache.file_ids = [data_file.id] + [asset["file_id"] for asset in assets.values()]
             cache.save(update_fields=["file_ids", "update_time"])
+            cache.refresh_from_db()
             return cache, True
     except IntegrityError:
         existing = MinerUParseCache.objects.get(**identity)
@@ -202,6 +203,8 @@ def transition(job_id, from_states, to_state, expected_version, **fields):
     allowed = {"task_id", "attempts", "error", "started_at", "finished_at", "deadline_at"}
     if fields.keys() - allowed:
         raise ParseServiceError("Unsupported parse update field")
+    if to_state == "submitted" and all(state == "failed" for state in from_states):
+        fields = {"deadline_at": None, "started_at": None, "finished_at": None, "error": {}, **fields}
     return bool(MinerUParseJob.objects.filter(pk=job_id, state__in=from_states, version=expected_version).update(
         state=to_state, version=F("version") + 1, update_time=timezone.now(), **fields))
 
@@ -222,6 +225,9 @@ def mark_orphaned(older_than):
     references = MinerUDocumentBuild.objects.filter(parse_job_id=OuterRef("pk"))
     candidates = MinerUParseJob.objects.filter(state__in=ACTIVE, create_time__lt=older_than).annotate(
         referenced=Exists(references)).filter(referenced=False).values_list("pk", "version")
-    return sum(MinerUParseJob.objects.filter(pk=pk, version=version, state__in=ACTIVE).filter(
-        ~Exists(references)).update(state=ParseState.ORPHANED, version=F("version") + 1,
-                                   finished_at=timezone.now(), update_time=timezone.now()) for pk, version in candidates)
+    count = 0
+    for pk, version in candidates:
+        count += MinerUParseJob.objects.filter(pk=pk, version=version, state__in=ACTIVE).filter(
+            ~Exists(references)).update(state=ParseState.ORPHANED, version=F("version") + 1,
+                                       finished_at=timezone.now(), update_time=timezone.now())
+    return count

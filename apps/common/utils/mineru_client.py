@@ -168,6 +168,23 @@ class MinerUClient:
             raise MinerUProtocolError("MinerU returned an unknown task state", request_id=request_id)
         return {**receipt, "page_count": pages, "timeout_seconds": budget}
 
+    def poll_once(self, request_id, page_count, *, timeout_seconds):
+        """Read one upstream status, downloading its result only when it has completed."""
+        request_id = self._request_id(request_id)
+        deadline = time.monotonic() + timeout_seconds
+        path = "/v1/content-list/tasks/" + request_id
+        receipt = self._request("GET", path, deadline, request_id, {200})
+        state = receipt.get("status")
+        if state == "completed":
+            result = self._request("GET", path + "/result", deadline, request_id, {200})
+            self._validate_result(result, request_id, expected_pages=page_count)
+            return receipt, result
+        if state in {"failed", "canceled", "submission_unknown"}:
+            raise MinerUError(f"MinerU task {state}", request_id=request_id, code=state)
+        if state not in self.PENDING_STATES:
+            raise MinerUProtocolError("MinerU returned an unknown task state", request_id=request_id)
+        return receipt, None
+
     def wait(self, request_id, page_count, *, timeout_seconds=None):
         request_id = self._request_id(request_id)
         budget = self.timeout_for_pages(page_count)

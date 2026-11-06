@@ -54,8 +54,10 @@ class ParseServiceTests(TransactionTestCase):
     def test_states_and_late_result(self):
         self.assertTrue(service.transition(self.job.id, ["submitted"], "running", 0))
         self.assertFalse(service.transition(self.job.id, ["submitted"], "failed", 0))
-        self.assertTrue(service.transition(self.job.id, ["running"], "failed", 1))
+        self.assertTrue(service.transition(self.job.id, ["running"], "failed", 1, deadline_at=timezone.now()))
         self.assertTrue(service.transition(self.job.id, ["failed"], "submitted", 2))
+        self.job.refresh_from_db()
+        self.assertIsNone(self.job.deadline_at)
         self.assertFalse(service.transition(self.job.id, ["running"], "succeeded", 1))
         with self.assertRaises(service.ParseServiceError):
             service.transition(self.job.id, ["failed"], "succeeded", 3)

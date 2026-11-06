@@ -1,5 +1,15 @@
 # MinerU 独立服务与客户端
 
+## MaxKB 异步解析队列
+
+`run_parse_job` 和 `build_document` 使用独立 `mineru` 队列。每次轮询只查询一次状态，处理中通过 Celery 的 `retry(countdown=10)` 重排队。截止时间保存在解析任务中，按首次创建时间加基础 30 秒和每页 10 秒计算，重投复用同一截止时间。
+
+在 MaxKB 的 Python 环境中执行 `bash services/mineru/run_model_worker.sh`，默认并发为 2，可通过 `MINERU_WORKER_CONCURRENCY` 设为 2–4，通过 `MAXKB_PYTHON` 指定 Python。开发环境可使用 `MAXKB_PYTHON=/opt/maxkb-dev/venv/bin/python`。该脚本消费 `mineru` 队列。
+
+8004 使用 `MINERU_PARSE_CONCURRENCY` 控制解析生命周期信号量，默认 1。任务提交后保留容量，直到状态查询或后台检查确认上游完成、失败或取消。容量满时快速返回 HTTP 503 和 `parse_capacity`，调用方稍后用同一 `request_id` 重试。结果转换另有并发 1 的信号量。8004 按服务脚本使用单个进程，上游 8000 继续以 `--concurrency 1` 运行，约束实际模型解析并发。提交结果不确定时保留容量，可用相同请求 ID 重新提交恢复。
+
+文档构建使用独立 `mineru_document_build` 记录参数、版本及解析状态。段落、chunks、溯源和完成状态在同一事务内提交，向量化通过持久化的 `embedding_pending` 标记补投递。文档跨库迁移后按当前归属重新校验原件，失配时记录明确失败。
+
 ## 部署
 
 已在 WSL Ubuntu 的独立环境 `/opt/mineru4/venv` 安装 MinerU 4.1.7。使用 Python 3.11.18、ONNX CPU、Basic 档位，解析并发为 1。主机为 Ryzen 7 5800H，8 核 16 线程，Windows 物理内存约 13.86 GiB，WSL 分配约 6.7 GiB。MaxKB 与 MinerU 在测试期间同时运行。

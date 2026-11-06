@@ -59,6 +59,18 @@ class ContentListAPITests(unittest.TestCase):
         self.assertIn(b'name="wait_timeout"\r\n\r\n0', self.calls[0].content)
         self.assertEqual(self.calls[0].url.port, 8003)
 
+    def test_parse_capacity_is_held_until_terminal_status(self):
+        with TestClient(create_app(self.transport)) as client:
+            self.assertEqual(client.post("/v1/content-list/tasks", files={"file": ("one.pdf", b"pdf")},
+                                         data={"request_id": "req"}).status_code, 202)
+            blocked = client.post("/v1/content-list/tasks", files={"file": ("two.pdf", b"pdf")},
+                                  data={"request_id": "other"})
+            self.assertEqual(blocked.status_code, 503)
+            self.assertEqual(blocked.json()["error"]["code"], "parse_capacity")
+            self.state = "completed"
+            self.assertEqual(client.get("/v1/content-list/tasks/req").json()["status"], "completed")
+            self.assertFalse(client.app.state.parse_slot.locked())
+
     def test_completed_resubmission_does_not_download_zip(self):
         class UnreadZip(httpx.AsyncByteStream):
             async def __aiter__(self):

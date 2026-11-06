@@ -13,6 +13,14 @@ from common.utils.mineru_client import (
 
 
 class MinerUClientTests(unittest.TestCase):
+    def test_poll_once_does_not_sleep_or_loop(self):
+        self.session.request.return_value = self.response({"request_id": "req", "status": "running"})
+        with patch("common.utils.mineru_client.time.sleep", side_effect=AssertionError("Unexpected wait")):
+            receipt, result = self.client.poll_once("req", 1, timeout_seconds=40)
+        self.assertEqual(receipt["status"], "running")
+        self.assertIsNone(result)
+        self.session.request.assert_called_once()
+
     def setUp(self):
         self.session = Mock()
         self.client = MinerUClient({}, self.session)

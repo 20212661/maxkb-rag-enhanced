@@ -74,6 +74,9 @@ def create_app(transport=None):
     file_url = service_url("MINERU_FILE_PARSE_URL", "http://127.0.0.1:8003")
     max_archive_bytes = int(os.environ.get("MINERU_MAX_RESULT_BYTES", 128 * 1024 * 1024))
     max_unpacked_bytes = int(os.environ.get("MINERU_MAX_UNPACKED_BYTES", 256 * 1024 * 1024))
+    parse_concurrency = int(os.environ.get("MINERU_PARSE_CONCURRENCY", "1"))
+    if parse_concurrency < 1:
+        raise ValueError("MINERU_PARSE_CONCURRENCY must be positive")
     if min(max_archive_bytes, max_unpacked_bytes) <= 0:
         raise ValueError("Result size limits must be positive")
 
@@ -82,7 +85,15 @@ def create_app(transport=None):
         async with httpx.AsyncClient(timeout=httpx.Timeout(30, connect=5), transport=transport) as client:
             app.state.http = client
             app.state.conversion_slot = asyncio.Semaphore(1)
-            yield
+            app.state.parse_slot = asyncio.Semaphore(parse_concurrency)
+            app.state.parse_monitors = {}
+            try:
+                yield
+            finally:
+                monitors = [task for task in app.state.parse_monitors.values() if task is not None]
+                for task in monitors:
+                    task.cancel()
+                await asyncio.gather(*monitors, return_exceptions=True)
 
     app = FastAPI(title="MinerU Content List Tasks", version="1", lifespan=lifespan)
 
@@ -118,6 +129,25 @@ def create_app(transport=None):
             raise UpstreamError(502, "invalid_upstream_response", "Invalid upstream task status")
         return {key: value.get(key) for key in ("request_id", "task_id", "status", "error")}
 
+    def release_parse(request_id):
+        if request_id in app.state.parse_monitors:
+            monitor = app.state.parse_monitors.pop(request_id)
+            if monitor is not None and monitor is not asyncio.current_task():
+                monitor.cancel()
+            app.state.parse_slot.release()
+
+    async def monitor_parse(request_id):
+        while True:
+            await asyncio.sleep(10)
+            try:
+                receipt = await status(request_id)
+            except UpstreamError:
+                # Unknown upstream state retains capacity until a definitive terminal receipt is available.
+                continue
+            if receipt["status"] in {"completed", "failed", "canceled"}:
+                release_parse(request_id)
+                return
+
     @app.get("/health")
     async def health():
         try:
@@ -136,6 +166,11 @@ def create_app(transport=None):
         tier: Annotated[str, Form(pattern=r"^(flash|basic|standard|advanced)$")] = "basic",
         ocr_mode: Annotated[str, Form(pattern=r"^(auto|ocr|txt)$")] = "auto",
     ):
+        if request_id not in app.state.parse_monitors:
+            if app.state.parse_slot.locked():
+                raise UpstreamError(503, "parse_capacity", "Parser capacity is full; retry with the same request_id")
+            await app.state.parse_slot.acquire()
+            app.state.parse_monitors[request_id] = asyncio.create_task(monitor_parse(request_id))
         # wait_timeout=0 persists the upstream recovery record and returns without waiting for model inference.
         try:
             async with app.state.http.stream("POST", file_url + "/v1/file_parse", files={
@@ -148,18 +183,29 @@ def create_app(transport=None):
                     receipt = payload(response)
         except httpx.HTTPError as error:
             raise UpstreamError(502, "upstream_unreachable", "Query request_id before resubmitting") from error
+        except UpstreamError as error:
+            if 400 <= error.status < 500 and error.status != 408:
+                release_parse(request_id)
+            raise
         if completed:
             # A repeated completed request may return its ZIP. Query its original status instead of creating again.
-            return await status(request_id)
+            receipt = await status(request_id)
+            release_parse(request_id)
+            return receipt
         if receipt.get("request_id") != request_id:
             raise UpstreamError(502, "invalid_upstream_response", "Mismatched upstream request ID")
+        if receipt.get("status") in {"completed", "failed", "canceled"}:
+            release_parse(request_id)
         return {key: receipt.get(key) for key in ("request_id", "task_id", "status", "error")}
 
     @app.get("/v1/content-list/tasks/{request_id}")
     async def get_status(request_id: str):
         if not re.fullmatch(r"[A-Za-z0-9_-]{1,64}", request_id):
             raise UpstreamError(400, "invalid_request_id", "Invalid request ID")
-        return await status(request_id)
+        receipt = await status(request_id)
+        if receipt["status"] in {"completed", "failed", "canceled"}:
+            release_parse(request_id)
+        return receipt
 
     @app.get("/v1/content-list/tasks/{request_id}/result")
     async def get_result(request_id: str):
