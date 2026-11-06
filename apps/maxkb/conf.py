@@ -32,6 +32,11 @@ class Config(dict):
         "LOCAL_MODEL_PORT": "11636",
         "LOCAL_MODEL_PROTOCOL": "http",
         "LOCAL_MODEL_HOST_WORKER": 1,
+        "MINERU_CONTENT_LIST_URL": "http://127.0.0.1:8004",
+        "MINERU_TIMEOUT_BASE_SECONDS": 30,
+        "MINERU_TIMEOUT_PER_PAGE_SECONDS": 10,
+        "MINERU_CONNECT_TIMEOUT_SECONDS": 5,
+        "MINERU_POLL_INTERVAL_SECONDS": 1,
         # 语言
         "LANGUAGE_CODE": "zh-CN",
         "DEBUG": False,

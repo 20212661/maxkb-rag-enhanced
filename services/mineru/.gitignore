@@ -1,0 +1,9 @@
+runtime/
+models/
+.cache/
+results/*
+!results/*.json
+samples/*.jpg
+samples/*.png
+samples/*.pdf
+*.tmp

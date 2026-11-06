@@ -1,0 +1,19 @@
+{
+  "timeout_retained_request_id": true,
+  "resume_reused_task_id": true,
+  "pptx_actual_pages": 2,
+  "pptx_actual_parse_info": {
+    "tier": "flash",
+    "parse_mode": "txt"
+  },
+  "pptx_text_found": true,
+  "maxkb_process_loaded_mineru": false,
+  "wrapper_restart_preserved_task_id": true,
+  "image_asset_count": 5,
+  "image_transport_seconds": 5.171245120999629,
+  "repeated_request_reused_task_id": true,
+  "image_actual_parse_info": {
+    "tier": "basic",
+    "parse_mode": "ocr"
+  }
+}

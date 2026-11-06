@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "id": "scan_pdf",
+      "path": "../../eval/assets/corpus/scan_pages.pdf",
+      "pages": 10,
+      "kind": "simulated_scan",
+      "source": "https://it.zufedfc.edu.cn/__local/1/80/2D/3E9443B67F1041C17EF3CA2F0DE_5EC7480C_DD562.pdf",
+      "source_physical_pages": [
+        13,
+        14,
+        17,
+        18,
+        20,
+        21,
+        25,
+        34,
+        42,
+        58
+      ],
+      "sha256": "41cff54b7c208b30ad172d03a8a4df50d29fe6b9a6030737d9aa0eeccc0ef4b7"
+    },
+    {
+      "id": "image",
+      "path": "samples/security-poster.jpg",
+      "pages": 1,
+      "kind": "illustrated_page",
+      "source": "https://imc.xxu.edu.cn/__local/F/26/81/EA73E6F0B3800D3F49835FD7F81_94437458_1534F8A.pdf",
+      "source_physical_pages": [
+        1
+      ],
+      "sha256": "ed9e62be685a9239b0dbf5d2c0a096e3b85b5af321948491a969b4a42d8c1aa7"
+    }
+  ]
+}

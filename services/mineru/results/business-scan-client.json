@@ -1,0 +1,66 @@
+{
+  "kind": "business_policy_simulated_scan",
+  "source_pdf": "eval/assets/corpus/中卫市公开信息安全管理制度.pdf",
+  "input_pdf": "services/mineru/samples/business_policy_scan.pdf",
+  "input_sha256": "af9c8034076ae12343850b23acff624ab30614d66bbc2e3aa0ef2022d5988411",
+  "request_id": "business-2088f736e21a43f4aa581320c7af877e",
+  "task_id": "job_6dbcd03b374c44994162e767",
+  "pages": 7,
+  "timeout_seconds": 100.0,
+  "submission_seconds": 0.6844013359998371,
+  "total_seconds": 47.64270131099988,
+  "submit_was_async": true,
+  "result_parse_info": {
+    "tier": "basic",
+    "parse_mode": "ocr"
+  },
+  "markdown_characters": 3264,
+  "block_types": {
+    "text": 84,
+    "page_number": 7
+  },
+  "image_asset_count": 0,
+  "anchors": [
+    {
+      "key_sentence": "本制度适用于中卫市卫生和计划生育局以及市属医疗卫生单位的信息系统安全管理",
+      "found": true
+    },
+    {
+      "key_sentence": "谁主管、谁负责",
+      "found": true
+    },
+    {
+      "key_sentence": "需由该授权工作区人员陪同",
+      "found": true
+    },
+    {
+      "key_sentence": "最后离开工作区域的人员应将门关闭",
+      "found": true
+    },
+    {
+      "key_sentence": "建立台帐清单，并定期对其进行盘点清查",
+      "found": true
+    },
+    {
+      "key_sentence": "定期备份重要网络和通信设备配置文件",
+      "found": true
+    },
+    {
+      "key_sentence": "互联网与内部网络必须有相关的逻辑隔离",
+      "found": true
+    },
+    {
+      "key_sentence": "信息科应与供应商签订安全保密协议",
+      "found": true
+    },
+    {
+      "key_sentence": "保存各相关系统日志直至处置工作结束",
+      "found": true
+    },
+    {
+      "key_sentence": "撰写“信息安全事件处理报告”",
+      "found": true
+    }
+  ],
+  "client_imported_mineru": false
+}

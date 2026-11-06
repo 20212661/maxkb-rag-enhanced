@@ -1,0 +1,10 @@
+{
+  "source_file": "eval/assets/corpus/中卫市公开信息安全管理制度.pdf",
+  "source_sha256": "adeb7dcecb2f26d1c76645439b7f0bbd0928a577a87cfbcee51a5ba6a444a240",
+  "output_file": "samples/business_policy_scan.pdf",
+  "pages": 7,
+  "output_sha256": "af9c8034076ae12343850b23acff624ab30614d66bbc2e3aa0ef2022d5988411",
+  "kind": "simulated_scan",
+  "raster_long_edge_pixels": 1800,
+  "text_layer": false
+}

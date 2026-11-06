@@ -1,0 +1,37 @@
+{
+  "method": "Visual inspection of exported business figure plus Content List fields and preselected source sentences",
+  "new_business_policy": {
+    "kind": "simulated_scan",
+    "pages": 7,
+    "text_blocks": 84,
+    "image_blocks": 0,
+    "recovered_key_sentences": 10,
+    "checked_key_sentences": 10
+  },
+  "existing_policy_compilation": {
+    "kind": "simulated_scan",
+    "pages": 10,
+    "total_blocks": 182,
+    "image_only_figure_blocks": 1,
+    "table_blocks_with_html": 1,
+    "table_contains_text": true,
+    "figure_page_idx": 9,
+    "original_physical_page": 58,
+    "figure_image": "images/page_9_image_3.jpg",
+    "visually_transcribed_labels": [
+      "资产识别",
+      "制定备份方案",
+      "实施备份",
+      "备份介质标识",
+      "备份存放",
+      "备份测试",
+      "信息恢复"
+    ],
+    "figure_text_fields": {
+      "image_caption": [],
+      "image_footnote": []
+    },
+    "labels_rendered_as_text_in_figure": 0
+  },
+  "scope": "Paragraph OCR and diagram OCR are assessed separately. These are controlled rasterized public-policy pages."
+}
