@@ -71,6 +71,7 @@ class PGVector(BaseVectorStore):
             source_id=source_id,
             embedding=text_embedding,
             source_type=source_type,
+            meta={"embedding_text": text},
             search_vector=SearchVector(Value(to_ts_vector(text, user_words=terms)), config='simple'),
         )
         embedding.save()
@@ -88,6 +89,7 @@ class PGVector(BaseVectorStore):
                 is_active=text_list[index].get("is_active", True),
                 source_id=text_list[index].get("source_id"),
                 source_type=text_list[index].get("source_type"),
+                meta={**(text_list[index].get("meta") or {}), "embedding_text": texts[index]},
                 embedding=[float(x) for x in embeddings[index]],
                 search_vector=SearchVector(
                     Value(

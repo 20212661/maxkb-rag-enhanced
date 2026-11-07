@@ -228,9 +228,19 @@ class ListenerManagement:
                 .filter(knowledge_id=paragraph.knowledge_id)
                 .values_list("content", flat=True)
             )
-            data_list = list(QuerySet(Embedding).filter(paragraph_id=paragraph_id))
-            for data, chunk in zip(data_list, chunks):
-                data.search_vector = SearchVector(Value(to_ts_vector(chunk, user_words=user_words)), config='simple')
+            data_list = list(QuerySet(Embedding).filter(
+                paragraph_id=paragraph_id, source_type=SourceType.PARAGRAPH).order_by("id"))
+            legacy = [data for data in data_list if (data.meta or {}).get("embedding_text") is None]
+            if legacy:
+                maxkb_logger.warning("Legacy embedding text fallback paragraph=%s records=%s chunks=%s",
+                                     paragraph_id, len(legacy), len(chunks))
+                if len(data_list) != len(chunks):
+                    raise ValueError("Legacy paragraph embeddings and chunks have different counts")
+            for index, data in enumerate(data_list):
+                text = (data.meta or {}).get("embedding_text")
+                if text is None:
+                    text = f"{paragraph.title}\n{chunks[index]}" if paragraph.title else chunks[index]
+                data.search_vector = SearchVector(Value(to_ts_vector(text, user_words=user_words)), config='simple')
             # 批量保存，减少数据库写入次数
             QuerySet(Embedding).filter(paragraph_id=paragraph_id).bulk_update(data_list, ["search_vector"])
 
