@@ -11,6 +11,9 @@ from typing import List
 
 
 class IChunkHandle(ABC):
+    def support(self, text: str) -> bool:
+        return True
+
     @abstractmethod
     def handle(self, chunk_list: List[str], chunk_size: int = 256):
         pass

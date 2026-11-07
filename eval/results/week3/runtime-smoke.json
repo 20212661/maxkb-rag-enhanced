@@ -1,0 +1,7 @@
+{
+  "normal_http_save_and_queued_worker": true,
+  "table_chunks": 4,
+  "default_title_prefix": true,
+  "keyword_round_trip_matches_initial_index": true,
+  "temporary_knowledge_deleted": true
+}

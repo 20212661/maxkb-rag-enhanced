@@ -1,0 +1,412 @@
+{
+  "week2_reference": "eval/results/after.json",
+  "dataset_sha256": "b862fb7342227a55d9607077ad61c2c79a6ee0ff58045dc634797788ef0be419",
+  "evaluator_sha256": "6f77e6013ff0cde1a4ee4c564635485506c615f9514c60c4f168b533631002d1",
+  "profiles": {
+    "A": {
+      "configuration": {
+        "title_prefix_enabled": false,
+        "title_prefix_max_chars": 100,
+        "table_chunk_enabled": false,
+        "chunk_size": 256,
+        "paragraph_split_limit": 1200,
+        "route": "auto",
+        "input_sha256": "9c3fcbf395279a8af429a259a3f8957a675e85b2a5e50233c7cca66183a9a0af",
+        "source_knowledge_id": "01a1b161-0c1a-71c1-a542-637425f0ca38",
+        "build_entrypoint": "DocumentSerializers.Batch.batch_save + eager Celery embedding",
+        "image_references": "Frozen Week2 references retained for controlled inputs"
+      },
+      "knowledge_id": "01a1b3bd-56f2-7a83-9179-e7bd87ae01cc",
+      "metrics": {
+        "question_count": 60,
+        "error_count": 0,
+        "recall_at_1": 0.5,
+        "recall_at_5": 0.8166666666666667,
+        "mrr": 0.6608333333333334,
+        "mean_retrieval_ms": 122.71402323334162,
+        "all_gold_top5_rate": 0.7833333333333333
+      },
+      "embedding_count": 270,
+      "build_seconds": 48.76114924199999,
+      "acceptance_queries": [
+        {
+          "id": "q039",
+          "rank": 6,
+          "score": 0.5998038530583599
+        },
+        {
+          "id": "q049",
+          "rank": 21,
+          "score": 0.6072549457994146
+        }
+      ],
+      "recall_at_5_regressions": [],
+      "recall_at_5_improvements": []
+    },
+    "B": {
+      "configuration": {
+        "title_prefix_enabled": true,
+        "title_prefix_max_chars": 100,
+        "table_chunk_enabled": false,
+        "chunk_size": 256,
+        "paragraph_split_limit": 1200,
+        "route": "auto",
+        "input_sha256": "9c3fcbf395279a8af429a259a3f8957a675e85b2a5e50233c7cca66183a9a0af",
+        "source_knowledge_id": "01a1b161-0c1a-71c1-a542-637425f0ca38",
+        "build_entrypoint": "DocumentSerializers.Batch.batch_save + eager Celery embedding",
+        "image_references": "Frozen Week2 references retained for controlled inputs"
+      },
+      "knowledge_id": "01a1b3c1-d8e2-7a40-9a4f-278c732f1ffe",
+      "metrics": {
+        "question_count": 60,
+        "error_count": 0,
+        "recall_at_1": 0.5083333333333333,
+        "recall_at_5": 0.8916666666666667,
+        "mrr": 0.6944444444444444,
+        "mean_retrieval_ms": 128.07991480000283,
+        "all_gold_top5_rate": 0.8666666666666667
+      },
+      "embedding_count": 270,
+      "build_seconds": 41.54766302399992,
+      "acceptance_queries": [
+        {
+          "id": "q039",
+          "rank": 1,
+          "score": 0.7225225402428247
+        },
+        {
+          "id": "q049",
+          "rank": 1,
+          "score": 0.6886252760887146
+        }
+      ],
+      "recall_at_5_regressions": [],
+      "recall_at_5_improvements": [
+        {
+          "id": "q015",
+          "before": 0.0,
+          "after": 1.0
+        },
+        {
+          "id": "q022",
+          "before": 0.0,
+          "after": 0.5
+        },
+        {
+          "id": "q027",
+          "before": 0.5,
+          "after": 1.0
+        },
+        {
+          "id": "q030",
+          "before": 0.5,
+          "after": 1.0
+        },
+        {
+          "id": "q039",
+          "before": 0.0,
+          "after": 1.0
+        },
+        {
+          "id": "q049",
+          "before": 0.0,
+          "after": 1.0
+        }
+      ]
+    },
+    "C": {
+      "configuration": {
+        "title_prefix_enabled": false,
+        "title_prefix_max_chars": 100,
+        "table_chunk_enabled": true,
+        "chunk_size": 256,
+        "paragraph_split_limit": 1200,
+        "route": "auto",
+        "input_sha256": "9c3fcbf395279a8af429a259a3f8957a675e85b2a5e50233c7cca66183a9a0af",
+        "source_knowledge_id": "01a1b161-0c1a-71c1-a542-637425f0ca38",
+        "build_entrypoint": "DocumentSerializers.Batch.batch_save + eager Celery embedding",
+        "image_references": "Frozen Week2 references retained for controlled inputs"
+      },
+      "knowledge_id": "01a1b3c2-e0eb-7ca3-92f3-84520182cbf6",
+      "metrics": {
+        "question_count": 60,
+        "error_count": 0,
+        "recall_at_1": 0.5166666666666667,
+        "recall_at_5": 0.8333333333333334,
+        "mrr": 0.6788888888888889,
+        "mean_retrieval_ms": 110.27546130000019,
+        "all_gold_top5_rate": 0.8
+      },
+      "embedding_count": 273,
+      "build_seconds": 36.935337764999986,
+      "acceptance_queries": [
+        {
+          "id": "q039",
+          "rank": 7,
+          "score": 0.6098117595798836
+        },
+        {
+          "id": "q049",
+          "rank": 5,
+          "score": 0.6553634405136108
+        }
+      ],
+      "recall_at_5_regressions": [],
+      "recall_at_5_improvements": [
+        {
+          "id": "q049",
+          "before": 0.0,
+          "after": 1.0
+        }
+      ]
+    },
+    "D": {
+      "configuration": {
+        "title_prefix_enabled": true,
+        "title_prefix_max_chars": 100,
+        "table_chunk_enabled": true,
+        "chunk_size": 256,
+        "paragraph_split_limit": 1200,
+        "route": "auto",
+        "input_sha256": "9c3fcbf395279a8af429a259a3f8957a675e85b2a5e50233c7cca66183a9a0af",
+        "source_knowledge_id": "01a1b161-0c1a-71c1-a542-637425f0ca38",
+        "build_entrypoint": "DocumentSerializers.Batch.batch_save + eager Celery embedding",
+        "image_references": "Frozen Week2 references retained for controlled inputs"
+      },
+      "knowledge_id": "01a1b3c0-3d1e-7a61-b790-cc9b7e03a85b",
+      "metrics": {
+        "question_count": 60,
+        "error_count": 0,
+        "recall_at_1": 0.525,
+        "recall_at_5": 0.8916666666666667,
+        "mrr": 0.7027777777777777,
+        "mean_retrieval_ms": 126.28715679999611,
+        "all_gold_top5_rate": 0.8666666666666667
+      },
+      "embedding_count": 273,
+      "build_seconds": 40.944457775000046,
+      "acceptance_queries": [
+        {
+          "id": "q039",
+          "rank": 1,
+          "score": 0.7229948804977621
+        },
+        {
+          "id": "q049",
+          "rank": 1,
+          "score": 0.6890058106776601
+        }
+      ],
+      "recall_at_5_regressions": [],
+      "recall_at_5_improvements": [
+        {
+          "id": "q015",
+          "before": 0.0,
+          "after": 1.0
+        },
+        {
+          "id": "q022",
+          "before": 0.0,
+          "after": 0.5
+        },
+        {
+          "id": "q027",
+          "before": 0.5,
+          "after": 1.0
+        },
+        {
+          "id": "q030",
+          "before": 0.5,
+          "after": 1.0
+        },
+        {
+          "id": "q039",
+          "before": 0.0,
+          "after": 1.0
+        },
+        {
+          "id": "q049",
+          "before": 0.0,
+          "after": 1.0
+        }
+      ]
+    },
+    "E": {
+      "configuration": {
+        "title_prefix_enabled": true,
+        "title_prefix_max_chars": 100,
+        "table_chunk_enabled": true,
+        "chunk_size": 256,
+        "paragraph_split_limit": 1200,
+        "route": "native",
+        "input_sha256": "dcb5812efcbd83df98d80ab7ea202f6892e871d0b3b33c8f2ec552f9fb4ee642",
+        "source_knowledge_id": "01a1b15f-7cd7-7033-9fce-08c7e48f36eb",
+        "build_entrypoint": "DocumentSerializers.Batch.batch_save + eager Celery embedding",
+        "image_references": "Frozen Week2 references retained for controlled inputs"
+      },
+      "knowledge_id": "01a1b3c3-d622-7be2-add5-0a6af6d2da2d",
+      "metrics": {
+        "question_count": 60,
+        "error_count": 0,
+        "recall_at_1": 0.2916666666666667,
+        "recall_at_5": 0.5833333333333334,
+        "mrr": 0.4486111111111111,
+        "mean_retrieval_ms": 123.83672900002693,
+        "all_gold_top5_rate": 0.5666666666666667
+      },
+      "embedding_count": 224,
+      "build_seconds": 30.946845509000013,
+      "acceptance_queries": [
+        {
+          "id": "q039",
+          "rank": 1,
+          "score": 0.7229948804977621
+        },
+        {
+          "id": "q049",
+          "rank": null,
+          "score": null
+        }
+      ],
+      "recall_at_5_regressions": [
+        {
+          "id": "q041",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q042",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q043",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q044",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q045",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q046",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q047",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q048",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q050",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q051",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q052",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q053",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q054",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q055",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q056",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q057",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q059",
+          "before": 1.0,
+          "after": 0.0
+        },
+        {
+          "id": "q060",
+          "before": 1.0,
+          "after": 0.0
+        }
+      ],
+      "recall_at_5_improvements": [
+        {
+          "id": "q015",
+          "before": 0.0,
+          "after": 1.0
+        },
+        {
+          "id": "q022",
+          "before": 0.0,
+          "after": 1.0
+        },
+        {
+          "id": "q027",
+          "before": 0.5,
+          "after": 1.0
+        },
+        {
+          "id": "q030",
+          "before": 0.5,
+          "after": 1.0
+        },
+        {
+          "id": "q039",
+          "before": 0.0,
+          "after": 1.0
+        }
+      ]
+    }
+  },
+  "acceptance": {
+    "A_all_query_quality_scores_match_week2_v2": true,
+    "D_q039_q049_in_top5": true,
+    "D_no_recall_at_5_regression": true
+  },
+  "implementation_sha256": {
+    "apps/common/chunk/impl/table_chunk_handle.py": "4fc05caf7c7eda03734fcc6ff046bb892ab53ef6e492cd52c9edf5bd21e2da26",
+    "apps/common/chunk/__init__.py": "02a92a1808aeca6f9d1773fb1aa00a5adce170b886999b9c359fe7480efde07a",
+    "apps/knowledge/vector/base_vector.py": "9c37f5e54b592932fbd0006e561e38b86979b2a25def34a63c1f46b25fd6bac0",
+    "apps/knowledge/vector/pg_vector.py": "030c69c10055450ede86491f3085423dd1b446d7e918207085e4fc6d6bd94358",
+    "apps/common/event/listener_manage.py": "227e35079fe9c3295e0b1405b20d4b04878b0a1f53df707988e115402414a53d",
+    "apps/common/sql/list_embedding_text.sql": "abee1f5ac43424cd3ff672820022ca0e25da8a2f426e2a00a56bf017d188f191"
+  },
+  "runtime_smoke": {
+    "normal_http_save_and_queued_worker": true,
+    "table_chunks": 4,
+    "default_title_prefix": true,
+    "keyword_round_trip_matches_initial_index": true,
+    "temporary_knowledge_deleted": true
+  }
+}

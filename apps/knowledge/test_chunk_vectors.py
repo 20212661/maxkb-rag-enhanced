@@ -13,6 +13,7 @@ from knowledge.models import Document, Embedding, Knowledge, KnowledgeFolder, Pa
 from knowledge.vector.pg_vector import PGVector
 from knowledge.vector.base_vector import chunk_data
 from maxkb.const import CONFIG
+from knowledge.serializers.document import DocumentSerializers
 
 
 class ChunkVectorTests(TestCase):
@@ -99,3 +100,11 @@ class ChunkVectorTests(TestCase):
         self.assertEqual(rows[0]["title"], "Heading")
         self.assertEqual(rows[0]["content"], "first second")
         self.assertEqual(chunk_data(rows[0])[0]["text"], "Heading\nfirst")
+
+    def test_document_save_generates_table_chunks_through_shared_entrypoint(self):
+        content = '| key | value |\n| --- | --- |\n' + ('| A | ' + 'x' * 120 + ' |\n') * 5
+        models = DocumentSerializers.Create.get_paragraph_model(self.document, [
+            {"title": "Heading", "content": content, "problem_list": []}])
+        chunks = models["paragraph_model_list"][0].chunks
+        self.assertGreater(len(chunks), 1)
+        self.assertTrue(all(chunk.startswith('| key | value |') for chunk in chunks))
