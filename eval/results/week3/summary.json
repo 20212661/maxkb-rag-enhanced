@@ -408,5 +408,57 @@
     "default_title_prefix": true,
     "keyword_round_trip_matches_initial_index": true,
     "temporary_knowledge_deleted": true
+  },
+  "native_reference_comparison": {
+    "reference": "eval/results/native.json",
+    "metrics": {
+      "question_count": 60,
+      "error_count": 0,
+      "recall_at_1": 0.26666666666666666,
+      "recall_at_5": 0.5666666666666667,
+      "mrr": 0.42055555555555557,
+      "mean_retrieval_ms": 189.83874291672387,
+      "all_gold_top5_rate": 0.5333333333333333
+    },
+    "E_delta": {
+      "recall_at_1": 0.025000000000000022,
+      "recall_at_5": 0.01666666666666672,
+      "mrr": 0.028055555555555556
+    },
+    "recall_at_5_regressions": [
+      {
+        "id": "q028",
+        "before": 1.0,
+        "after": 0.5
+      }
+    ]
+  },
+  "holdout": {
+    "dataset": "eval/holdout.jsonl",
+    "summary": "holdout/summary.json",
+    "metrics": {
+      "A": {
+        "question_count": 20,
+        "error_count": 0,
+        "recall_at_1": 0.325,
+        "recall_at_5": 0.45,
+        "mrr": 0.39166666666666666,
+        "mean_retrieval_ms": 188.98488229997383,
+        "all_gold_top5_rate": 0.45
+      },
+      "D": {
+        "question_count": 20,
+        "error_count": 0,
+        "recall_at_1": 0.4,
+        "recall_at_5": 0.675,
+        "mrr": 0.49916666666666665,
+        "mean_retrieval_ms": 135.65160779980943,
+        "all_gold_top5_rate": 0.65
+      }
+    },
+    "type_reweighted_recall_at_5": {
+      "A": 0.4722222222222222,
+      "D": 0.6666666666666666
+    }
   }
 }

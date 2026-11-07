@@ -1,0 +1,168 @@
+{
+  "scope": "Post-run read-only diagnosis; frozen questions and scores retained.",
+  "cases": [
+    {
+      "id": "h001",
+      "question": "中卫市制定信息安全策略时，信息科应会同哪类工作人员？",
+      "recall_at_5": 0.0,
+      "gold": [
+        {
+          "document_name": "中卫市公开信息安全管理制度.pdf",
+          "key_sentence": "信息科应会同保密工作人员",
+          "locator": "第五条，physical page 2",
+          "verification": "source_text_checked",
+          "exact_paragraph_ids": [
+            "01a1b3c0-67d6-7ee0-92b5-85ce30cb92cb"
+          ],
+          "matched_in_top5": false,
+          "closest_paragraph": {
+            "id": "01a1b3c0-67d6-7ee0-92b5-85ce30cb92cb",
+            "content": "- 3 -第三章 信息安全策略的基本要求第四条 信息系统安全管理应遵循以下七个原则：一、 规范定级原则；二、 依法行政原则；三、 以人为本原则；四、 注重效费比原则；五、 全面防范、突出重点原则；六、 系统、动态原则；七、 特殊安全管理原则。第五条 信息科应会同保密工作人员应根据业务需求和相关法律法规，组织制定信息安全策略。第六条 信息安全策略主要包括以下内容：一、 信息网络与信息系统必须在建设过程中进行安全风险评估，并根据评估结果制定安全策略；二、 对已投入运行且已建立安全体系的系统定期进行漏洞扫描，以便及时发现系统的安全漏洞;三、 对安全体系的各种日志(如入侵检测日志等)审计结果进行研究，以便及时发现系统的安全漏洞;四、 定期分析信息系统的安全风险及漏洞、分析当前黑客非常入侵的特点，及时调整安全策略；五、 制定人力资源、物理环境、访问控制、操作、备份、系统获取及维护、业务连续性等方面的安全策略，并实施。\n第七条 根据“谁主管、谁负责”的原则，局内建立信息安全分级责任制，各层级落实信息系统安全责任。\n"
+          },
+          "closest_paragraph_rank_in_top5": null
+        }
+      ]
+    },
+    {
+      "id": "h008",
+      "question": "NIST 小型企业指南的 PROTECT 部分对设备出厂默认密码提出什么操作要求？",
+      "recall_at_5": 0.0,
+      "gold": [
+        {
+          "document_name": "NIST_SP1300_小型企业网络安全框架入门指南_英文.pdf",
+          "key_sentence": "Prioritize changing default manufacturer passwords.",
+          "locator": "PROTECT / Prioritize，physical page 5",
+          "verification": "source_text_checked",
+          "exact_paragraph_ids": [
+            "01a1b3c0-4aa3-7690-ada1-7e8f241c642a"
+          ],
+          "matched_in_top5": false,
+          "closest_paragraph": {
+            "id": "01a1b3c0-4aa3-7690-ada1-7e8f241c642a",
+            "content": " strong passwords. (PR.AA-03)• Prioritize changing default manufacturer passwords. (PR.AA-01)• Prioritize regularly updating and patching software and operating systems. Enable automatic updates to help you remember. (PR.PS-02)• Prioritize regularly backing up your data and testing your backups. (PR.DS-11)• Prioritize configuring your tablets and laptops to enable full-disk encryption to protect data. (PR.DS-01)Communicate• Communicate to your staff how to recognize common attacks, report attacks or suspicious activity, and perform basic cyber hygiene tasks. (PR.AT-01/02)Getting Started with Protecting Your BusinessEnabling multi-factor authentication (MFA) is one of the fastest, cheapest ways you can protect your data. Start with accounts that can access the most sensitive information."
+          },
+          "closest_paragraph_rank_in_top5": null
+        }
+      ]
+    },
+    {
+      "id": "h009",
+      "question": "中卫市要求防范哪些设备处置问题造成的信息泄露？河南水环学院的敏感信息定义列出了哪些个人和企业权益受损后果？",
+      "recall_at_5": 0.5,
+      "gold": [
+        {
+          "document_name": "中卫市公开信息安全管理制度.pdf",
+          "key_sentence": "防止因信息设备丢失、损坏、失窃以及资产报废处置不当引起的信息泄露。",
+          "locator": "第十二条，physical page 4",
+          "verification": "source_text_checked",
+          "exact_paragraph_ids": [
+            "01a1b3c0-67d6-7ee0-92b5-85ecbf4e0993"
+          ],
+          "matched_in_top5": false,
+          "closest_paragraph": {
+            "id": "01a1b3c0-67d6-7ee0-92b5-85ecbf4e0993",
+            "content": "第十一条 信息科应对信息和信息系统设备设施等相关资产建立台帐清单，并定期对其进行盘点清查。第十二条 各相关科室应加强信息设备安装、调试、维护、维修、报废等环节的管理工作，防止因信息设备丢失、损坏、失窃以及资产报废处置不当引起的信息泄露。"
+          },
+          "closest_paragraph_rank_in_top5": null
+        },
+        {
+          "document_name": "河南水利与环境职业学院_附件 3：名词术语.docx",
+          "key_sentence": "侵犯个人隐私、企业商业秘密和知识产权",
+          "locator": "名词术语二，第i项",
+          "verification": "source_text_checked",
+          "exact_paragraph_ids": [
+            "01a1b3c0-449b-77a0-b00d-72d77949a9d8"
+          ],
+          "matched_in_top5": true,
+          "closest_paragraph": {
+            "id": "01a1b3c0-449b-77a0-b00d-72d77949a9d8",
+            "content": "附件 3\n名词术语\n一、重要网络与信息系统\n所承载的业务与国家安全、社会秩序、经济建设、公众利益密切相关的网络和信息系统。（参考依据：《信息安全技术信息安全事件分类分级指南》（GB/Z 20986-2007））\n二、重要敏感信息\n不涉及国家秘密，但与国家安全、经济发展、社会稳定以及企业和公众利益密切相关的信息，这些信息一旦未经授权披露、丢失、滥用、篡改或销毁，可能造成以下后果：\na) 损害国防、国际关系；\nb) 损害国家财产、公共利益以及个人财产或人身安全；\nc) 影响国家预防和打击经济与军事间谍、政治渗透、有组织犯罪等；\nd) 影响行政机关依法调查处理违法、渎职行为，或涉嫌违法、渎职行为；\ne) 干扰政府部门依法公正地开展监督、管理、检查、审计等行政活动，妨碍政府部门履行职责；\nf) 危害国家关键基础设施、政府信息系统安全；\ng) 影响市场秩序， 造成不公平竞争，破坏市场规律；\nh) 可推论出国家秘密事项；\ni) 侵犯个人隐私、企业商业秘密和知识产权；\nj) 损害国家、企业、个人的其他利益和声誉。\n（参考依据： 《信息安全技术云计算服务安全指南》\n（GB/T31167-2014））\n"
+          },
+          "closest_paragraph_rank_in_top5": 3
+        }
+      ]
+    },
+    {
+      "id": "h014",
+      "question": "NIST 的 IT 资产清单样表除了资产管理员，还要求记录失去该资产访问权后对什么方面的风险？",
+      "recall_at_5": 0.0,
+      "gold": [
+        {
+          "document_name": "NIST_SP1300_小型企业网络安全框架入门指南_英文.pdf",
+          "key_sentence": "Risk to business if we lose access to this asset",
+          "locator": "IDENTIFY / IT asset inventory 样表最后一列，physical page 4",
+          "verification": "visually_checked",
+          "exact_paragraph_ids": [],
+          "matched_in_top5": false,
+          "closest_paragraph": {
+            "id": "01a1b3c0-4aa3-7690-ada1-7ec67080967e",
+            "content": "Technical Deep Dive: NIST Computer Security Incident Handling GuideContact PhoneBusiness Leader:Technical Contact:State Police:Legal:Bank:Insurance:Questions to Consider• Do  we have a cybersecurity incident response plan? If so, have we practiced it to see if it is feasible?• Do we know who the key internal and external stakeholders and decision-make rs are who will assist if we have a confirmed cybersecurity incident?Related Resources• Incident Response Plan Basics• FBI’s Internet Crime Complaint Center• Data Breach Response: A Guide for Business• Best Practices for Victim Response and Reporting of Cyber IncidentsView all NIST CSF 2.0 Resources Here"
+          },
+          "closest_paragraph_rank_in_top5": null
+        }
+      ]
+    },
+    {
+      "id": "h017",
+      "question": "扫描制度的审核和检查清单中，计算机资产管理一项覆盖哪两类资产管理情况？",
+      "recall_at_5": 0.0,
+      "gold": [
+        {
+          "document_name": "scan_pages.pdf",
+          "key_sentence": "信息资产管理及计算机硬件设备管理情况等",
+          "locator": "fixture page 4，source physical page 18，审核和检查第6项",
+          "verification": "visually_checked",
+          "exact_paragraph_ids": [
+            "01a1b3c0-a4fc-7d40-a963-495e9a063018"
+          ],
+          "matched_in_top5": false,
+          "closest_paragraph": {
+            "id": "01a1b3c0-a4fc-7d40-a963-495e9a063018",
+            "content": "组织专门人员（或上级单位）定期进行安全检查（如:每季度自查），包括网络、安全设备、系统等各方面的安全检查。记录检查结果。规范安全检查的内容并统一分析检查结果。组织会议讨论明确安全检查的具体内容，编写《安全检查要求》和《安全检查表》。检查内容包括:\n\n1、计算机系统管理:各类主机系统、数据库系统的用户及密码管理、权限管理、备份管理、系统监控及系统日志管理等。\n\n2、计算机网络管理:网络访问控制策略、IP地址管理、备份管理、因特网管理、网络监控、网络系统日志管理情况等。\n\n3、网络安全产品管理:防火墙、防病毒和入侵检测等网络安全产品的使用管理情况等。\n\n4、科技文档管理:信息系统开发、设计及运行文档，各类科技档案的管理情况等。\n\n5、计算机机房安全管理:计算机机房布线、门禁、消防、供电系统、UPS、空调、\n\n机房监控、机房值班等管理情况。\n\n6、计算机资产管理:信息资产管理及计算机硬件设备管理情况等。\n\n7、业务连续性管理:重要信息系统应急处理方案的制定情况，应急方案定期的培训或演练情况等。"
+          },
+          "closest_paragraph_rank_in_top5": null
+        }
+      ]
+    },
+    {
+      "id": "h018",
+      "question": "锁屏漫画建议屏保程序在多少分钟内自动启动，并勾选哪个恢复选项？",
+      "recall_at_5": 0.0,
+      "gold": [
+        {
+          "document_name": "image_panels.pdf",
+          "key_sentence": "建议在10分钟以内自动启动，并勾选“恢复时显示登陆屏幕”",
+          "locator": "fixture page 2，source physical page 2，安全建议第3项",
+          "verification": "visually_checked",
+          "exact_paragraph_ids": [],
+          "matched_in_top5": false,
+          "closest_paragraph": {
+            "id": "01a1b3c0-c4ce-73d2-8c6e-2e97f9c52cd3",
+            "content": "短时间离开电脑请按win+L键锁屏;\n\n长时间离开电脑建议关机;\n\n日常请设置屏保程序，建议在10分钟以内\n\n自动启动，并勾选“恢复时显示登陆屏幕\n\n以免离开电脑忘记锁屏。\n\n![](<./oss/file/01a1b162-32fc-7123-bb06-78c9378a51b0>)"
+          },
+          "closest_paragraph_rank_in_top5": 1
+        }
+      ]
+    },
+    {
+      "id": "h020",
+      "question": "二维码漫画建议用哪类手机软件扫描二维码，并在使用前做哪些检查？",
+      "recall_at_5": 0.0,
+      "gold": [
+        {
+          "document_name": "image_panels.pdf",
+          "key_sentence": "建议使用手机防护软件扫描二维码，预览扫描结果，提前检查",
+          "locator": "fixture page 10，source physical page 24，安全建议第2项",
+          "verification": "visually_checked",
+          "exact_paragraph_ids": [],
+          "matched_in_top5": false,
+          "closest_paragraph": {
+            "id": "01a1b3c0-c4d1-75a1-9ead-6f30d03d0301",
+            "content": "在扫描公共二维码时，先确定二维码是否有被替换或者覆盖的痕迹;\n\n建议使用手机防护软件扫描二维码，预览扫描结果提前检查;\n\n尽量不要扫描陌生人发来的二维码。\n\n![](<./oss/file/01a1b162-33e2-7932-a24d-1848f4a7840c>)"
+          },
+          "closest_paragraph_rank_in_top5": 1
+        }
+      ]
+    }
+  ]
+}

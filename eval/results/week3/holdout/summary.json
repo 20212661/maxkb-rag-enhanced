@@ -1,0 +1,302 @@
+{
+  "dataset_sha256": "9325a5fc96a32d5546c82dc80a74801807d57b32a97c387f0fbd07a198ddda2a",
+  "evaluator_sha256": "6f77e6013ff0cde1a4ee4c564635485506c615f9514c60c4f168b533631002d1",
+  "metrics": {
+    "A": {
+      "question_count": 20,
+      "error_count": 0,
+      "recall_at_1": 0.325,
+      "recall_at_5": 0.45,
+      "mrr": 0.39166666666666666,
+      "mean_retrieval_ms": 188.98488229997383,
+      "all_gold_top5_rate": 0.45
+    },
+    "D": {
+      "question_count": 20,
+      "error_count": 0,
+      "recall_at_1": 0.4,
+      "recall_at_5": 0.675,
+      "mrr": 0.49916666666666665,
+      "mean_retrieval_ms": 135.65160779980943,
+      "all_gold_top5_rate": 0.65
+    }
+  },
+  "improved_recall_at_5": [
+    {
+      "id": "h002",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 5,
+      "delta_recall_at_5": 1.0,
+      "delta_reciprocal_rank": 0.2
+    },
+    {
+      "id": "h003",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 5,
+      "delta_recall_at_5": 1.0,
+      "delta_reciprocal_rank": 0.2
+    },
+    {
+      "id": "h006",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 1,
+      "delta_recall_at_5": 1.0,
+      "delta_reciprocal_rank": 1.0
+    },
+    {
+      "id": "h007",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 2,
+      "delta_recall_at_5": 1.0,
+      "delta_reciprocal_rank": 0.5
+    },
+    {
+      "id": "h009",
+      "type": "跨段落型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 0.5,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 3,
+      "delta_recall_at_5": 0.5,
+      "delta_reciprocal_rank": 0.3333333333333333
+    }
+  ],
+  "regressed_recall_at_5": [],
+  "regressed_mrr": [
+    {
+      "id": "h011",
+      "type": "跨段落型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 1,
+      "D_first_relevant_rank": 4,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": -0.75
+    }
+  ],
+  "original_type_weights": {
+    "事实型": 0.3333333333333333,
+    "图片型": 0.16666666666666666,
+    "扫描件型": 0.16666666666666666,
+    "表格型": 0.16666666666666666,
+    "跨段落型": 0.16666666666666666
+  },
+  "type_reweighted_recall_at_5": {
+    "A": 0.4722222222222222,
+    "D": 0.6666666666666666
+  },
+  "changes": [
+    {
+      "id": "h001",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 0.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": null,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h002",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 5,
+      "delta_recall_at_5": 1.0,
+      "delta_reciprocal_rank": 0.2
+    },
+    {
+      "id": "h003",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 5,
+      "delta_recall_at_5": 1.0,
+      "delta_reciprocal_rank": 0.2
+    },
+    {
+      "id": "h004",
+      "type": "事实型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 1,
+      "D_first_relevant_rank": 1,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h005",
+      "type": "事实型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 1,
+      "D_first_relevant_rank": 1,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h006",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 1,
+      "delta_recall_at_5": 1.0,
+      "delta_reciprocal_rank": 1.0
+    },
+    {
+      "id": "h007",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 2,
+      "delta_recall_at_5": 1.0,
+      "delta_reciprocal_rank": 0.5
+    },
+    {
+      "id": "h008",
+      "type": "事实型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 0.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": null,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h009",
+      "type": "跨段落型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 0.5,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": 3,
+      "delta_recall_at_5": 0.5,
+      "delta_reciprocal_rank": 0.3333333333333333
+    },
+    {
+      "id": "h010",
+      "type": "跨段落型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 2,
+      "D_first_relevant_rank": 2,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h011",
+      "type": "跨段落型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 1,
+      "D_first_relevant_rank": 4,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": -0.75
+    },
+    {
+      "id": "h012",
+      "type": "表格型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 3,
+      "D_first_relevant_rank": 1,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.6666666666666667
+    },
+    {
+      "id": "h013",
+      "type": "表格型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 1,
+      "D_first_relevant_rank": 1,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h014",
+      "type": "表格型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 0.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": null,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h015",
+      "type": "扫描件型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 1,
+      "D_first_relevant_rank": 1,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h016",
+      "type": "扫描件型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 1,
+      "D_first_relevant_rank": 1,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h017",
+      "type": "扫描件型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 0.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": null,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h018",
+      "type": "图片型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 0.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": null,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h019",
+      "type": "图片型",
+      "A_recall_at_5": 1.0,
+      "D_recall_at_5": 1.0,
+      "A_first_relevant_rank": 1,
+      "D_first_relevant_rank": 1,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    },
+    {
+      "id": "h020",
+      "type": "图片型",
+      "A_recall_at_5": 0.0,
+      "D_recall_at_5": 0.0,
+      "A_first_relevant_rank": null,
+      "D_first_relevant_rank": null,
+      "delta_recall_at_5": 0.0,
+      "delta_reciprocal_rank": 0.0
+    }
+  ]
+}

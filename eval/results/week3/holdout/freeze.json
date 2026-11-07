@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "frozen_at": "2026-11-07T04:55:01.091249+00:00",
+  "dataset_sha256": "9325a5fc96a32d5546c82dc80a74801807d57b32a97c387f0fbd07a198ddda2a",
+  "evaluator_sha256": "6f77e6013ff0cde1a4ee4c564635485506c615f9514c60c4f168b533631002d1",
+  "corpus_manifest_sha256": "ee41f93d70274f79b3a3a02458158dec5a1378a0345ffd946c5d5c9d7e3bf11f",
+  "type_counts": {
+    "事实型": 8,
+    "跨段落型": 3,
+    "表格型": 3,
+    "扫描件型": 3,
+    "图片型": 3
+  },
+  "profiles": [
+    "A",
+    "D"
+  ],
+  "formal_runs_per_profile": 1,
+  "reference_code_commit": "216c7882b",
+  "normalization_version": 2,
+  "authoring": "New questions written against original PDF/Word sources before holdout retrieval.",
+  "visual_verification": {
+    "scan_pages.pdf": [
+      2,
+      3,
+      4
+    ],
+    "image_panels.pdf": [
+      2,
+      3,
+      10
+    ],
+    "NIST_SP1300_小型企业网络安全框架入门指南_英文.pdf": [
+      4
+    ],
+    "北方工业大学_网络与信息安全应急处置预案.pdf": [
+      4
+    ]
+  },
+  "pre_retrieval_duplicate_audit": {
+    "exact_question_duplicates": 0,
+    "overlapping_gold_passages": 0,
+    "draft_replacements": [
+      "h007 shared an existing gold sentence; replaced with a new standards-reference fact.",
+      "h017 overlapped an existing contact-list question; replaced with a new asset-audit fact."
+    ]
+  },
+  "scope": "Question holdout within the same corpus and prebuilt A/D indexes.",
+  "author_prior_exposure": "Author previously saw the original failure analysis and ablation results in this conversation.",
+  "selection_policy": "All frozen questions stay in the denominator; no post-result rewording or scoring changes."
+}
