@@ -18,15 +18,30 @@ from common.utils.common import sub_array
 from langchain_core.embeddings import Embeddings
 
 from knowledge.models import SearchMode, SourceType
+from maxkb.const import CONFIG
 
 lock = threading.Lock()
+
+
+def chunk_title_prefix(title):
+    enabled = str(CONFIG.get("EMBEDDING_CHUNK_TITLE_PREFIX_ENABLED", True)).strip().lower()
+    if enabled not in ("true", "1", "yes", "on"):
+        return ""
+    title = (title or "").strip()[:max(0, int(CONFIG.get("EMBEDDING_CHUNK_TITLE_PREFIX_MAX_CHARS", 100)))]
+    return title + "\n" if title else ""
 
 
 def chunk_data(data: Dict):
     if str(data.get("source_type")) == str(SourceType.PARAGRAPH.value):
         text = data.get("text")
-        chunk_list = data.get("chunks") if data.get("chunks") else text_to_chunk(text)
-        return [{**data, "text": chunk} for chunk in chunk_list]
+        prefix = chunk_title_prefix(data.get("title"))
+        if data.get("chunks"):
+            chunk_list = data["chunks"]
+        elif prefix and "content" in data:
+            chunk_list = text_to_chunk(data.get("content") or "") or [""]
+        else:
+            chunk_list = text_to_chunk(text)
+        return [{**data, "text": prefix + chunk} for chunk in chunk_list]
     return [data]
 
 

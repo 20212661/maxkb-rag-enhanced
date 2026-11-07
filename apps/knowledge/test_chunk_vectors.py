@@ -11,6 +11,8 @@ from django.test import TestCase
 from common.event.listener_manage import ListenerManagement
 from knowledge.models import Document, Embedding, Knowledge, KnowledgeFolder, Paragraph, SourceType
 from knowledge.vector.pg_vector import PGVector
+from knowledge.vector.base_vector import chunk_data
+from maxkb.const import CONFIG
 
 
 class ChunkVectorTests(TestCase):
@@ -65,3 +67,35 @@ class ChunkVectorTests(TestCase):
         stored = Embedding.objects.get()
         self.assertEqual(stored.meta, {"origin": "test", "embedding_text": "Heading first"})
         model.embed_documents.assert_called_once_with(["Heading first"])
+
+    def test_title_prefix_limit_and_empty_titles(self):
+        row = {"source_type": 1, "title": "标题" * 70, "chunks": ["first", "second"]}
+        with patch.dict(CONFIG, {"EMBEDDING_CHUNK_TITLE_PREFIX_ENABLED": True,
+                                "EMBEDDING_CHUNK_TITLE_PREFIX_MAX_CHARS": 100}):
+            self.assertEqual([r["text"] for r in chunk_data(row)],
+                             [row["title"][:100] + "\nfirst", row["title"][:100] + "\nsecond"])
+            for title in [None, "", "  "]:
+                self.assertEqual(chunk_data({**row, "title": title})[0]["text"], "first")
+        self.assertEqual(row["chunks"], ["first", "second"])
+
+    def test_switch_off_and_question_vectors_keep_original_input(self):
+        row = {"source_type": 1, "title": "Heading", "text": "Heading\nbody", "content": "body"}
+        with patch.dict(CONFIG, {"EMBEDDING_CHUNK_TITLE_PREFIX_ENABLED": "false"}):
+            self.assertEqual([r["text"] for r in chunk_data(row)], ["Heading", "body"])
+            self.assertEqual(chunk_data({**row, "chunks": ["body"]})[0]["text"], "body")
+        question = {**row, "source_type": 0, "text": "question", "chunks": ["wrong"]}
+        self.assertEqual(chunk_data(question), [question])
+
+    def test_missing_chunks_prefixes_body_once_including_title_only(self):
+        row = {"source_type": 1, "title": "Heading", "text": "Heading\nbody", "content": "body"}
+        with patch.dict(CONFIG, {"EMBEDDING_CHUNK_TITLE_PREFIX_ENABLED": True}):
+            self.assertEqual(chunk_data(row)[0]["text"], "Heading\nbody")
+            self.assertEqual(chunk_data({**row, "content": ""})[0]["text"], "Heading\n")
+
+    def test_sql_embedding_path_exposes_separate_title_and_content(self):
+        with patch("common.event.listener_manage.VectorStore.get_embedding_vector") as store:
+            ListenerManagement.embedding_by_paragraph_list([self.paragraph.id], Mock())
+        rows = store.return_value.batch_save.call_args.args[0]
+        self.assertEqual(rows[0]["title"], "Heading")
+        self.assertEqual(rows[0]["content"], "first second")
+        self.assertEqual(chunk_data(rows[0])[0]["text"], "Heading\nfirst")

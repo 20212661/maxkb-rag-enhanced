@@ -41,6 +41,7 @@ from common.utils.lock import RedisLock
 from common.utils.logger import maxkb_logger
 from common.utils.page_utils import page_desc
 from common.utils.ts_vecto_util import to_ts_vector
+from knowledge.vector.base_vector import chunk_title_prefix
 
 lock = threading.Lock()
 
@@ -239,7 +240,7 @@ class ListenerManagement:
             for index, data in enumerate(data_list):
                 text = (data.meta or {}).get("embedding_text")
                 if text is None:
-                    text = f"{paragraph.title}\n{chunks[index]}" if paragraph.title else chunks[index]
+                    text = chunk_title_prefix(paragraph.title) + chunks[index]
                 data.search_vector = SearchVector(Value(to_ts_vector(text, user_words=user_words)), config='simple')
             # 批量保存，减少数据库写入次数
             QuerySet(Embedding).filter(paragraph_id=paragraph_id).bulk_update(data_list, ["search_vector"])
