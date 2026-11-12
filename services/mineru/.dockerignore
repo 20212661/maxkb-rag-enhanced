@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!requirements.txt
+!requirements.lock
+!config.yaml
+!content_list_api.py

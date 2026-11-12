@@ -2,3 +2,15 @@
 .idea*
 *.md
 .venv/
+.env
+.env.*
+.dev/
+deploy/.env
+ui/node_modules/
+ui/dist/
+apps/static/
+**/__pycache__/
+tmp/
+services/mineru/results/
+services/mineru/samples/
+eval/assets/corpus/

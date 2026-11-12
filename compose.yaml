@@ -1,0 +1,206 @@
+name: maxkb-rag
+
+x-maxkb: &maxkb
+  image: maxkb-rag:local
+  build:
+    context: .
+    dockerfile: installer/Dockerfile
+  working_dir: /opt/maxkb-app
+  environment: &maxkb-env
+    MAXKB_CONFIG_TYPE: ENV
+    MAXKB_SECRET_KEY: ${SECRET_KEY:?Run bash deploy/up.sh first}
+    MAXKB_HMAC_SIGNED_SERIALIZER_SECRET_KEY: ${SECRET_KEY:?Run bash deploy/up.sh first}
+    MAXKB_DB_NAME: maxkb
+    MAXKB_DB_HOST: postgres
+    MAXKB_DB_PORT: "5432"
+    MAXKB_DB_USER: maxkb
+    MAXKB_DB_PASSWORD: ${DB_PASSWORD:?Run bash deploy/up.sh first}
+    MAXKB_REDIS_HOST: redis
+    MAXKB_REDIS_PORT: "6379"
+    MAXKB_REDIS_PASSWORD: ${REDIS_PASSWORD:?Run bash deploy/up.sh first}
+    MAXKB_REDIS_DB: "0"
+    MAXKB_LOCAL_MODEL_HOST: local-model
+    MAXKB_LOCAL_MODEL_PORT: "11636"
+    MAXKB_MINERU_CONTENT_LIST_URL: http://mineru-content:8004
+    MAXKB_EMBEDDING_CACHE_EPOCH: ${EMBEDDING_CACHE_EPOCH:-1}
+    PYTHONPATH: /opt/maxkb-app/apps
+    C_FORCE_ROOT: "1"
+    SERVER_NAME: web
+    HF_HUB_OFFLINE: "1"
+  volumes:
+    - maxkb-data:/opt/maxkb
+    - maxkb-static:/opt/maxkb-app/apps/static
+  restart: unless-stopped
+
+x-mineru: &mineru
+  image: maxkb-rag-mineru:4.1.7
+  build:
+    context: services/mineru
+    dockerfile: Dockerfile
+  environment: &mineru-env
+    MINERU_HOME: /var/lib/mineru
+    MINERU_CONFIG: /srv/mineru/config.yaml
+    MINERU_TELEMETRY_DISABLED: "1"
+    MINERU_MODEL_SMALL_BACKEND: onnx
+    MINERU_MODEL_ONNX_DEVICE: cpu
+    OMP_NUM_THREADS: "4"
+    OPENBLAS_NUM_THREADS: "1"
+    TOKENIZERS_PARALLELISM: "false"
+  volumes:
+    - mineru-data:/var/lib/mineru
+  restart: unless-stopped
+
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.7-pg17-bookworm
+    environment:
+      POSTGRES_DB: maxkb
+      POSTGRES_USER: maxkb
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Run bash deploy/up.sh first}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./deploy/init-db.sql:/docker-entrypoint-initdb.d/10-extensions.sql:ro
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4-bookworm
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?Run bash deploy/up.sh first}
+    command: [sh, -c, 'exec redis-server --appendonly yes --requirepass "$$REDIS_PASSWORD"']
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: [CMD-SHELL, 'REDISCLI_AUTH="$$REDIS_PASSWORD" redis-cli ping | grep -q PONG']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  maxkb-init:
+    <<: *maxkb
+    entrypoint: [bash, -ec]
+    command: ["python main.py upgrade_db && python main.py collect_static"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+    restart: "no"
+
+  web:
+    <<: *maxkb
+    entrypoint: [python, -m, gunicorn]
+    command: [maxkb.wsgi:application, --chdir, apps, --bind, "0.0.0.0:8080", --workers, "1",
+              --worker-class, gthread, --threads, "16", --timeout, "180", --access-logfile, "-"]
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8088}:8080"
+    depends_on:
+      maxkb-init: {condition: service_completed_successfully}
+      local-model: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/admin/', timeout=5)"]
+      interval: 10s
+      timeout: 8s
+      start_period: 120s
+      retries: 30
+
+  local-model:
+    <<: *maxkb
+    environment:
+      <<: *maxkb-env
+      SERVER_NAME: local_model
+    entrypoint: [python, -m, gunicorn]
+    command: [maxkb.wsgi:application, --chdir, apps, --bind, "0.0.0.0:11636", --workers, "1",
+              --worker-class, gthread, --threads, "4", --timeout, "180"]
+    depends_on:
+      maxkb-init: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, python, -c, "import socket; socket.create_connection(('127.0.0.1',11636),5).close()"]
+      interval: 10s
+      timeout: 8s
+      start_period: 120s
+      retries: 30
+
+  worker:
+    <<: *maxkb
+    working_dir: /opt/maxkb-app/apps
+    entrypoint: [python, -m, celery]
+    command: [-A, ops, worker, --loglevel=info, --pool=threads, --concurrency=2,
+              "--queues=celery,model", --hostname=worker@%h, --without-mingle]
+    depends_on:
+      maxkb-init: {condition: service_completed_successfully}
+      local-model: {condition: service_healthy}
+
+  worker-mineru:
+    <<: *maxkb
+    working_dir: /opt/maxkb-app/apps
+    entrypoint: [python, -m, celery]
+    command: [-A, ops, worker, --loglevel=info, --pool=threads, --concurrency=2,
+              --queues=mineru, --hostname=mineru@%h, --without-mingle]
+    depends_on:
+      maxkb-init: {condition: service_completed_successfully}
+      mineru-content: {condition: service_healthy}
+
+  mineru-models:
+    <<: *mineru
+    environment:
+      <<: *mineru-env
+      MODEL_SOURCE: ${MINERU_MODEL_SOURCE:-modelscope}
+    entrypoint: [bash, -ec]
+    command:
+      - 'mineru-kit models download --tier basic --small-backend onnx --source "$$MODEL_SOURCE" && mineru-kit models verify --tier basic --small-backend onnx'
+    restart: "no"
+
+  mineru-api:
+    <<: *mineru
+    command: [api-server, --host, "0.0.0.0", --port, "8000", --tier, basic,
+              --concurrency, "1", --upload-dir, /var/lib/mineru/uploads]
+    depends_on:
+      mineru-models: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/v1/health', timeout=5)"]
+      interval: 10s
+      timeout: 8s
+      start_period: 60s
+      retries: 30
+
+  mineru-file:
+    <<: *mineru
+    command: [file-parse-server, --host, "0.0.0.0", --port, "8003", --api-url,
+              "http://mineru-api:8000", --state-dir, /var/lib/mineru/file-parse]
+    depends_on:
+      mineru-api: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8003/openapi.json', timeout=5)"]
+      interval: 10s
+      timeout: 8s
+      start_period: 60s
+      retries: 30
+
+  mineru-content:
+    <<: *mineru
+    environment:
+      <<: *mineru-env
+      MINERU_TASK_API_URL: http://mineru-api:8000
+      MINERU_FILE_PARSE_URL: http://mineru-file:8003
+      MINERU_PARSE_CONCURRENCY: "1"
+    entrypoint: [python, /srv/mineru/content_list_api.py]
+    command: [--host, "0.0.0.0", --port, "8004"]
+    depends_on:
+      mineru-file: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8004/health', timeout=5)"]
+      interval: 10s
+      timeout: 8s
+      start_period: 30s
+      retries: 30
+
+volumes:
+  postgres-data:
+  redis-data:
+  maxkb-data:
+  maxkb-static:
+  mineru-data:
