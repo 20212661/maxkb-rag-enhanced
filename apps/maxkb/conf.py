@@ -38,6 +38,7 @@ class Config(dict):
         "EMBEDDING_CACHE_ENABLED": True,
         "QUERY_EMBEDDING_CACHE_ENABLED": True,
         "EMBEDDING_CACHE_EPOCH": 1,
+        "QA_L1_CACHE_ENABLED": True,
         "MINERU_CONTENT_LIST_URL": "http://127.0.0.1:8004",
         "MINERU_TIMEOUT_BASE_SECONDS": 30,
         "MINERU_TIMEOUT_PER_PAGE_SECONDS": 10,

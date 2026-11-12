@@ -170,6 +170,7 @@ def event_content(
             step,
             padding_problem_text,
             reasoning_content=reasoning_content if reasoning_content_enable else "",
+            cache_success=True,
         )
         yield manage.get_base_to_response().to_stream_chunk_response(
             chat_id,
@@ -770,6 +771,7 @@ class BaseChatStep(IChatStep):
                 self,
                 padding_problem_text,
                 reasoning_content=reasoning_content,
+                cache_success=True,
             )
             if not manage.debug:
                 add_access_num(chat_user_id, chat_user_type, manage.context.get("application_id"))

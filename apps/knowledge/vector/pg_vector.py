@@ -28,13 +28,11 @@ from maxkb.conf import PROJECT_DIR
 
 
 class PGVector(BaseVectorStore):
-    def delete_by_source_ids(self, source_ids: List[str], source_type: str):
-        if len(source_ids) == 0:
-            return
-        QuerySet(Embedding).filter(source_id__in=source_ids, source_type=source_type).delete()
+    def _delete_vectors(self, rows):
+        return rows.delete()
 
-    def update_by_source_ids(self, source_ids: List[str], instance: Dict):
-        QuerySet(Embedding).filter(source_id__in=source_ids).update(**instance)
+    def _update_vectors(self, rows, instance):
+        return rows.update(**instance)
 
     def vector_is_create(self) -> bool:
         # 项目启动默认是创建好的 不需要再创建
@@ -75,7 +73,8 @@ class PGVector(BaseVectorStore):
             meta={"embedding_text": text},
             search_vector=SearchVector(Value(to_ts_vector(text, user_words=terms)), config='simple'),
         )
-        embedding.save()
+        with self.vector_mutation([knowledge_id]):
+            embedding.save()
         return True
 
     def _batch_save(self, text_list: List[Dict], embedding: Embeddings, is_the_task_interrupted):
@@ -109,7 +108,9 @@ class PGVector(BaseVectorStore):
             for index in range(0, len(texts))
         ]
         if not is_the_task_interrupted():
-            QuerySet(Embedding).bulk_create(embedding_list) if len(embedding_list) > 0 else None
+            if embedding_list:
+                with self.vector_mutation([row.knowledge_id for row in embedding_list]):
+                    QuerySet(Embedding).bulk_create(embedding_list)
         return True
 
     def hit_test(
@@ -194,41 +195,6 @@ class PGVector(BaseVectorStore):
                         all_results.extend(results)
                     all_results.sort(key=lambda x: x.get("similarity", x.get("comprehensive_score", 0)), reverse=True)
                     return all_results[:top_n]
-
-    def update_by_source_id(self, source_id: str, instance: Dict):
-        QuerySet(Embedding).filter(source_id=source_id).update(**instance)
-
-    def update_by_paragraph_id(self, paragraph_id: str, instance: Dict):
-        QuerySet(Embedding).filter(paragraph_id=paragraph_id).update(**instance)
-
-    def update_by_paragraph_ids(self, paragraph_id: str, instance: Dict):
-        QuerySet(Embedding).filter(paragraph_id__in=paragraph_id).update(**instance)
-
-    def delete_by_knowledge_id(self, knowledge_id: str):
-        QuerySet(Embedding).filter(knowledge_id=knowledge_id).delete()
-
-    def delete_by_knowledge_id_list(self, knowledge_id_list: List[str]):
-        QuerySet(Embedding).filter(knowledge_id__in=knowledge_id_list).delete()
-
-    def delete_by_document_id(self, document_id: str):
-        QuerySet(Embedding).filter(document_id=document_id).delete()
-        return True
-
-    def delete_by_document_id_list(self, document_id_list: List[str]):
-        if len(document_id_list) == 0:
-            return True
-        return QuerySet(Embedding).filter(document_id__in=document_id_list).delete()
-
-    def delete_by_source_id(self, source_id: str, source_type: str):
-        QuerySet(Embedding).filter(source_id=source_id, source_type=source_type).delete()
-        return True
-
-    def delete_by_paragraph_id(self, paragraph_id: str):
-        QuerySet(Embedding).filter(paragraph_id=paragraph_id).delete()
-
-    def delete_by_paragraph_ids(self, paragraph_ids: List[str]):
-        QuerySet(Embedding).filter(paragraph_id__in=paragraph_ids).delete()
-
 
 class ISearch(ABC):
     @abstractmethod

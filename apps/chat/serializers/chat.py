@@ -97,7 +97,7 @@ class ChatMessageSerializers(serializers.Serializer):
                                        label=_("Child Nodes"))
 
 
-def get_post_handler(chat_info: ChatInfo):
+def get_post_handler(chat_info: ChatInfo, answer_cache=None):
     class PostHandler(PostResponseHandler):
 
         def handler(self,
@@ -128,6 +128,12 @@ def get_post_handler(chat_info: ChatInfo):
             chat_info.append_chat_record(chat_record)
             # 重新设置缓存
             chat_info.set_cache()
+            if answer_cache is not None and kwargs.get("cache_success"):
+                try:
+                    answer_cache.publish(answer_text, kwargs.get("reasoning_content", ""), chat_record.details)
+                except Exception:
+                    from common.utils.logger import maxkb_logger
+                    maxkb_logger.warning("Answer cache completion failed", exc_info=True)
 
     return PostHandler()
 
@@ -338,6 +344,39 @@ class ChatSerializers(serializers.Serializer):
         return chat_info
 
     def chat_simple(self, chat_info: ChatInfo, instance, base_to_response):
+        from application.services.answer_cache import AnswerCacheRequest
+        answer_cache = AnswerCacheRequest.prepare(chat_info, instance, self.data.get("debug", False))
+        if answer_cache is None:
+            return self._chat_simple(chat_info, instance, base_to_response)
+        try:
+            payload = answer_cache.lookup()
+            if payload is None:
+                answer_cache.acquire()
+                payload = answer_cache.lookup()
+            if payload is not None:
+                answer_cache.close()
+                return answer_cache.replay(payload, base_to_response, get_post_handler(chat_info),
+                    lambda: self._chat_simple(chat_info, instance, base_to_response))
+            response = self._chat_simple(chat_info, instance, base_to_response, answer_cache)
+            if response.streaming:
+                content = response.streaming_content
+
+                def stream():
+                    try:
+                        yield from content
+                    finally:
+                        answer_cache.close()
+
+                response.streaming_content = stream()
+                response._resource_closers.append(answer_cache.close)
+            else:
+                answer_cache.close()
+            return response
+        except BaseException:
+            answer_cache.close()
+            raise
+
+    def _chat_simple(self, chat_info: ChatInfo, instance, base_to_response, answer_cache=None):
         message = instance.get('message')
         re_chat = instance.get('re_chat')
         stream = instance.get('stream')
@@ -368,7 +407,8 @@ class ChatSerializers(serializers.Serializer):
                  chat_record.details['search_step']])
             exclude_paragraph_id_list = list(set(paragraph_id_list))
         # 构建运行参数
-        params = chat_info.to_pipeline_manage_params(message, get_post_handler(chat_info), exclude_paragraph_id_list,
+        params = chat_info.to_pipeline_manage_params(message, get_post_handler(chat_info, answer_cache),
+                                                     exclude_paragraph_id_list,
                                                      chat_user_id, chat_user_type, ip_address, source, stream,
                                                      form_data)
         if chat_record_id:
