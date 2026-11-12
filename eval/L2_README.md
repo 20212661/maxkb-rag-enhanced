@@ -8,6 +8,8 @@
 
 本轮改写和标签由助手起草，`annotation_source=assistant_draft`，`human_reviewed=false`。用户已选择先用待审草案跑试验。人工确认问题与原答案的可复用关系后，可修订标签并更新 `human_reviewed`。正式运行可添加 `--require-human-review` 检查待审记录。
 
+逐条审核可使用 [50 条人工审核清单](L2_REVIEW.md)，其中附有原问题、标准句和当前标签，审核结果同步回 JSONL。
+
 每条改写题用 `reusable_answer_ids` 列出可复用的候选答案 ID。困难负例使用空列表，表示冻结候选库中的答案均不足以直接回答该问题。原问题锚点仅进入候选库，精确重复问题由 L1 处理。
 
 ## 运行
