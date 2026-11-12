@@ -109,3 +109,8 @@ python eval/run_eval.py --application-id <简单应用ID> --output eval/results/
 Week 3 的 60 题消融中，标题前缀单独将 Recall@5 从 81.67% 提升至 89.17%，表格切分单独提升至 83.33%，两项共同开启时 MRR 从 0.6608 提升至 0.7028。E 与 Week 2 native v2 比较，Recall@5 为 56.67% → 58.33%。五组单轮耗时无明显变化，完整结果见 [消融报告](results/week3/README.md)。
 
 另写的 20 题在同语料 A、D 索引上验证，Recall@5 为 45.00% → 67.50%，MRR 为 0.3917 → 0.4992。题集冻结后各跑一轮，包含作者先验暴露、近似题型配比及严格匹配边界的说明，见 [留出集报告](results/week3/holdout/README.md)。
+
+## Week 4 缓存实验
+
+向量缓存、L1 链路验收和 L2 离线试验见 [缓存验收报告](results/week4/README.md)。
+L2 数据字段、人工复核标记和复现命令见 [L2 离线说明](L2_README.md)。

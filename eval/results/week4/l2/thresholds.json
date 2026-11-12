@@ -1,0 +1,1410 @@
+{
+  "schema_version": 1,
+  "dataset_sha256": "51536ed2ebe3ad38fd91a7ddb67ef5df81a2d7fb07b736bedb37dbfde4f5241e",
+  "evaluator_sha256": "3addd9d7b487396d94c8b32fff50847a85aaf1a4b9dc5a5533274a3d147d634d",
+  "annotation_status": "assistant_draft_pending_human_review",
+  "anchor_count": 10,
+  "selection": "maximum dev acceptance under false-hit target, highest threshold breaks ties",
+  "target_false_hit_rate": 0.01,
+  "dev_curve": [
+    {
+      "threshold": 0.5,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.505,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.51,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.515,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.52,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.525,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.53,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.535,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.54,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.545,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.55,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.555,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.56,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.565,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.57,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.575,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.58,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.585,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.59,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.595,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.6,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.605,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.61,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.615,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.62,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.625,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.63,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.635,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.64,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.645,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.65,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.655,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.66,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.665,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.67,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.675,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.68,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.685,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.69,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.695,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.7,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.705,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.71,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.715,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.72,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.725,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.73,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.735,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.74,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.745,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.75,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.755,
+      "query_count": 24,
+      "accepted": 24,
+      "wrong_accepted": 12,
+      "acceptance_rate": 1.0,
+      "false_hit_rate": 0.5,
+      "wrong_per_request": 0.5,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.76,
+      "query_count": 24,
+      "accepted": 23,
+      "wrong_accepted": 11,
+      "acceptance_rate": 0.9583333333333334,
+      "false_hit_rate": 0.4782608695652174,
+      "wrong_per_request": 0.4583333333333333,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.765,
+      "query_count": 24,
+      "accepted": 23,
+      "wrong_accepted": 11,
+      "acceptance_rate": 0.9583333333333334,
+      "false_hit_rate": 0.4782608695652174,
+      "wrong_per_request": 0.4583333333333333,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.77,
+      "query_count": 24,
+      "accepted": 23,
+      "wrong_accepted": 11,
+      "acceptance_rate": 0.9583333333333334,
+      "false_hit_rate": 0.4782608695652174,
+      "wrong_per_request": 0.4583333333333333,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.775,
+      "query_count": 24,
+      "accepted": 23,
+      "wrong_accepted": 11,
+      "acceptance_rate": 0.9583333333333334,
+      "false_hit_rate": 0.4782608695652174,
+      "wrong_per_request": 0.4583333333333333,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.78,
+      "query_count": 24,
+      "accepted": 23,
+      "wrong_accepted": 11,
+      "acceptance_rate": 0.9583333333333334,
+      "false_hit_rate": 0.4782608695652174,
+      "wrong_per_request": 0.4583333333333333,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.785,
+      "query_count": 24,
+      "accepted": 20,
+      "wrong_accepted": 8,
+      "acceptance_rate": 0.8333333333333334,
+      "false_hit_rate": 0.4,
+      "wrong_per_request": 0.3333333333333333,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.79,
+      "query_count": 24,
+      "accepted": 19,
+      "wrong_accepted": 7,
+      "acceptance_rate": 0.7916666666666666,
+      "false_hit_rate": 0.3684210526315789,
+      "wrong_per_request": 0.2916666666666667,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.795,
+      "query_count": 24,
+      "accepted": 19,
+      "wrong_accepted": 7,
+      "acceptance_rate": 0.7916666666666666,
+      "false_hit_rate": 0.3684210526315789,
+      "wrong_per_request": 0.2916666666666667,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.8,
+      "query_count": 24,
+      "accepted": 18,
+      "wrong_accepted": 6,
+      "acceptance_rate": 0.75,
+      "false_hit_rate": 0.3333333333333333,
+      "wrong_per_request": 0.25,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.805,
+      "query_count": 24,
+      "accepted": 18,
+      "wrong_accepted": 6,
+      "acceptance_rate": 0.75,
+      "false_hit_rate": 0.3333333333333333,
+      "wrong_per_request": 0.25,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.81,
+      "query_count": 24,
+      "accepted": 17,
+      "wrong_accepted": 5,
+      "acceptance_rate": 0.7083333333333334,
+      "false_hit_rate": 0.29411764705882354,
+      "wrong_per_request": 0.20833333333333334,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.815,
+      "query_count": 24,
+      "accepted": 17,
+      "wrong_accepted": 5,
+      "acceptance_rate": 0.7083333333333334,
+      "false_hit_rate": 0.29411764705882354,
+      "wrong_per_request": 0.20833333333333334,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.82,
+      "query_count": 24,
+      "accepted": 16,
+      "wrong_accepted": 4,
+      "acceptance_rate": 0.6666666666666666,
+      "false_hit_rate": 0.25,
+      "wrong_per_request": 0.16666666666666666,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.825,
+      "query_count": 24,
+      "accepted": 16,
+      "wrong_accepted": 4,
+      "acceptance_rate": 0.6666666666666666,
+      "false_hit_rate": 0.25,
+      "wrong_per_request": 0.16666666666666666,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.83,
+      "query_count": 24,
+      "accepted": 16,
+      "wrong_accepted": 4,
+      "acceptance_rate": 0.6666666666666666,
+      "false_hit_rate": 0.25,
+      "wrong_per_request": 0.16666666666666666,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.835,
+      "query_count": 24,
+      "accepted": 15,
+      "wrong_accepted": 3,
+      "acceptance_rate": 0.625,
+      "false_hit_rate": 0.2,
+      "wrong_per_request": 0.125,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.84,
+      "query_count": 24,
+      "accepted": 15,
+      "wrong_accepted": 3,
+      "acceptance_rate": 0.625,
+      "false_hit_rate": 0.2,
+      "wrong_per_request": 0.125,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.845,
+      "query_count": 24,
+      "accepted": 15,
+      "wrong_accepted": 3,
+      "acceptance_rate": 0.625,
+      "false_hit_rate": 0.2,
+      "wrong_per_request": 0.125,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.85,
+      "query_count": 24,
+      "accepted": 15,
+      "wrong_accepted": 3,
+      "acceptance_rate": 0.625,
+      "false_hit_rate": 0.2,
+      "wrong_per_request": 0.125,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.855,
+      "query_count": 24,
+      "accepted": 15,
+      "wrong_accepted": 3,
+      "acceptance_rate": 0.625,
+      "false_hit_rate": 0.2,
+      "wrong_per_request": 0.125,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.86,
+      "query_count": 24,
+      "accepted": 15,
+      "wrong_accepted": 3,
+      "acceptance_rate": 0.625,
+      "false_hit_rate": 0.2,
+      "wrong_per_request": 0.125,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.865,
+      "query_count": 24,
+      "accepted": 15,
+      "wrong_accepted": 3,
+      "acceptance_rate": 0.625,
+      "false_hit_rate": 0.2,
+      "wrong_per_request": 0.125,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.87,
+      "query_count": 24,
+      "accepted": 15,
+      "wrong_accepted": 3,
+      "acceptance_rate": 0.625,
+      "false_hit_rate": 0.2,
+      "wrong_per_request": 0.125,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.875,
+      "query_count": 24,
+      "accepted": 14,
+      "wrong_accepted": 2,
+      "acceptance_rate": 0.5833333333333334,
+      "false_hit_rate": 0.14285714285714285,
+      "wrong_per_request": 0.08333333333333333,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.88,
+      "query_count": 24,
+      "accepted": 14,
+      "wrong_accepted": 2,
+      "acceptance_rate": 0.5833333333333334,
+      "false_hit_rate": 0.14285714285714285,
+      "wrong_per_request": 0.08333333333333333,
+      "correct_acceptance_rate": 0.5
+    },
+    {
+      "threshold": 0.885,
+      "query_count": 24,
+      "accepted": 13,
+      "wrong_accepted": 2,
+      "acceptance_rate": 0.5416666666666666,
+      "false_hit_rate": 0.15384615384615385,
+      "wrong_per_request": 0.08333333333333333,
+      "correct_acceptance_rate": 0.4583333333333333
+    },
+    {
+      "threshold": 0.89,
+      "query_count": 24,
+      "accepted": 12,
+      "wrong_accepted": 1,
+      "acceptance_rate": 0.5,
+      "false_hit_rate": 0.08333333333333333,
+      "wrong_per_request": 0.041666666666666664,
+      "correct_acceptance_rate": 0.4583333333333333
+    },
+    {
+      "threshold": 0.895,
+      "query_count": 24,
+      "accepted": 11,
+      "wrong_accepted": 1,
+      "acceptance_rate": 0.4583333333333333,
+      "false_hit_rate": 0.09090909090909091,
+      "wrong_per_request": 0.041666666666666664,
+      "correct_acceptance_rate": 0.4166666666666667
+    },
+    {
+      "threshold": 0.9,
+      "query_count": 24,
+      "accepted": 10,
+      "wrong_accepted": 1,
+      "acceptance_rate": 0.4166666666666667,
+      "false_hit_rate": 0.1,
+      "wrong_per_request": 0.041666666666666664,
+      "correct_acceptance_rate": 0.375
+    },
+    {
+      "threshold": 0.905,
+      "query_count": 24,
+      "accepted": 10,
+      "wrong_accepted": 1,
+      "acceptance_rate": 0.4166666666666667,
+      "false_hit_rate": 0.1,
+      "wrong_per_request": 0.041666666666666664,
+      "correct_acceptance_rate": 0.375
+    },
+    {
+      "threshold": 0.91,
+      "query_count": 24,
+      "accepted": 10,
+      "wrong_accepted": 1,
+      "acceptance_rate": 0.4166666666666667,
+      "false_hit_rate": 0.1,
+      "wrong_per_request": 0.041666666666666664,
+      "correct_acceptance_rate": 0.375
+    },
+    {
+      "threshold": 0.915,
+      "query_count": 24,
+      "accepted": 8,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.3333333333333333,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.3333333333333333
+    },
+    {
+      "threshold": 0.92,
+      "query_count": 24,
+      "accepted": 7,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.2916666666666667,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.2916666666666667
+    },
+    {
+      "threshold": 0.925,
+      "query_count": 24,
+      "accepted": 6,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.25,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.25
+    },
+    {
+      "threshold": 0.93,
+      "query_count": 24,
+      "accepted": 4,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.16666666666666666,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.16666666666666666
+    },
+    {
+      "threshold": 0.935,
+      "query_count": 24,
+      "accepted": 4,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.16666666666666666,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.16666666666666666
+    },
+    {
+      "threshold": 0.94,
+      "query_count": 24,
+      "accepted": 3,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.125,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.125
+    },
+    {
+      "threshold": 0.945,
+      "query_count": 24,
+      "accepted": 3,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.125,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.125
+    },
+    {
+      "threshold": 0.95,
+      "query_count": 24,
+      "accepted": 3,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.125,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.125
+    },
+    {
+      "threshold": 0.955,
+      "query_count": 24,
+      "accepted": 3,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.125,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.125
+    },
+    {
+      "threshold": 0.96,
+      "query_count": 24,
+      "accepted": 3,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.125,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.125
+    },
+    {
+      "threshold": 0.965,
+      "query_count": 24,
+      "accepted": 1,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.041666666666666664,
+      "false_hit_rate": 0.0,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.041666666666666664
+    },
+    {
+      "threshold": 0.97,
+      "query_count": 24,
+      "accepted": 0,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.0,
+      "false_hit_rate": null,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.0
+    },
+    {
+      "threshold": 0.975,
+      "query_count": 24,
+      "accepted": 0,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.0,
+      "false_hit_rate": null,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.0
+    },
+    {
+      "threshold": 0.98,
+      "query_count": 24,
+      "accepted": 0,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.0,
+      "false_hit_rate": null,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.0
+    },
+    {
+      "threshold": 0.985,
+      "query_count": 24,
+      "accepted": 0,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.0,
+      "false_hit_rate": null,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.0
+    },
+    {
+      "threshold": 0.99,
+      "query_count": 24,
+      "accepted": 0,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.0,
+      "false_hit_rate": null,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.0
+    },
+    {
+      "threshold": 0.995,
+      "query_count": 24,
+      "accepted": 0,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.0,
+      "false_hit_rate": null,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.0
+    },
+    {
+      "threshold": 1.0,
+      "query_count": 24,
+      "accepted": 0,
+      "wrong_accepted": 0,
+      "acceptance_rate": 0.0,
+      "false_hit_rate": null,
+      "wrong_per_request": 0.0,
+      "correct_acceptance_rate": 0.0
+    }
+  ],
+  "selected_dev": {
+    "threshold": 0.915,
+    "query_count": 24,
+    "accepted": 8,
+    "wrong_accepted": 0,
+    "acceptance_rate": 0.3333333333333333,
+    "false_hit_rate": 0.0,
+    "wrong_per_request": 0.0,
+    "correct_acceptance_rate": 0.3333333333333333
+  },
+  "test_at_locked_threshold": {
+    "threshold": 0.915,
+    "query_count": 16,
+    "accepted": 7,
+    "wrong_accepted": 1,
+    "acceptance_rate": 0.4375,
+    "false_hit_rate": 0.14285714285714285,
+    "wrong_per_request": 0.0625,
+    "correct_acceptance_rate": 0.375
+  },
+  "scores": [
+    {
+      "id": "q001-rewrite-1",
+      "group_id": "q001",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q001",
+      "similarity": 0.9255780125285757,
+      "correct_reuse": true
+    },
+    {
+      "id": "q001-rewrite-2",
+      "group_id": "q001",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q001",
+      "similarity": 0.8847191188829845,
+      "correct_reuse": true
+    },
+    {
+      "id": "q001-negative-1",
+      "group_id": "q001",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q001",
+      "similarity": 0.7875926628997115,
+      "correct_reuse": false
+    },
+    {
+      "id": "q001-negative-2",
+      "group_id": "q001",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q001",
+      "similarity": 0.8706128419094445,
+      "correct_reuse": false
+    },
+    {
+      "id": "q003-rewrite-1",
+      "group_id": "q003",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q003",
+      "similarity": 0.9614624611007528,
+      "correct_reuse": true
+    },
+    {
+      "id": "q003-rewrite-2",
+      "group_id": "q003",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q003",
+      "similarity": 0.9648046879127635,
+      "correct_reuse": true
+    },
+    {
+      "id": "q003-negative-1",
+      "group_id": "q003",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q003",
+      "similarity": 0.8343906239570918,
+      "correct_reuse": false
+    },
+    {
+      "id": "q003-negative-2",
+      "group_id": "q003",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q003",
+      "similarity": 0.7967325293165265,
+      "correct_reuse": false
+    },
+    {
+      "id": "q004-rewrite-1",
+      "group_id": "q004",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q004",
+      "similarity": 0.938261915666477,
+      "correct_reuse": true
+    },
+    {
+      "id": "q004-rewrite-2",
+      "group_id": "q004",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q004",
+      "similarity": 0.9205698683751207,
+      "correct_reuse": true
+    },
+    {
+      "id": "q004-negative-1",
+      "group_id": "q004",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q004",
+      "similarity": 0.7589388775117342,
+      "correct_reuse": false
+    },
+    {
+      "id": "q004-negative-2",
+      "group_id": "q004",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q004",
+      "similarity": 0.7849489474621201,
+      "correct_reuse": false
+    },
+    {
+      "id": "q005-rewrite-1",
+      "group_id": "q005",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q005",
+      "similarity": 0.8900320542005278,
+      "correct_reuse": true
+    },
+    {
+      "id": "q005-rewrite-2",
+      "group_id": "q005",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q005",
+      "similarity": 0.9123860440420605,
+      "correct_reuse": true
+    },
+    {
+      "id": "q005-negative-1",
+      "group_id": "q005",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q005",
+      "similarity": 0.7834704963604315,
+      "correct_reuse": false
+    },
+    {
+      "id": "q005-negative-2",
+      "group_id": "q005",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q005",
+      "similarity": 0.8093644367181502,
+      "correct_reuse": false
+    },
+    {
+      "id": "q006-rewrite-1",
+      "group_id": "q006",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q006",
+      "similarity": 0.9152199318994865,
+      "correct_reuse": true
+    },
+    {
+      "id": "q006-rewrite-2",
+      "group_id": "q006",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q006",
+      "similarity": 0.928105170805873,
+      "correct_reuse": true
+    },
+    {
+      "id": "q006-negative-1",
+      "group_id": "q006",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q006",
+      "similarity": 0.912544736100562,
+      "correct_reuse": false
+    },
+    {
+      "id": "q006-negative-2",
+      "group_id": "q006",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q006",
+      "similarity": 0.7832746403478393,
+      "correct_reuse": false
+    },
+    {
+      "id": "q007-rewrite-1",
+      "group_id": "q007",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q007",
+      "similarity": 0.9689939140505787,
+      "correct_reuse": true
+    },
+    {
+      "id": "q007-rewrite-2",
+      "group_id": "q007",
+      "split": "dev",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q007",
+      "similarity": 0.8959850042931655,
+      "correct_reuse": true
+    },
+    {
+      "id": "q007-negative-1",
+      "group_id": "q007",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q007",
+      "similarity": 0.8890911977572887,
+      "correct_reuse": false
+    },
+    {
+      "id": "q007-negative-2",
+      "group_id": "q007",
+      "split": "dev",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q007",
+      "similarity": 0.817639875514631,
+      "correct_reuse": false
+    },
+    {
+      "id": "q009-rewrite-1",
+      "group_id": "q009",
+      "split": "test",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q009",
+      "similarity": 0.930486420039714,
+      "correct_reuse": true
+    },
+    {
+      "id": "q009-rewrite-2",
+      "group_id": "q009",
+      "split": "test",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q009",
+      "similarity": 0.9167961668302838,
+      "correct_reuse": true
+    },
+    {
+      "id": "q009-negative-1",
+      "group_id": "q009",
+      "split": "test",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q009",
+      "similarity": 0.7237522753470226,
+      "correct_reuse": false
+    },
+    {
+      "id": "q009-negative-2",
+      "group_id": "q009",
+      "split": "test",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q009",
+      "similarity": 0.7571329403744537,
+      "correct_reuse": false
+    },
+    {
+      "id": "q012-rewrite-1",
+      "group_id": "q012",
+      "split": "test",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q012",
+      "similarity": 0.9327676125309844,
+      "correct_reuse": true
+    },
+    {
+      "id": "q012-rewrite-2",
+      "group_id": "q012",
+      "split": "test",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q012",
+      "similarity": 0.9406247136230325,
+      "correct_reuse": true
+    },
+    {
+      "id": "q012-negative-1",
+      "group_id": "q012",
+      "split": "test",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q012",
+      "similarity": 0.8394199090982349,
+      "correct_reuse": false
+    },
+    {
+      "id": "q012-negative-2",
+      "group_id": "q012",
+      "split": "test",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q012",
+      "similarity": 0.8672021568051401,
+      "correct_reuse": false
+    },
+    {
+      "id": "q015-rewrite-1",
+      "group_id": "q015",
+      "split": "test",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q015",
+      "similarity": 0.9146445165408676,
+      "correct_reuse": true
+    },
+    {
+      "id": "q015-rewrite-2",
+      "group_id": "q015",
+      "split": "test",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q015",
+      "similarity": 0.9215797083341163,
+      "correct_reuse": true
+    },
+    {
+      "id": "q015-negative-1",
+      "group_id": "q015",
+      "split": "test",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q015",
+      "similarity": 0.791253942984894,
+      "correct_reuse": false
+    },
+    {
+      "id": "q015-negative-2",
+      "group_id": "q015",
+      "split": "test",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q015",
+      "similarity": 0.7082473039599887,
+      "correct_reuse": false
+    },
+    {
+      "id": "q020-rewrite-1",
+      "group_id": "q020",
+      "split": "test",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q020",
+      "similarity": 0.9417047935911284,
+      "correct_reuse": true
+    },
+    {
+      "id": "q020-rewrite-2",
+      "group_id": "q020",
+      "split": "test",
+      "kind": "rewrite",
+      "candidate_id": "anchor-q020",
+      "similarity": 0.9148621602103585,
+      "correct_reuse": true
+    },
+    {
+      "id": "q020-negative-1",
+      "group_id": "q020",
+      "split": "test",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q020",
+      "similarity": 0.8528605402448574,
+      "correct_reuse": false
+    },
+    {
+      "id": "q020-negative-2",
+      "group_id": "q020",
+      "split": "test",
+      "kind": "hard_negative",
+      "candidate_id": "anchor-q020",
+      "similarity": 0.9510286081749236,
+      "correct_reuse": false
+    }
+  ],
+  "embedding_profile": {
+    "schema_version": 1,
+    "model_id": "42f63a3d-427e-11ef-b3ec-a8a1595801ab",
+    "workspace": "default",
+    "profile_hash": "ce49388940effdeb2e53cedde383c2a4239d4f8b7855a296a98e7549767aa1ed",
+    "call_mode": "embed_query"
+  }
+}
