@@ -31,6 +31,21 @@ python eval/verify_l1.py --config eval/.local-week3-D.json
 
 第二条命令经过正式发布版本、会话开启和 ChatSerializers 聊天入口，使用真实本地向量检索和离线回答模型夹具检查生成、引用、聊天记录和缓存复用。夹具输出固定文本，P50/P95 描述该验证链路。真实大模型的回答质量、响应时间及费用需要使用实际 API 配置另行测量。临时应用、模型和聊天记录在完成后清理。
 
+### 真实模型对照
+
+在现有评测环境的模型管理中保存 DeepSeek 或通义千问的 API Key，然后使用该模型 ID 运行。
+
+```bash
+python eval/verify_l1.py --model-id YOUR_LLM_MODEL_ID \
+  --output eval/results/week5/l1-api.json
+```
+
+默认选择 12 题，使用相同检索与回答配置依次执行缓存关闭、首遍填充和第二遍命中。真实模型模式全部使用流式响应，记录完整响应和首个非空可见内容的 P50/P95。统计范围包括 ChatSerializers、真实本地检索、回答 API 及聊天记录处理。
+
+供应商 token 用量通过 LangChain 回调读取，另存框架 token 统计。若 API 未返回用量，供应商总 token 记为空。重复请求命中时业务模型调用和 token 消耗为 0。结果保留回答和证据 ID 供复核，临时应用和会话在结束后清理，用户原有模型保留。
+
+可通过 `--questions` 指定 10–20 个开发集问题 ID，通过 `--max-output-tokens` 设置实验应用中的模型输出参数。只有模型参数表支持的 `max_tokens` 项会覆盖。当前本机尚无已保存的 LLM，真实 API 数据待配置后测量。
+
 ## 已知限制与 v2
 
 - 直接修改 Embedding 的 SQL 或 ORM 操作会绕过版本封装。现有 `tokenize_by_paragraph` 的关键词 `bulk_update` 属于这一范围。
