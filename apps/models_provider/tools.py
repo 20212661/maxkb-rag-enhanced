@@ -48,6 +48,11 @@ def get_model(model, **kwargs):
     @param model: model 数据库Model实例对象
     @return: 模型实例
     """
+    if model.model_type == ModelTypeConst.EMBEDDING.name:
+        from common.cache.model_profile import bind_embedding_profile
+        params = {**get_model_default_params(model), **kwargs}
+        instance = get_model_(model.provider, model.model_type, model.model_name, model.credential, str(model.id), **params)
+        return bind_embedding_profile(instance, model.id, model.workspace_id, model.provider, model.model_name, params)
     return get_model_(model.provider, model.model_type, model.model_name, model.credential, str(model.id), **kwargs)
 
 

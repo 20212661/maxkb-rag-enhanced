@@ -239,8 +239,8 @@ class ModelSerializer(serializers.Serializer):
                     else:
                         model.__setattr__(update_key, instance.get(update_key))
 
-            ModelManage.delete_key(str(model.id))
             model.save()
+            transaction.on_commit(lambda: ModelManage.delete_key(str(model.id)))
             if model.status == Status.DOWNLOAD:
                 thread = threading.Thread(target=ModelPullManage.pull, args=(model, credential))
                 thread.start()
@@ -539,6 +539,7 @@ class ModelSerializer(serializers.Serializer):
 
             model.model_params_form = model_params_form
             model.save()
+            transaction.on_commit(lambda: ModelManage.delete_key(str(model.id)))
             return True
 
 

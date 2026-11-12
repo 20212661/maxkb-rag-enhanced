@@ -104,7 +104,8 @@ class BaseSearchKnowledgeNode(ISearchKnowledgeStepNode):
             return get_none_result(question)
         model_id = get_embedding_id(knowledge_id_list)
         embedding_model = get_model_instance_by_model_workspace_id(model_id, workspace_id)
-        embedding_value = embedding_model.embed_query(question)
+        from common.cache.embedding_cache import cached_query
+        embedding_value = cached_query(embedding_model, question)
         vector = VectorStore.get_embedding_vector()
         exclude_document_id_list = [str(document.id) for document in
                                     QuerySet(Document).filter(

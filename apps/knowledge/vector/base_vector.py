@@ -185,7 +185,8 @@ class BaseVectorStore(ABC):
         if knowledge_id_list is None or len(knowledge_id_list) == 0:
             return []
         query_text = normalize_for_embedding(query_text)
-        query_embedding = embedding.embed_query(query_text)
+        from common.cache.embedding_cache import cached_query
+        query_embedding = cached_query(embedding, query_text)
         result = self.query(
             query_text, query_embedding,
             knowledge_id_list, None,

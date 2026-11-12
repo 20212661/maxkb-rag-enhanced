@@ -23,6 +23,7 @@ from common.utils.common import get_file_content
 from common.utils.ts_vecto_util import to_ts_vector, to_query
 from knowledge.models import Embedding, SearchMode, SourceType, Termbase
 from knowledge.vector.base_vector import BaseVectorStore, normalize_for_embedding
+from common.cache.embedding_cache import cached_documents, cached_query
 from maxkb.conf import PROJECT_DIR
 
 
@@ -54,7 +55,7 @@ class PGVector(BaseVectorStore):
         embedding: Embeddings,
     ):
         text = normalize_for_embedding(text)
-        text_embedding = [float(x) for x in embedding.embed_query(text)]
+        text_embedding = [float(x) for x in cached_documents(embedding, [text], mode="embed_query")[0]]
         terms = list(
             QuerySet(Termbase)
             .filter(
@@ -79,7 +80,7 @@ class PGVector(BaseVectorStore):
 
     def _batch_save(self, text_list: List[Dict], embedding: Embeddings, is_the_task_interrupted):
         texts = [normalize_for_embedding(row.get("text")) for row in text_list]
-        embeddings = embedding.embed_documents(texts)
+        embeddings = cached_documents(embedding, texts)
         embedding_list = [
             Embedding(
                 id=uuid.uuid7(),
@@ -125,7 +126,7 @@ class PGVector(BaseVectorStore):
             return []
         exclude_dict = {}
         query_text = normalize_for_embedding(query_text)
-        embedding_query = embedding.embed_query(query_text)
+        embedding_query = cached_query(embedding, query_text)
         if exclude_document_id_list is not None and len(exclude_document_id_list) > 0:
             exclude_dict.__setitem__("document_id__in", exclude_document_id_list)
         for search_handle in search_handle_list:

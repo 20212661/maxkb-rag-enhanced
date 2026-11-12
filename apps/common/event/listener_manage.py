@@ -477,9 +477,11 @@ class ListenerManagement:
     @staticmethod
     def update_problem(args: UpdateProblemArgs):
         problem_paragraph_mapping_list = QuerySet(ProblemParagraphMapping).filter(problem_id=args.problem_id)
-        embed_value = args.embedding_model.embed_query(args.problem_content)
+        from common.cache.embedding_cache import cached_documents
+        embed_value = cached_documents(args.embedding_model, [args.problem_content], mode="embed_query")[0]
         VectorStore.get_embedding_vector().update_by_source_ids(
-            [v.id for v in problem_paragraph_mapping_list], {"embedding": embed_value}
+            [v.id for v in problem_paragraph_mapping_list],
+            {"embedding": embed_value, "meta": {"embedding_text": args.problem_content}}
         )
 
     @staticmethod
