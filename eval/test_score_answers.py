@@ -25,7 +25,8 @@ class ScoreSummaryTests(unittest.TestCase):
             "B002": {"tag": "synthetic-on", "question_id": "synthetic-a", "round": 1,
                      "prompt_include_document_name": True}}}
         comparisons = [{"tag": "synthetic-" + group, "id": "synthetic-a", "identical_answer": False,
-                        "review_required": flag, "text_similarity": 0.95, "reasons": ["numbers_changed"] if flag else []}
+                        "review_required": flag, "text_similarity": 0.95,
+                        "reasons": ["numbers_changed"] if flag else []}
                        for group, flag in (("off", False), ("on", True))]
         return mapping, {"comparisons": comparisons}
 
@@ -33,8 +34,10 @@ class ScoreSummaryTests(unittest.TestCase):
         return (
             "| 编号 | 题目ID | 类型 | 问题 | 回答 | 引用文档 | 期望来源是否被检索到 | 归属正确 | 内容正确 | 拒答正确 | 出处标注正确 | 得分 | 备注 |\n"
             "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
-            f"| B001 | synthetic-a | attribution | 测试 | 文字&#124;文字 | A.pdf | 全部（1/1） | 0 | 0 | N/A | N/A | {first_score} | 原因 |\n"
-            f"| B002 | synthetic-a | attribution | 测试 | 测试回答 | A.pdf | 全部（1/1） | 1 | 1 | N/A | N/A | {second_score} | 原因 |\n"
+            "| B001 | synthetic-a | attribution | 测试 | 文字&#124;文字 | A.pdf | 全部（1/1） | "
+            f"0 | 0 | N/A | N/A | {first_score} | 原因 |\n"
+            "| B002 | synthetic-a | attribution | 测试 | 测试回答 | A.pdf | 全部（1/1） | "
+            f"1 | 1 | N/A | N/A | {second_score} | 原因 |\n"
         )
 
     def test_explicit_scores_and_pending_are_preserved(self):
@@ -121,7 +124,8 @@ class ScoreSummaryTests(unittest.TestCase):
             review.write_text(self.table(), encoding="utf-8")
             for name, value in (("mapping.json", mapping), ("stability.json", stability)):
                 (folder / name).write_text(json.dumps(value), encoding="utf-8")
-            with patch("sys.argv", ["score_answers.py", "--review", str(review), "--mapping", str(folder / "mapping.json"),
+            with patch("sys.argv", ["score_answers.py", "--review", str(review),
+                                    "--mapping", str(folder / "mapping.json"),
                                     "--stability", str(folder / "stability.json"), "--output-dir", str(folder)]):
                 self.assertEqual(main(), 0)
             output = json.loads((folder / "score-summary.json").read_text("utf-8"))

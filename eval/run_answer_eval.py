@@ -168,7 +168,8 @@ def run(args):
               "manifest_sha256": file_hash(EVAL / "assets/answer_manifest.json"),
               "evaluator_sha256": file_hash(Path(__file__)), "configuration": runtime,
               "runtime_configuration_source": "operator-supplied web launch manifest, latest version checked via HTTP",
-              "latency_scope": "POST public chat_message to complete nonstreaming answer, excluding session and metadata",
+              "latency_scope": "POST public chat_message to complete nonstreaming answer, "
+                               "excluding session and metadata",
               "token_scope": "framework ChatRecord message_tokens and answer_tokens", "rounds": [], "complete": False}
     for round_number in range(1, args.rounds + 1):
         if latest_version(admin, app_path) != runtime["published_version_id"]:
@@ -264,7 +265,8 @@ def blind(args):
     (args.output_dir / "blind-review.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     write_result(args.output_dir / "mapping.json", mapping)
     comparisons = [row for result in runs for row in stability_comparison(result, args.stability_threshold)]
-    write_result(args.output_dir / "stability.json", {"threshold": args.stability_threshold, "comparisons": comparisons})
+    write_result(args.output_dir / "stability.json", {
+        "threshold": args.stability_threshold, "comparisons": comparisons})
     review = ["# 两遍回答稳定性复核", "", "标记依据为文本相似度、数字及引用文档变化，需人工复核。", "",
               "| 组别 | 题目ID | 文本相似度 | 需复核原因 |", "| --- | --- | --- | --- |"]
     for row in comparisons:
