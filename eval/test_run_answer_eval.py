@@ -10,7 +10,7 @@ from unittest.mock import Mock, patch
 
 from run_answer_eval import (
     EVAL, APIError, ask_question, blind, coverage_label, load_questions, source_coverage,
-    stability_comparison, wait_for_record,
+    stability_comparison, validate_runtime, wait_for_record,
 )
 
 
@@ -41,6 +41,15 @@ class AnswerEvaluationTests(unittest.TestCase):
         self.assertEqual(coverage_label(source_coverage(self.question, [])), "未检索到（0/2）")
         outside = {**self.question, "verification": {"sources": []}}
         self.assertIsNone(source_coverage(outside, ["A.pdf"])["expected_source_retrieved"])
+
+    def test_empty_or_wrong_published_knowledge_binding_is_rejected_before_requests(self):
+        runtime = {"application_id": "app", "qa_l1_cache_enabled": False,
+                   "prompt_include_document_name": False, "model_params_setting": {"temperature": 0},
+                   "knowledge_ids": ["expected-knowledge"]}
+        validate_runtime(runtime, "app", 0, "expected-knowledge")
+        for ids in ([], None, ["other-knowledge"]):
+            with self.subTest(ids=ids), self.assertRaisesRegex(ValueError, "knowledge binding"):
+                validate_runtime({**runtime, "knowledge_ids": ids}, "app", 0, "expected-knowledge")
 
     def test_each_question_opens_a_new_session_and_sends_only_question(self):
         chat, admin = Mock(), Mock()
@@ -81,7 +90,7 @@ class AnswerEvaluationTests(unittest.TestCase):
         return {"tag": "secret-on" if include else "secret-off", "complete": True,
                 "dataset_sha256": "dataset", "rubric_sha256": "rubric", "manifest_sha256": "manifest",
                 "evaluator_sha256": "script", "configuration": {"prompt_include_document_name": include,
-                    "model_params_setting": {"temperature": 0}},
+                    "model_params_setting": {"temperature": 0}, "knowledge_ids": ["synthetic-knowledge"]},
                 "rounds": [{"round": 1, "queries": [row]}, {"round": 2, "queries": [deepcopy(row)]}]}
 
     def test_blind_includes_only_first_round_and_keeps_scores_empty(self):

@@ -132,15 +132,23 @@ def latest_version(admin, app_path):
     return versions[0]["id"]
 
 
-def run(args):
-    questions = load_questions(args.dataset)
-    runtime = json.loads(args.runtime_config.read_text("utf-8"))
-    if runtime.get("application_id") != args.application_id or runtime.get("qa_l1_cache_enabled") is not False:
+def validate_runtime(runtime, application_id, temperature, expected_knowledge_id):
+    if runtime.get("application_id") != application_id or runtime.get("qa_l1_cache_enabled") is not False:
         raise ValueError("Runtime manifest must identify this application and disabled L1")
     if not isinstance(runtime.get("prompt_include_document_name"), bool):
         raise ValueError("Runtime manifest needs a boolean prompt_include_document_name")
-    if runtime.get("model_params_setting", {}).get("temperature") != args.temperature:
+    if runtime.get("model_params_setting", {}).get("temperature") != temperature:
         raise ValueError("Published temperature differs from --temperature")
+    knowledge_ids = runtime.get("knowledge_ids")
+    if not isinstance(knowledge_ids, list) or not knowledge_ids or expected_knowledge_id not in knowledge_ids:
+        raise ValueError("Published knowledge binding is empty or omits the answer corpus knowledge base")
+
+
+def run(args):
+    questions = load_questions(args.dataset)
+    runtime = json.loads(args.runtime_config.read_text("utf-8"))
+    manifest = json.loads((EVAL / "assets/answer_manifest.json").read_text("utf-8"))
+    validate_runtime(runtime, args.application_id, args.temperature, manifest["knowledge_id"])
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,63}", args.tag):
         raise ValueError("Tag must contain letters, digits, underscores or hyphens")
     path = args.output_dir / (args.tag + ".json")
@@ -227,6 +235,8 @@ def blind(args):
     if settings[0] != settings[1]:
         raise ValueError("Runs differ in configuration beyond the document-name switch")
     for result in runs:
+        if not result["configuration"].get("knowledge_ids"):
+            raise ValueError("Run has an empty published knowledge binding and cannot support source comparison")
         if not result["complete"] or len(result["rounds"]) != 2:
             raise ValueError("Each run must contain two complete rounds")
         ids = [{q["id"] for q in r["queries"]} for r in result["rounds"]]

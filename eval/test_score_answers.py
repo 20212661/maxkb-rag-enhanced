@@ -107,6 +107,12 @@ class ScoreSummaryTests(unittest.TestCase):
         self.assertIsNone(summary["pairs"][0]["delta"])
         self.assertEqual(summary["paired_comparison"]["scored_pairs"], 0)
 
+    def test_entirely_missing_sources_are_flagged_as_an_experiment_issue(self):
+        mapping, stability = self.metadata()
+        reviews = [self.review(coverage="未检索到（0/1）"), self.review("B002", 0, "未检索到（0/1）")]
+        result = summarize(join_metadata(reviews, mapping, stability))
+        self.assertTrue(result["all_in_scope_expected_sources_absent"])
+
     def test_cli_writes_all_reports_using_only_synthetic_files(self):
         mapping, stability = self.metadata()
         with TemporaryDirectory() as directory:

@@ -1,0 +1,1365 @@
+{
+  "groups": {
+    "off": {
+      "tags": [
+        "prompt-off"
+      ],
+      "overall": {
+        "question_count": 20,
+        "scored_count": 18,
+        "pending_count": 2,
+        "mean_score": 0.3333333333333333,
+        "full_credit_count": 6,
+        "half_credit_count": 0,
+        "zero_credit_count": 12
+      },
+      "by_type": {
+        "attribution": {
+          "question_count": 11,
+          "scored_count": 11,
+          "pending_count": 0,
+          "mean_score": 0.0,
+          "full_credit_count": 0,
+          "half_credit_count": 0,
+          "zero_credit_count": 11
+        },
+        "cross_unit_trap": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        },
+        "disambiguation": {
+          "question_count": 3,
+          "scored_count": 1,
+          "pending_count": 2,
+          "mean_score": 0.0,
+          "full_credit_count": 0,
+          "half_credit_count": 0,
+          "zero_credit_count": 1
+        },
+        "out_of_scope": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        }
+      },
+      "by_source": {
+        "all_expected_sources_retrieved": {
+          "question_count": 0,
+          "scored_count": 0,
+          "pending_count": 0,
+          "mean_score": null,
+          "full_credit_count": 0,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        },
+        "retrieved_but_generation_error_count": 0,
+        "retrieved_but_generation_error_question_ids": [],
+        "expected_sources_missing": {
+          "question_count": 17,
+          "scored_count": 15,
+          "pending_count": 2,
+          "mean_score": 0.2,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 12
+        },
+        "missing_source_question_ids": [
+          "t02",
+          "t01",
+          "d03",
+          "a11",
+          "a01",
+          "a03",
+          "a06",
+          "a07",
+          "d02",
+          "a08",
+          "a05",
+          "d01",
+          "a02",
+          "a04",
+          "a09",
+          "a10",
+          "t03"
+        ],
+        "source_expectation_not_applicable": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        }
+      },
+      "exact_text_change_count": 17,
+      "stability_review_flag_count": 7
+    },
+    "on": {
+      "tags": [
+        "prompt-on"
+      ],
+      "overall": {
+        "question_count": 20,
+        "scored_count": 18,
+        "pending_count": 2,
+        "mean_score": 0.3333333333333333,
+        "full_credit_count": 6,
+        "half_credit_count": 0,
+        "zero_credit_count": 12
+      },
+      "by_type": {
+        "attribution": {
+          "question_count": 11,
+          "scored_count": 11,
+          "pending_count": 0,
+          "mean_score": 0.0,
+          "full_credit_count": 0,
+          "half_credit_count": 0,
+          "zero_credit_count": 11
+        },
+        "cross_unit_trap": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        },
+        "disambiguation": {
+          "question_count": 3,
+          "scored_count": 1,
+          "pending_count": 2,
+          "mean_score": 0.0,
+          "full_credit_count": 0,
+          "half_credit_count": 0,
+          "zero_credit_count": 1
+        },
+        "out_of_scope": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        }
+      },
+      "by_source": {
+        "all_expected_sources_retrieved": {
+          "question_count": 0,
+          "scored_count": 0,
+          "pending_count": 0,
+          "mean_score": null,
+          "full_credit_count": 0,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        },
+        "retrieved_but_generation_error_count": 0,
+        "retrieved_but_generation_error_question_ids": [],
+        "expected_sources_missing": {
+          "question_count": 17,
+          "scored_count": 15,
+          "pending_count": 2,
+          "mean_score": 0.2,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 12
+        },
+        "missing_source_question_ids": [
+          "a01",
+          "a08",
+          "t01",
+          "a07",
+          "a02",
+          "t02",
+          "d01",
+          "a04",
+          "d03",
+          "a09",
+          "a10",
+          "d02",
+          "a03",
+          "a11",
+          "t03",
+          "a05",
+          "a06"
+        ],
+        "source_expectation_not_applicable": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        }
+      },
+      "exact_text_change_count": 19,
+      "stability_review_flag_count": 5
+    }
+  },
+  "pairs": [
+    {
+      "question_id": "a01",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B010",
+        "question_id": "a01",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答授权工作区人员陪同。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8198757763975155,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B005",
+        "question_id": "a01",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答授权工作区人员陪同。归入来源缺失，不能据此归因生成错误。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.6289308176100629,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a02",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B029",
+        "question_id": "a02",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未给出联系人和报告流程。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.5182481751824818,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B014",
+        "question_id": "a02",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答信息化领导部门及有关产品供应商流程。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.7963800904977375,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a03",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B015",
+        "question_id": "a03",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未给出登记、中心责任人全程陪同及离场登记。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.7115384615384616,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B032",
+        "question_id": "a03",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未给出登记及全程陪同的具体要求。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": true,
+        "stability_review_required": false,
+        "text_similarity": 1.0,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a04",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B031",
+        "question_id": "a04",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答谁主管、谁负责。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": true,
+        "stability_review_required": false,
+        "text_similarity": 1.0,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B021",
+        "question_id": "a04",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答谁主管、谁负责。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.85,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a05",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B026",
+        "question_id": "a05",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答网络和通信设备配置文件。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": true,
+        "stability_review_required": false,
+        "text_similarity": 1.0,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B039",
+        "question_id": "a05",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答定期备份配置文件。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.978021978021978,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a06",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B016",
+        "question_id": "a06",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答隔离受攻击服务器并保护现场。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.7015706806282722,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B040",
+        "question_id": "a06",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答隔离设备和保护现场。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9305555555555556,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a07",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B017",
+        "question_id": "a07",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答信息化建设与管理中心。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8404255319148937,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B013",
+        "question_id": "a07",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答信息化建设与管理中心。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8743169398907104,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a08",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B024",
+        "question_id": "a08",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答预案启动组织，补充资料建议未回答问题。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.5454545454545454,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B011",
+        "question_id": "a08",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答网络安全与信息化领导小组。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8558951965065502,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a09",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B034",
+        "question_id": "a09",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答网络安全与信息化中心。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.88268156424581,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B023",
+        "question_id": "a09",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答网络安全与信息化中心。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9834254143646409,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a10",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B035",
+        "question_id": "a10",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未给出备份分开存放与保密措施。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8604651162790697,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B025",
+        "question_id": "a10",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未给出分开存放及按保密级别采取措施。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.7398843930635838,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a11",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B007",
+        "question_id": "a11",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答备案号。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9090909090909091,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B036",
+        "question_id": "a11",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "目标文档0/1，未回答备案号。归入来源缺失。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 1
+        },
+        "coverage_label": "未检索到（0/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9743589743589743,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "d01",
+      "type": "disambiguation",
+      "off": {
+        "blind_id": "B027",
+        "question_id": "d01",
+        "type": "disambiguation",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": 0.0
+        },
+        "note": "来源0/2。未覆盖单位条款，亦未主动追问所指单位，仅建议补充规范。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.928,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B020",
+        "question_id": "d01",
+        "type": "disambiguation",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": 0.0
+        },
+        "note": "来源0/2。未覆盖期望单位，也未主动询问所指单位，仅要求补充资料。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8175182481751825,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "d02",
+      "type": "disambiguation",
+      "off": {
+        "blind_id": "B019",
+        "question_id": "d02",
+        "type": "disambiguation",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": null,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "来源0/2。仅在拒答结尾建议明确单位，未展开单位差异。是否等同主动澄清需用户裁定。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8902439024390244,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B030",
+        "question_id": "d02",
+        "type": "disambiguation",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": null,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "来源0/2。仅在拒答结尾建议明确具体单位，是否满足主动追问澄清路径需用户裁定。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.88,
+        "stability_reasons": []
+      },
+      "delta": null
+    },
+    {
+      "question_id": "d03",
+      "type": "disambiguation",
+      "off": {
+        "blind_id": "B006",
+        "question_id": "d03",
+        "type": "disambiguation",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": null,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "来源0/3。已说明单位制度不同并建议明确适用单位，但以资料不足为主，是否满足主动澄清追问路径需用户裁定。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 3
+        },
+        "coverage_label": "未检索到（0/3）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.615916955017301,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B022",
+        "question_id": "d03",
+        "type": "disambiguation",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": null,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "来源0/3。提及不同单位制度差异并建议明确单位，但主要为资料不足拒答，是否满足澄清路径需用户裁定。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 3
+        },
+        "coverage_label": "未检索到（0/3）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.640926640926641,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": null
+    },
+    {
+      "question_id": "o01",
+      "type": "out_of_scope",
+      "off": {
+        "blind_id": "B009",
+        "question_id": "o01",
+        "type": "out_of_scope",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "说明缺少天气资料并拒绝给出准确气温。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.7014925373134329,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B033",
+        "question_id": "o01",
+        "type": "out_of_scope",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "说明缺少天气资料并拒绝给出准确气温。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9850746268656716,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "o02",
+      "type": "out_of_scope",
+      "off": {
+        "blind_id": "B028",
+        "question_id": "o02",
+        "type": "out_of_scope",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "按拒答规则，缺少当日名单与手机号且未编造，记1。额外声称该日期尚未到来与采集日期不符，需人工复核该事实错误。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": true,
+        "stability_review_required": false,
+        "text_similarity": 1.0,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B008",
+        "question_id": "o02",
+        "type": "out_of_scope",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "说明缺少当日值班名单和联系方式，拒绝猜测。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.4944649446494465,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "o03",
+      "type": "out_of_scope",
+      "off": {
+        "blind_id": "B003",
+        "question_id": "o03",
+        "type": "out_of_scope",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "正确说明缺少2026年10月事件统计，未给出无依据数字。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.4864864864864865,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B002",
+        "question_id": "o03",
+        "type": "out_of_scope",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "正确说明缺少2026年10月事件统计，未给出无依据数字。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.5581395348837209,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "t01",
+      "type": "cross_unit_trap",
+      "off": {
+        "blind_id": "B004",
+        "question_id": "t01",
+        "type": "cross_unit_trap",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "说明信阳缺少机房离场登记依据，未将其他单位规定归给信阳。期望来源0/2。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9859154929577465,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B012",
+        "question_id": "t01",
+        "type": "cross_unit_trap",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "说明信阳相关条款缺失并拒绝推测，未借用其他单位条款。期望来源0/2。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9340659340659341,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "t02",
+      "type": "cross_unit_trap",
+      "off": {
+        "blind_id": "B001",
+        "question_id": "t02",
+        "type": "cross_unit_trap",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "中卫具体报告时限缺少依据的拒答符合规则。期望来源0/2，当前记录无法验证跨单位陷阱能力。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8703703703703703,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B018",
+        "question_id": "t02",
+        "type": "cross_unit_trap",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "说明中卫所问时限缺少依据，未套用北方的1小时和1个工作日。期望来源0/2。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.7881773399014779,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "t03",
+      "type": "cross_unit_trap",
+      "off": {
+        "blind_id": "B038",
+        "question_id": "t03",
+        "type": "cross_unit_trap",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "说明北方具体流程依据缺失，未套用信阳特定部门或供应商流程。期望来源0/2。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9629629629629629,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B037",
+        "question_id": "t03",
+        "type": "cross_unit_trap",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "说明北方相关预案依据未检索到，未将信阳特定流程归给北方。期望来源0/2，陷阱区分能力无法验证。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 0,
+          "expected": 2
+        },
+        "coverage_label": "未检索到（0/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9738219895287958,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    }
+  ],
+  "all_in_scope_expected_sources_absent": true,
+  "paired_comparison": {
+    "scored_pairs": 18,
+    "pending_pairs": 2,
+    "mean_delta": 0.0,
+    "improved": 0,
+    "declined": 0,
+    "tied": 18
+  },
+  "inputs": {
+    "review_sha256": "21eb787194df660e4d268ddca3d7e08d22c06fbd2273871490a5f8c58041f141",
+    "mapping_sha256": "efd22d19c72953d91819c306de28305edb8c7e16556b57d10d2387e472d50025",
+    "stability_sha256": "9cac8b59624177a36bd47d38ac303692cad32216dba99468bd73b8febedee98a",
+    "script_sha256": "5e2db978dddd79d5d6c0414cfe5e683d48abcd5a1e2756b51c339e7f56a90334"
+  },
+  "review_type_counts": {
+    "cross_unit_trap": 6,
+    "out_of_scope": 6,
+    "attribution": 22,
+    "disambiguation": 6
+  },
+  "question_type_counts": {
+    "attribution": 11,
+    "disambiguation": 3,
+    "out_of_scope": 3,
+    "cross_unit_trap": 3
+  }
+}

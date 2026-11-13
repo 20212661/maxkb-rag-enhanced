@@ -1,0 +1,24 @@
+{
+  "invalid_runs": [
+    "prompt-off",
+    "prompt-on"
+  ],
+  "published_knowledge_ids_in_invalid_runs": [],
+  "formal_responses_with_evidence": 0,
+  "formal_response_count": 80,
+  "root_cause": "实验控制脚本的应用更新负载缺少knowledge_id_list，现有编辑API将关联更新为空，随后发布空绑定版本。",
+  "original_expected_knowledge_ids": [
+    "01a1ac04-2659-78f2-bfee-81a616daed83"
+  ],
+  "restored_knowledge_ids": [
+    "01a1ac04-2659-78f2-bfee-81a616daed83"
+  ],
+  "restored_model_params_setting": {
+    "max_tokens": 512,
+    "temperature": 0.2,
+    "reasoning_effort": "none"
+  },
+  "restored_publication_id": "01a1d418-0269-7a03-a7bb-bb072cf85aef",
+  "original_blind_review_commit": "f19381f72",
+  "corrected_experiment_directory": "eval/results/week5/answer/repaired"
+}

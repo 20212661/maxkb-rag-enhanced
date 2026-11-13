@@ -160,7 +160,9 @@ def summarize(rows):
         delta = on["score"] - off["score"] if off["score"] is not None and on["score"] is not None else None
         pairs.append({"question_id": question_id, "type": off["type"], "off": off, "on": on, "delta": delta})
     deltas = [p["delta"] for p in pairs if p["delta"] is not None]
-    return {"groups": groups, "pairs": pairs,
+    in_scope = [row for row in rows if row["coverage"]["expected"] > 0]
+    no_expected_sources = bool(in_scope) and all(row["coverage"]["found"] == 0 for row in in_scope)
+    return {"groups": groups, "pairs": pairs, "all_in_scope_expected_sources_absent": no_expected_sources,
             "paired_comparison": {"scored_pairs": len(deltas), "pending_pairs": len(pairs) - len(deltas),
                                   "mean_delta": statistics.mean(deltas) if deltas else None,
                                   "improved": sum(d > 0 for d in deltas), "declined": sum(d < 0 for d in deltas),
@@ -174,9 +176,12 @@ def display_score(value):
 def write_reports(summary, output_dir):
     output_dir.mkdir(parents=True, exist_ok=True)
     write_result(output_dir / "score-summary.json", summary)
-    lines = ["# 回答评分汇总", "", "得分来自已填写的盲评表，待复核项单列并从已决平均分分母排除。", "",
+    lines = ["# 回答评分汇总", "", "得分来自已填写的盲评表，待复核项单列并从已决平均分分母排除。", ""]
+    if summary["all_in_scope_expected_sources_absent"]:
+        lines.extend(["**全部库内题的期望来源均未被检索到，应核查发布版本和知识库绑定。当前分数无法验证来源注入效果。**", ""])
+    lines.extend([
              "| 题型 | 关闭组均分 | 已决/总题数 | 开启组均分 | 已决/总题数 |",
-             "| --- | --- | --- | --- | --- |"]
+             "| --- | --- | --- | --- | --- |"])
     for kind in [*sorted(TYPES), "overall"]:
         stats = [summary["groups"][g]["overall"] if kind == "overall" else
                  summary["groups"][g]["by_type"][kind] for g in ("off", "on")]
