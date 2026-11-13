@@ -15,6 +15,7 @@ import uuid_utils.compat as uuid
 from django.core.cache import cache
 from django.http import StreamingHttpResponse
 
+from application.services.prompt_sources import source_format_settings
 from common.cache.embedding_cache import text_hash
 from common.cache.model_profile import digest, enabled, public_params
 from common.cache.single_flight import CacheLease
@@ -80,7 +81,7 @@ class AnswerCacheRequest:
                 "table": enabled("TABLE_CHUNK_ENABLED"), "chunk_size": 256, "implementation": "week3-v1"},
             "embedding_epoch": int(CONFIG.get("EMBEDDING_CACHE_EPOCH", 1)),
             "answer_model": model_config, "answer_params": public_params(app.model_params_setting),
-            "prompt_hash": digest(app.model_setting),
+            "prompt_hash": digest({"model_setting": app.model_setting, "sources": source_format_settings()}),
             "scope": {"user": str(chat_info.chat_user_id), "type": chat_info.chat_user_type,
                       "knowledge_ids": self.knowledge_ids}}
         self.key = f"{app.workspace_id}:cache:v1:qa:l1:{chat_info.application_id}:{digest(namespace)}:"

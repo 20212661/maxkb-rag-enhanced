@@ -96,6 +96,18 @@ class AnswerCacheTests(TestCase):
         with patch.dict(CONFIG, {"QA_L1_CACHE_ENABLED": False}):
             self.assertIsNone(self.request())
 
+    def test_document_name_switch_isolates_cached_answers_between_new_chats(self):
+        with patch.dict(CONFIG, {"PROMPT_INCLUDE_DOCUMENT_NAME": False}):
+            old = self.request()
+            old.publish("without source", "", self.details)
+            self.assertEqual(self.request().lookup()["answer"], "without source")
+        with patch.dict(CONFIG, {"PROMPT_INCLUDE_DOCUMENT_NAME": True}):
+            fresh = self.request()
+            self.assertNotEqual(fresh.key, old.key)
+            self.assertIsNone(fresh.lookup())
+            fresh.publish("with source", "", self.details)
+            self.assertEqual(self.request().lookup()["answer"], "with source")
+
     def test_publish_ttl_lookup_and_reject_late_result(self):
         request = self.request()
         with patch("application.services.answer_cache.cache.add", wraps=cache.add) as publish:

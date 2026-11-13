@@ -14,6 +14,7 @@ from application.chat_pipeline.I_base_chat_pipeline import ParagraphPipelineMode
 from application.chat_pipeline.step.generate_human_message_step.i_generate_human_message_step import \
     IGenerateHumanMessageStep
 from application.models import ChatRecord
+from application.services.prompt_sources import format_paragraphs
 from common.utils.common import flat_map
 
 
@@ -57,18 +58,8 @@ class BaseGenerateHumanMessageStep(IGenerateHumanMessageStep):
                     content=no_references_setting.get('value').replace('{question}', problem))
             else:
                 return HumanMessage(content=prompt.replace('{data}', "").replace('{question}', problem))
-        temp_len = 0
-        data_list = []
-        for p in paragraph_list:
-            content = f"{p.title}:{p.content}"
-            temp_len += len(content)
-            if temp_len > max_paragraph_char_number:
-                row_data = content[0:max_paragraph_char_number - temp_len]
-                data_list.append(f"<data>{row_data}</data>")
-                break
-            else:
-                data_list.append(f"<data>{content}</data>")
-        data = "\n".join(data_list)
+        data = format_paragraphs(
+            [p.to_dict() for p in paragraph_list], max_paragraph_char_number, wrap_data=True)
         return HumanMessage(content=prompt.replace('{data}', data).replace('{question}', problem))
 
     def get_details(self, manage, **kwargs):
