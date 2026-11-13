@@ -1,0 +1,879 @@
+{
+  "schema_version": 1,
+  "scope": "published ChatSerializers entrypoint with real local retrieval",
+  "answer_quality_evaluated": false,
+  "external_llm_latency_evaluated": true,
+  "model": {
+    "id": "01a1d3a1-3b0b-7a02-a072-75ab29ebc262",
+    "name": "deepseek-flash",
+    "provider": "model_deepseek_provider"
+  },
+  "first_content_scope": "first nonempty visible response content",
+  "results": [
+    {
+      "stage": "off",
+      "requests": 12,
+      "model_calls": 12,
+      "cache_hit_rate": 0.0,
+      "p50_ms": 1242.578280500311,
+      "p95_ms": 3811.9826454991166,
+      "first_content_p50_ms": 1035.122910499922,
+      "first_content_p95_ms": 3631.8963776993737,
+      "provider_usage_count": 12,
+      "provider_total_tokens": 24751,
+      "framework_total_tokens": 24751,
+      "queries": [
+        {
+          "id": "q003",
+          "stream": true,
+          "response_ms": 6294.523799999297,
+          "first_content_ms": 6116.074593999656,
+          "answer": "根据“谁主管、谁负责”的原则，局内建立信息安全分级责任制，各层级落实信息系统安全责任。",
+          "provider_usage": {
+            "input_tokens": 1322,
+            "output_tokens": 24,
+            "total_tokens": 1346
+          },
+          "framework_input_tokens": 1322,
+          "framework_output_tokens": 24,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-b567-71d2-b5b6-273f04987024",
+          "evidence_ids": [
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-67d6-7ee0-92b5-8601281739a3",
+            "01a1b3c0-67d6-7ee0-92b5-85ce30cb92cb",
+            "01a1b3c0-67d6-7ee0-92b5-85b018768edf",
+            "01a1b3c0-67d6-7ee0-92b5-85a7d0956f65"
+          ]
+        },
+        {
+          "id": "q004",
+          "stream": true,
+          "response_ms": 1082.682209002087,
+          "first_content_ms": 940.3603220016521,
+          "answer": "根据知识库中的制度规定，确因工作需要进入非授权工作区时，**需由该授权工作区人员陪同**。",
+          "provider_usage": {
+            "input_tokens": 1044,
+            "output_tokens": 28,
+            "total_tokens": 1072
+          },
+          "framework_input_tokens": 1044,
+          "framework_output_tokens": 28,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-bc10-7900-923d-630e9236eec5",
+          "evidence_ids": [
+            "01a1b3c0-a4fe-7f82-b883-30263c3b12a1",
+            "01a1b3c0-a4fe-7f82-b883-2fc89522360b",
+            "01a1b3c0-a4fc-7d40-a963-494116b07569",
+            "01a1b3c0-a4fb-7d32-a23c-ed7f09fbf46c",
+            "01a1b3c0-67d6-7ee0-92b5-85d7c456848b"
+          ]
+        },
+        {
+          "id": "q006",
+          "stream": true,
+          "response_ms": 1734.7218690010777,
+          "first_content_ms": 1599.3869279991486,
+          "answer": "根据知识库内容，中卫市信息科对信息系统设备资产清单的管理方式如下：\n\n- **建立台帐清单**：信息科应对信息和信息系统设备设施等相关资产建立台帐清单，并定期对其进行盘点清查。（第五章第十一条）\n- **规范网络管理流程**：建立网络相关资产管理台帐，明确资产所有者、使用者与维护者，对所有信息资产进行标记，实现对信息资产购买、使用、变更、报废整个周期的安全管理。（网络管理员职责）\n- **加强设备环节管理**：各相关科室应加强信息设备安装、调试、维护、维修、报废等环节的管理工作，防止因信息设备丢失、损坏、失窃以及资产报废处置不当引起的信息泄露。（第五章第十二条）",
+          "provider_usage": {
+            "input_tokens": 1135,
+            "output_tokens": 151,
+            "total_tokens": 1286
+          },
+          "framework_input_tokens": 1135,
+          "framework_output_tokens": 151,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-bff4-7e02-8a6c-1867ed32d0ec",
+          "evidence_ids": [
+            "01a1b3c0-a4fb-7d32-a23c-ed98bc9f3b7e",
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-67d6-7ee0-92b5-8601281739a3",
+            "01a1b3c0-67d6-7ee0-92b5-85ecbf4e0993",
+            "01a1b3c0-67d6-7ee0-92b5-85b018768edf"
+          ]
+        },
+        {
+          "id": "q007",
+          "stream": true,
+          "response_ms": 1193.3268850007153,
+          "first_content_ms": 1131.5794350011856,
+          "answer": "没有在知识库中查找到相关信息，建议咨询相关技术支持或参考官方文档进行操作。",
+          "provider_usage": {
+            "input_tokens": 1338,
+            "output_tokens": 19,
+            "total_tokens": 1357
+          },
+          "framework_input_tokens": 1338,
+          "framework_output_tokens": 19,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-c706-75f3-8f7c-961515e5439b",
+          "evidence_ids": [
+            "01a1b3c0-c4d0-7131-9df1-44a0d2fef7b2",
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-a503-7220-9514-ecfd87bd64b2",
+            "01a1b3c0-a503-7220-9514-ece2c0ff4ea8",
+            "01a1b3c0-67d6-7ee0-92b5-85b018768edf"
+          ]
+        },
+        {
+          "id": "q008",
+          "stream": true,
+          "response_ms": 746.0485709998466,
+          "first_content_ms": 616.9069489988033,
+          "answer": "根据知识库中的信息，**信息化建设与管理中心**负责制订具体的网络信息安全应急预案。",
+          "provider_usage": {
+            "input_tokens": 2810,
+            "output_tokens": 19,
+            "total_tokens": 2829
+          },
+          "framework_input_tokens": 2810,
+          "framework_output_tokens": 19,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-cb7a-7431-abe3-7f7065395727",
+          "evidence_ids": [
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-7351-7de2-86bf-042e207853e1",
+            "01a1b3c0-8660-7ea0-9fc9-365aa78b7d10",
+            "01a1b3c0-8660-7ea0-9fc9-36486c6f4ea3"
+          ]
+        },
+        {
+          "id": "q009",
+          "stream": true,
+          "response_ms": 1211.0368130015559,
+          "first_content_ms": 994.0863699994225,
+          "answer": "根据知识库中的《网络信息安全突发事件应急预案》第八条：当网络管理人员发现网页内容被篡改、重要数据丢失或截取，或通过入侵检测系统发现有黑客正在进行攻击时，**应立即向信息安全负责人通报情况**。",
+          "provider_usage": {
+            "input_tokens": 3004,
+            "output_tokens": 50,
+            "total_tokens": 3054
+          },
+          "framework_input_tokens": 3004,
+          "framework_output_tokens": 50,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-ce60-7b71-a447-3c0cf25aa30a",
+          "evidence_ids": [
+            "01a1b3c0-3d68-7432-a305-9752c2e37ba7",
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-8661-7672-8921-7691f181b425",
+            "01a1b3c0-8661-7672-8921-768ee757adc8",
+            "01a1b3c0-8661-7672-8921-7677f2c93296"
+          ]
+        },
+        {
+          "id": "q012",
+          "stream": true,
+          "response_ms": 1593.8250919971324,
+          "first_content_ms": 830.8739039966895,
+          "answer": "根据现有信息，**没有在知识库中查找到“信阳农林学院”这一具体单位的相关信息**，建议咨询相关技术支持或参考官方文档进行操作。\n\n不过，若参照知识库中同类高校网络与信息安全应急处置预案的通用规定，当现行反病毒软件无法清除病毒时，处置方式如下：\n\n- 应立即向**本单位信息化领导部门**报告；\n- 并迅速联系**有关产品供应商**研究解决。\n\n建议您向所在单位的信息化建设与管理中心（或网络安全与信息化中心）确认具体联系对象。",
+          "provider_usage": {
+            "input_tokens": 2918,
+            "output_tokens": 114,
+            "total_tokens": 3032
+          },
+          "framework_input_tokens": 2918,
+          "framework_output_tokens": 114,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-d30b-79e0-bffa-fe24132ebeb6",
+          "evidence_ids": [
+            "01a1b3c0-c4d0-7131-9df1-44cf97cce0d5",
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-8661-7672-8921-7691f181b425",
+            "01a1b3c0-8661-7672-8921-768ee757adc8",
+            "01a1b3c0-8660-7ea0-9fc9-365aa78b7d10"
+          ]
+        },
+        {
+          "id": "q015",
+          "stream": true,
+          "response_ms": 1274.119747999066,
+          "first_content_ms": 1161.6149059991585,
+          "answer": "根据知识库中的信息，北方工业大学要求核心网络设备**有冗余**，以避免单点故障。",
+          "provider_usage": {
+            "input_tokens": 3016,
+            "output_tokens": 22,
+            "total_tokens": 3038
+          },
+          "framework_input_tokens": 3016,
+          "framework_output_tokens": 22,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-d96a-7850-b43b-7cb02e6c7ba7",
+          "evidence_ids": [
+            "01a1b3c0-a4fb-7d32-a23c-ed7f09fbf46c",
+            "01a1b3c0-8662-7c62-8f2c-495b1cd053fa",
+            "01a1b3c0-8661-7672-8921-7691f181b425",
+            "01a1b3c0-8661-7672-8921-7677f2c93296",
+            "01a1b3c0-8660-7ea0-9fc9-36486c6f4ea3"
+          ]
+        },
+        {
+          "id": "q019",
+          "stream": true,
+          "response_ms": 1654.9107329992694,
+          "first_content_ms": 1220.8859089987527,
+          "answer": "根据网络和信息系统损失程度划分说明，**特别严重的系统损失**所对应的恢复代价对事发组织是**不可承受**的。\n\n具体定义为：造成系统大面积瘫痪，使其丧失业务处理能力，或系统关键数据的保密性、完整性、可用性遭到严重破坏，恢复系统正常运行和消除安全事件负面影响所需付出的代价十分巨大，对于事发组织是不可承受的。",
+          "provider_usage": {
+            "input_tokens": 2621,
+            "output_tokens": 79,
+            "total_tokens": 2700
+          },
+          "framework_input_tokens": 2621,
+          "framework_output_tokens": 79,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-de85-7231-8810-6d35aa9d5422",
+          "evidence_ids": [
+            "01a1b3c0-3d68-7432-a305-9752c2e37ba7",
+            "01a1b3c0-449b-77a0-b00d-72d77949a9d8",
+            "01a1b3c0-47ee-7bb3-bde4-28b8ee1c3200",
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-8662-7c62-8f2c-495b1cd053fa"
+          ]
+        },
+        {
+          "id": "q039",
+          "stream": true,
+          "response_ms": 933.5032739982125,
+          "first_content_ms": 807.5596540002152,
+          "answer": "根据事件报告表，“是否备案”一栏填写后，若选择“是”，还需填写**备案号**。",
+          "provider_usage": {
+            "input_tokens": 2172,
+            "output_tokens": 25,
+            "total_tokens": 2197
+          },
+          "framework_input_tokens": 2172,
+          "framework_output_tokens": 25,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-e4dc-7bd3-aff9-d8d1e94ac531",
+          "evidence_ids": [
+            "01a1b3c0-3d68-7432-a305-9752c2e37ba7",
+            "01a1b3c0-a4ff-71c0-ac37-b15e6f1241cd",
+            "01a1b3c0-a4fe-7f82-b883-2fea2998842b",
+            "01a1b3c0-47ee-7bb3-bde4-28b8ee1c3200",
+            "01a1b3c0-8661-7672-8921-7691f181b425"
+          ]
+        },
+        {
+          "id": "q049",
+          "stream": true,
+          "response_ms": 1143.9270000009856,
+          "first_content_ms": 696.1835980000615,
+          "answer": "根据提供的信息，**没有在知识库中查找到相关信息，建议咨询相关技术支持或参考官方文档进行操作**。\n\n知识库中“介质磁盘领用申请单”的备注仅说明“本表由管理员负责填写”“本表由信息技术部磁盘管理员负责存查”，但未明确“信息技术部”下具体由哪个岗位负责存查。",
+          "provider_usage": {
+            "input_tokens": 1270,
+            "output_tokens": 75,
+            "total_tokens": 1345
+          },
+          "framework_input_tokens": 1270,
+          "framework_output_tokens": 75,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-e88b-7703-8edb-469d0598d836",
+          "evidence_ids": [
+            "01a1b3c0-a503-7220-9514-ece2c0ff4ea8",
+            "01a1b3c0-a4ff-71c0-ac37-b15e6f1241cd",
+            "01a1b3c0-a4fe-7f82-b883-2fea2998842b",
+            "01a1b3c0-a4fc-7d40-a963-494116b07569",
+            "01a1b3c0-a4fa-70c2-84b4-70d141a545f4"
+          ]
+        },
+        {
+          "id": "q059",
+          "stream": true,
+          "response_ms": 1780.812609998975,
+          "first_content_ms": 1076.1594510004215,
+          "answer": "根据安全建议，如果对邮件所说内容不知情，请勿点击链接或回复，**直接电话向发件人代表的人员确认**。\n\n![](<./oss/file/01a1b162-33af-7fc3-975f-4b82d00f09c8>)\n\n![](<./oss/file/01a1b162-33b4-7922-93a7-c94929b1df0d>)\n\n![](<./oss/file/01a1b162-33b9-7df2-92d2-aec9c096ec6e>)\n\n![](<./oss/file/01a1b162-33bf-7430-948f-6fa906d4c705>)\n\n![](<./oss/file/01a1b162-33c6-7fb0-b7c8-a02c4e6d21db>)",
+          "provider_usage": {
+            "input_tokens": 1303,
+            "output_tokens": 192,
+            "total_tokens": 1495
+          },
+          "framework_input_tokens": 1303,
+          "framework_output_tokens": 192,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-ed13-7af1-83b9-c6ef865c7145",
+          "evidence_ids": [
+            "01a1b3c0-c4d1-75a1-9ead-6f1066d65549",
+            "01a1b3c0-c4d0-7131-9df1-4504edd133d9",
+            "01a1b3c0-c4d0-7131-9df1-44cf97cce0d5",
+            "01a1b3c0-c4cd-7f62-ad9a-068705c28d95",
+            "01a1b3c0-8661-7672-8921-768ee757adc8"
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "on-first",
+      "requests": 12,
+      "model_calls": 12,
+      "cache_hit_rate": 0.0,
+      "p50_ms": 1143.3792255011213,
+      "p95_ms": 1503.7804297006003,
+      "first_content_p50_ms": 952.1584519989119,
+      "first_content_p95_ms": 1186.6717797522142,
+      "provider_usage_count": 12,
+      "provider_total_tokens": 24500,
+      "framework_total_tokens": 24500,
+      "queries": [
+        {
+          "id": "q003",
+          "stream": true,
+          "response_ms": 1046.1565830009931,
+          "first_content_ms": 947.4447219981812,
+          "answer": "根据“谁主管、谁负责”的原则，局内建立信息安全分级责任制，各层级落实信息系统安全责任。",
+          "provider_usage": {
+            "input_tokens": 1322,
+            "output_tokens": 24,
+            "total_tokens": 1346
+          },
+          "framework_input_tokens": 1322,
+          "framework_output_tokens": 24,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-f41a-7df0-bb35-f0d218a3a6fc",
+          "evidence_ids": [
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-67d6-7ee0-92b5-8601281739a3",
+            "01a1b3c0-67d6-7ee0-92b5-85ce30cb92cb",
+            "01a1b3c0-67d6-7ee0-92b5-85b018768edf",
+            "01a1b3c0-67d6-7ee0-92b5-85a7d0956f65"
+          ]
+        },
+        {
+          "id": "q004",
+          "stream": true,
+          "response_ms": 843.1507099994633,
+          "first_content_ms": 712.8583769990655,
+          "answer": "根据中卫市制度，进入机房非授权工作区时，需由**该授权工作区人员陪同**。",
+          "provider_usage": {
+            "input_tokens": 1044,
+            "output_tokens": 25,
+            "total_tokens": 1069
+          },
+          "framework_input_tokens": 1044,
+          "framework_output_tokens": 25,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-f80c-7fc2-a835-0ca300e51c12",
+          "evidence_ids": [
+            "01a1b3c0-a4fe-7f82-b883-30263c3b12a1",
+            "01a1b3c0-a4fe-7f82-b883-2fc89522360b",
+            "01a1b3c0-a4fc-7d40-a963-494116b07569",
+            "01a1b3c0-a4fb-7d32-a23c-ed7f09fbf46c",
+            "01a1b3c0-67d6-7ee0-92b5-85d7c456848b"
+          ]
+        },
+        {
+          "id": "q006",
+          "stream": true,
+          "response_ms": 1643.102814003214,
+          "first_content_ms": 1141.2147710034333,
+          "answer": "根据知识库中的信息，中卫市信息科对信息系统设备资产清单的管理方式如下：\n\n- **建立台帐清单**：信息科应对信息和信息系统设备设施等相关资产建立台帐清单。\n- **定期盘点清查**：信息科应定期对资产台帐清单进行盘点清查。\n\n此外，相关科室应加强信息设备安装、调试、维护、维修、报废等环节的管理工作，防止因信息设备丢失、损坏、失窃以及资产报废处置不当引起的信息泄露。",
+          "provider_usage": {
+            "input_tokens": 1135,
+            "output_tokens": 103,
+            "total_tokens": 1238
+          },
+          "framework_input_tokens": 1135,
+          "framework_output_tokens": 103,
+          "cache_hit": false,
+          "record_id": "01a1d3a2-fbb0-7ea1-b642-48d271e199d1",
+          "evidence_ids": [
+            "01a1b3c0-a4fb-7d32-a23c-ed98bc9f3b7e",
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-67d6-7ee0-92b5-8601281739a3",
+            "01a1b3c0-67d6-7ee0-92b5-85ecbf4e0993",
+            "01a1b3c0-67d6-7ee0-92b5-85b018768edf"
+          ]
+        },
+        {
+          "id": "q007",
+          "stream": true,
+          "response_ms": 902.5286289979704,
+          "first_content_ms": 839.9613219989988,
+          "answer": "没有在知识库中查找到相关信息，建议咨询相关技术支持或参考官方文档进行操作。",
+          "provider_usage": {
+            "input_tokens": 1338,
+            "output_tokens": 19,
+            "total_tokens": 1357
+          },
+          "framework_input_tokens": 1338,
+          "framework_output_tokens": 19,
+          "cache_hit": false,
+          "record_id": "01a1d3a3-01fa-7b73-8c6f-2d2fcbb32110",
+          "evidence_ids": [
+            "01a1b3c0-c4d0-7131-9df1-44a0d2fef7b2",
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-a503-7220-9514-ecfd87bd64b2",
+            "01a1b3c0-a503-7220-9514-ece2c0ff4ea8",
+            "01a1b3c0-67d6-7ee0-92b5-85b018768edf"
+          ]
+        },
+        {
+          "id": "q008",
+          "stream": true,
+          "response_ms": 1119.790374999866,
+          "first_content_ms": 999.1019789995335,
+          "answer": "根据知识库中的信息，**信息化建设与管理中心**负责制订具体的网络信息安全应急预案。",
+          "provider_usage": {
+            "input_tokens": 2810,
+            "output_tokens": 19,
+            "total_tokens": 2829
+          },
+          "framework_input_tokens": 2810,
+          "framework_output_tokens": 19,
+          "cache_hit": false,
+          "record_id": "01a1d3a3-058b-7800-bc8b-ec0eb47a82fa",
+          "evidence_ids": [
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-7351-7de2-86bf-042e207853e1",
+            "01a1b3c0-8660-7ea0-9fc9-365aa78b7d10",
+            "01a1b3c0-8660-7ea0-9fc9-36486c6f4ea3"
+          ]
+        },
+        {
+          "id": "q009",
+          "stream": true,
+          "response_ms": 952.8088309998566,
+          "first_content_ms": 541.9402070001524,
+          "answer": "根据知识库中的《网络信息安全突发事件应急预案》第八条：当网络管理人员发现网页内容被篡改、重要数据丢失或截取，或通过入侵检测系统发现有黑客正在进行攻击时，**应立即向信息安全负责人通报情况**。\n\n随后，信息安全相关负责人应在接到通知后立即赶到现场紧急处理，首先将被攻击的服务器等设备从网络中隔离出来，保护现场，并将有关情况向本单位信息化领导部门汇报。",
+          "provider_usage": {
+            "input_tokens": 3004,
+            "output_tokens": 89,
+            "total_tokens": 3093
+          },
+          "framework_input_tokens": 3004,
+          "framework_output_tokens": 89,
+          "cache_hit": false,
+          "record_id": "01a1d3a3-09f1-7553-b6ba-cc8a5f0791c2",
+          "evidence_ids": [
+            "01a1b3c0-3d68-7432-a305-9752c2e37ba7",
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-8661-7672-8921-7691f181b425",
+            "01a1b3c0-8661-7672-8921-768ee757adc8",
+            "01a1b3c0-8661-7672-8921-7677f2c93296"
+          ]
+        },
+        {
+          "id": "q012",
+          "stream": true,
+          "response_ms": 1166.9680760023766,
+          "first_content_ms": 956.8721819996426,
+          "answer": "根据知识库中的应急预案，当现行反病毒软件无法清除病毒时，应**立即向本单位信息化领导部门报告，并迅速联系有关产品供应商研究解决**。",
+          "provider_usage": {
+            "input_tokens": 2918,
+            "output_tokens": 36,
+            "total_tokens": 2954
+          },
+          "framework_input_tokens": 2918,
+          "framework_output_tokens": 36,
+          "cache_hit": false,
+          "record_id": "01a1d3a3-0db8-7ff0-afa2-e0e2c1ddfafc",
+          "evidence_ids": [
+            "01a1b3c0-c4d0-7131-9df1-44cf97cce0d5",
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-8661-7672-8921-7691f181b425",
+            "01a1b3c0-8661-7672-8921-768ee757adc8",
+            "01a1b3c0-8660-7ea0-9fc9-365aa78b7d10"
+          ]
+        },
+        {
+          "id": "q015",
+          "stream": true,
+          "response_ms": 1167.5838640003349,
+          "first_content_ms": 1040.5453560015303,
+          "answer": "根据知识库中的信息，北方工业大学要求**核心设备有冗余，避免单点故障**。",
+          "provider_usage": {
+            "input_tokens": 3016,
+            "output_tokens": 21,
+            "total_tokens": 3037
+          },
+          "framework_input_tokens": 3016,
+          "framework_output_tokens": 21,
+          "cache_hit": false,
+          "record_id": "01a1d3a3-1247-7120-9d65-452fc30871a2",
+          "evidence_ids": [
+            "01a1b3c0-a4fb-7d32-a23c-ed7f09fbf46c",
+            "01a1b3c0-8662-7c62-8f2c-495b1cd053fa",
+            "01a1b3c0-8661-7672-8921-7691f181b425",
+            "01a1b3c0-8661-7672-8921-7677f2c93296",
+            "01a1b3c0-8660-7ea0-9fc9-36486c6f4ea3"
+          ]
+        },
+        {
+          "id": "q019",
+          "stream": true,
+          "response_ms": 1389.7893879984622,
+          "first_content_ms": 1029.612147998705,
+          "answer": "根据网络和信息系统损失程度划分说明，**特别严重的系统损失**对事发组织是不可承受的。\n\n具体说明为：造成系统大面积瘫痪，使其丧失业务处理能力，或系统关键数据的保密性、完整性、可用性遭到严重破坏，恢复系统正常运行和消除安全事件负面影响所需付出的代价十分巨大，对于事发组织是不可承受的。",
+          "provider_usage": {
+            "input_tokens": 2621,
+            "output_tokens": 73,
+            "total_tokens": 2694
+          },
+          "framework_input_tokens": 2621,
+          "framework_output_tokens": 73,
+          "cache_hit": false,
+          "record_id": "01a1d3a3-16fc-72c1-b68a-b2a210240e95",
+          "evidence_ids": [
+            "01a1b3c0-3d68-7432-a305-9752c2e37ba7",
+            "01a1b3c0-449b-77a0-b00d-72d77949a9d8",
+            "01a1b3c0-47ee-7bb3-bde4-28b8ee1c3200",
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-8662-7c62-8f2c-495b1cd053fa"
+          ]
+        },
+        {
+          "id": "q039",
+          "stream": true,
+          "response_ms": 1304.9095139976998,
+          "first_content_ms": 1242.2303460007242,
+          "answer": "根据事件报告表，填写“是否备案”后，若选择“是”，还需填写**备案号**。",
+          "provider_usage": {
+            "input_tokens": 2172,
+            "output_tokens": 24,
+            "total_tokens": 2196
+          },
+          "framework_input_tokens": 2172,
+          "framework_output_tokens": 24,
+          "cache_hit": false,
+          "record_id": "01a1d3a3-1c6d-7f10-8867-3336d5f42a2e",
+          "evidence_ids": [
+            "01a1b3c0-3d68-7432-a305-9752c2e37ba7",
+            "01a1b3c0-a4ff-71c0-ac37-b15e6f1241cd",
+            "01a1b3c0-a4fe-7f82-b883-2fea2998842b",
+            "01a1b3c0-47ee-7bb3-bde4-28b8ee1c3200",
+            "01a1b3c0-8661-7672-8921-7691f181b425"
+          ]
+        },
+        {
+          "id": "q049",
+          "stream": true,
+          "response_ms": 1327.3886239985586,
+          "first_content_ms": 835.8843429996341,
+          "answer": "根据提供的信息，**没有在知识库中查找到相关信息，建议咨询相关技术支持或参考官方文档进行操作**。\n\n知识库中仅提到“本表由信息技术部磁盘管理员负责存查”，但该表述出现在介质磁盘领用申请单的表格注释中，并未明确说明该岗位是否属于“扫描的介质申请表”的存查责任人，也未涉及“扫描”相关流程。",
+          "provider_usage": {
+            "input_tokens": 1270,
+            "output_tokens": 83,
+            "total_tokens": 1353
+          },
+          "framework_input_tokens": 1270,
+          "framework_output_tokens": 83,
+          "cache_hit": false,
+          "record_id": "01a1d3a3-2185-7e42-a964-5900303c8ad4",
+          "evidence_ids": [
+            "01a1b3c0-a503-7220-9514-ece2c0ff4ea8",
+            "01a1b3c0-a4ff-71c0-ac37-b15e6f1241cd",
+            "01a1b3c0-a4fe-7f82-b883-2fea2998842b",
+            "01a1b3c0-a4fc-7d40-a963-494116b07569",
+            "01a1b3c0-a4fa-70c2-84b4-70d141a545f4"
+          ]
+        },
+        {
+          "id": "q059",
+          "stream": true,
+          "response_ms": 946.5723129978869,
+          "first_content_ms": 801.7438089991629,
+          "answer": "根据安全建议，如果对邮件所说内容不知情，请勿点击链接或回复，**直接电话向发件人代表的人员确认**。",
+          "provider_usage": {
+            "input_tokens": 1303,
+            "output_tokens": 31,
+            "total_tokens": 1334
+          },
+          "framework_input_tokens": 1303,
+          "framework_output_tokens": 31,
+          "cache_hit": false,
+          "record_id": "01a1d3a3-26c7-72c2-9e20-2eece494ae7d",
+          "evidence_ids": [
+            "01a1b3c0-c4d1-75a1-9ead-6f1066d65549",
+            "01a1b3c0-c4d0-7131-9df1-4504edd133d9",
+            "01a1b3c0-c4d0-7131-9df1-44cf97cce0d5",
+            "01a1b3c0-c4cd-7f62-ad9a-068705c28d95",
+            "01a1b3c0-8661-7672-8921-768ee757adc8"
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "on-second",
+      "requests": 12,
+      "model_calls": 0,
+      "cache_hit_rate": 1.0,
+      "p50_ms": 27.0243639988621,
+      "p95_ms": 28.316897300464916,
+      "first_content_p50_ms": 26.98581550066592,
+      "first_content_p95_ms": 28.27212134925503,
+      "provider_usage_count": 0,
+      "provider_total_tokens": 0,
+      "framework_total_tokens": 0,
+      "queries": [
+        {
+          "id": "q003",
+          "stream": true,
+          "response_ms": 26.51521900043008,
+          "first_content_ms": 26.47088500089012,
+          "answer": "根据“谁主管、谁负责”的原则，局内建立信息安全分级责任制，各层级落实信息系统安全责任。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2a03-79d0-b2a8-fe3bfe34c422",
+          "evidence_ids": [
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-67d6-7ee0-92b5-8601281739a3",
+            "01a1b3c0-67d6-7ee0-92b5-85ce30cb92cb",
+            "01a1b3c0-67d6-7ee0-92b5-85b018768edf",
+            "01a1b3c0-67d6-7ee0-92b5-85a7d0956f65"
+          ]
+        },
+        {
+          "id": "q004",
+          "stream": true,
+          "response_ms": 25.831605998973828,
+          "first_content_ms": 25.789526000153273,
+          "answer": "根据中卫市制度，进入机房非授权工作区时，需由**该授权工作区人员陪同**。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2a26-7240-811c-ce3bc164d4ee",
+          "evidence_ids": [
+            "01a1b3c0-a4fe-7f82-b883-30263c3b12a1",
+            "01a1b3c0-a4fe-7f82-b883-2fc89522360b",
+            "01a1b3c0-a4fc-7d40-a963-494116b07569",
+            "01a1b3c0-a4fb-7d32-a23c-ed7f09fbf46c",
+            "01a1b3c0-67d6-7ee0-92b5-85d7c456848b"
+          ]
+        },
+        {
+          "id": "q006",
+          "stream": true,
+          "response_ms": 27.991208000457846,
+          "first_content_ms": 27.94138299941551,
+          "answer": "根据知识库中的信息，中卫市信息科对信息系统设备资产清单的管理方式如下：\n\n- **建立台帐清单**：信息科应对信息和信息系统设备设施等相关资产建立台帐清单。\n- **定期盘点清查**：信息科应定期对资产台帐清单进行盘点清查。\n\n此外，相关科室应加强信息设备安装、调试、维护、维修、报废等环节的管理工作，防止因信息设备丢失、损坏、失窃以及资产报废处置不当引起的信息泄露。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2a49-72a0-ab71-559087f1a11d",
+          "evidence_ids": [
+            "01a1b3c0-a4fb-7d32-a23c-ed98bc9f3b7e",
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-67d6-7ee0-92b5-8601281739a3",
+            "01a1b3c0-67d6-7ee0-92b5-85ecbf4e0993",
+            "01a1b3c0-67d6-7ee0-92b5-85b018768edf"
+          ]
+        },
+        {
+          "id": "q007",
+          "stream": true,
+          "response_ms": 28.421735001757042,
+          "first_content_ms": 28.379614999721525,
+          "answer": "没有在知识库中查找到相关信息，建议咨询相关技术支持或参考官方文档进行操作。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2a6d-7f72-a60d-a9ad7e921fb1",
+          "evidence_ids": [
+            "01a1b3c0-c4d0-7131-9df1-44a0d2fef7b2",
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-a503-7220-9514-ecfd87bd64b2",
+            "01a1b3c0-a503-7220-9514-ece2c0ff4ea8",
+            "01a1b3c0-67d6-7ee0-92b5-85b018768edf"
+          ]
+        },
+        {
+          "id": "q008",
+          "stream": true,
+          "response_ms": 27.070352996815927,
+          "first_content_ms": 27.035617000365164,
+          "answer": "根据知识库中的信息，**信息化建设与管理中心**负责制订具体的网络信息安全应急预案。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2a93-7f63-9c58-7f0b770b7ace",
+          "evidence_ids": [
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-7351-7de2-86bf-042e207853e1",
+            "01a1b3c0-8660-7ea0-9fc9-365aa78b7d10",
+            "01a1b3c0-8660-7ea0-9fc9-36486c6f4ea3"
+          ]
+        },
+        {
+          "id": "q009",
+          "stream": true,
+          "response_ms": 26.712467999459477,
+          "first_content_ms": 26.678002999688033,
+          "answer": "根据知识库中的《网络信息安全突发事件应急预案》第八条：当网络管理人员发现网页内容被篡改、重要数据丢失或截取，或通过入侵检测系统发现有黑客正在进行攻击时，**应立即向信息安全负责人通报情况**。\n\n随后，信息安全相关负责人应在接到通知后立即赶到现场紧急处理，首先将被攻击的服务器等设备从网络中隔离出来，保护现场，并将有关情况向本单位信息化领导部门汇报。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2ab6-7cc2-8a8e-209d03613143",
+          "evidence_ids": [
+            "01a1b3c0-3d68-7432-a305-9752c2e37ba7",
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-8661-7672-8921-7691f181b425",
+            "01a1b3c0-8661-7672-8921-768ee757adc8",
+            "01a1b3c0-8661-7672-8921-7677f2c93296"
+          ]
+        },
+        {
+          "id": "q012",
+          "stream": true,
+          "response_ms": 26.774396999826422,
+          "first_content_ms": 26.73185599996941,
+          "answer": "根据知识库中的应急预案，当现行反病毒软件无法清除病毒时，应**立即向本单位信息化领导部门报告，并迅速联系有关产品供应商研究解决**。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2ada-7c31-811c-0e7fb2cdc6ec",
+          "evidence_ids": [
+            "01a1b3c0-c4d0-7131-9df1-44cf97cce0d5",
+            "01a1b3c0-9f48-7b13-bc7e-ebb0f2620ce4",
+            "01a1b3c0-8661-7672-8921-7691f181b425",
+            "01a1b3c0-8661-7672-8921-768ee757adc8",
+            "01a1b3c0-8660-7ea0-9fc9-365aa78b7d10"
+          ]
+        },
+        {
+          "id": "q015",
+          "stream": true,
+          "response_ms": 28.193090001877863,
+          "first_content_ms": 28.15363500121748,
+          "answer": "根据知识库中的信息，北方工业大学要求**核心设备有冗余，避免单点故障**。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2afe-7322-991c-7081b76b9c0a",
+          "evidence_ids": [
+            "01a1b3c0-a4fb-7d32-a23c-ed7f09fbf46c",
+            "01a1b3c0-8662-7c62-8f2c-495b1cd053fa",
+            "01a1b3c0-8661-7672-8921-7691f181b425",
+            "01a1b3c0-8661-7672-8921-7677f2c93296",
+            "01a1b3c0-8660-7ea0-9fc9-36486c6f4ea3"
+          ]
+        },
+        {
+          "id": "q019",
+          "stream": true,
+          "response_ms": 27.278333000140265,
+          "first_content_ms": 27.239909999480005,
+          "answer": "根据网络和信息系统损失程度划分说明，**特别严重的系统损失**对事发组织是不可承受的。\n\n具体说明为：造成系统大面积瘫痪，使其丧失业务处理能力，或系统关键数据的保密性、完整性、可用性遭到严重破坏，恢复系统正常运行和消除安全事件负面影响所需付出的代价十分巨大，对于事发组织是不可承受的。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2b22-7fd3-9e8e-64458e7d7564",
+          "evidence_ids": [
+            "01a1b3c0-3d68-7432-a305-9752c2e37ba7",
+            "01a1b3c0-449b-77a0-b00d-72d77949a9d8",
+            "01a1b3c0-47ee-7bb3-bde4-28b8ee1c3200",
+            "01a1b3c0-67d6-7ee0-92b5-861cae563417",
+            "01a1b3c0-8662-7c62-8f2c-495b1cd053fa"
+          ]
+        },
+        {
+          "id": "q039",
+          "stream": true,
+          "response_ms": 26.704332998633618,
+          "first_content_ms": 26.6635160005535,
+          "answer": "根据事件报告表，填写“是否备案”后，若选择“是”，还需填写**备案号**。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2b46-76d2-a47a-d6f065595333",
+          "evidence_ids": [
+            "01a1b3c0-3d68-7432-a305-9752c2e37ba7",
+            "01a1b3c0-a4ff-71c0-ac37-b15e6f1241cd",
+            "01a1b3c0-a4fe-7f82-b883-2fea2998842b",
+            "01a1b3c0-47ee-7bb3-bde4-28b8ee1c3200",
+            "01a1b3c0-8661-7672-8921-7691f181b425"
+          ]
+        },
+        {
+          "id": "q049",
+          "stream": true,
+          "response_ms": 26.978375000908272,
+          "first_content_ms": 26.93601400096668,
+          "answer": "根据提供的信息，**没有在知识库中查找到相关信息，建议咨询相关技术支持或参考官方文档进行操作**。\n\n知识库中仅提到“本表由信息技术部磁盘管理员负责存查”，但该表述出现在介质磁盘领用申请单的表格注释中，并未明确说明该岗位是否属于“扫描的介质申请表”的存查责任人，也未涉及“扫描”相关流程。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2b6a-7cb3-9833-0cb57ad890a4",
+          "evidence_ids": [
+            "01a1b3c0-a503-7220-9514-ece2c0ff4ea8",
+            "01a1b3c0-a4ff-71c0-ac37-b15e6f1241cd",
+            "01a1b3c0-a4fe-7f82-b883-2fea2998842b",
+            "01a1b3c0-a4fc-7d40-a963-494116b07569",
+            "01a1b3c0-a4fa-70c2-84b4-70d141a545f4"
+          ]
+        },
+        {
+          "id": "q059",
+          "stream": true,
+          "response_ms": 28.23112099940772,
+          "first_content_ms": 28.184171998873353,
+          "answer": "根据安全建议，如果对邮件所说内容不知情，请勿点击链接或回复，**直接电话向发件人代表的人员确认**。",
+          "provider_usage": null,
+          "framework_input_tokens": 0,
+          "framework_output_tokens": 0,
+          "cache_hit": true,
+          "record_id": "01a1d3a3-2b8f-7851-ae1b-26d1731e0652",
+          "evidence_ids": [
+            "01a1b3c0-c4d1-75a1-9ead-6f1066d65549",
+            "01a1b3c0-c4d0-7131-9df1-4504edd133d9",
+            "01a1b3c0-c4d0-7131-9df1-44cf97cce0d5",
+            "01a1b3c0-c4cd-7f62-ad9a-068705c28d95",
+            "01a1b3c0-8661-7672-8921-768ee757adc8"
+          ]
+        }
+      ]
+    }
+  ],
+  "execution_commit": "00a8d4bfeedf9bb4288ed96e9b35689d89b88f9e",
+  "evaluator_sha256": "0dbe7fe0378a8de4bec9d9ce51984343a4d62027ad3c85ca36453fafd8464ac6",
+  "dataset_sha256": "b862fb7342227a55d9607077ad61c2c79a6ee0ff58045dc634797788ef0be419",
+  "configuration": {
+    "knowledge_id": "01a1b3c0-3d1e-7a61-b790-cc9b7e03a85b",
+    "question_ids": [
+      "q003",
+      "q004",
+      "q006",
+      "q007",
+      "q008",
+      "q009",
+      "q012",
+      "q015",
+      "q019",
+      "q039",
+      "q049",
+      "q059"
+    ],
+    "search_mode": "embedding",
+    "top_k": 5,
+    "similarity": 0.55,
+    "max_paragraph_char_number": 5000,
+    "answer_parameters": {
+      "temperature": 0.2,
+      "max_tokens": 256,
+      "reasoning_effort": "none"
+    },
+    "embedding_cache_enabled": false,
+    "query_embedding_cache_enabled": false,
+    "namespace_user": "l1-offline-fixture",
+    "transport": "in-process ChatSerializers plus real DeepSeek HTTPS",
+    "metadata_added_post_run": true
+  },
+  "checks": {
+    "provider_usage_complete": true,
+    "output_limit_reached": false,
+    "cached_answers_and_citations_equal_prefill": true,
+    "unique_message_ids": 36
+  }
+}

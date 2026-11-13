@@ -44,7 +44,7 @@ python eval/verify_l1.py --model-id YOUR_LLM_MODEL_ID \
 
 供应商 token 用量通过 LangChain 回调读取，另存框架 token 统计。若 API 未返回用量，供应商总 token 记为空。重复请求命中时业务模型调用和 token 消耗为 0。结果保留回答和证据 ID 供复核，临时应用和会话在结束后清理，用户原有模型保留。
 
-可通过 `--questions` 指定 10–20 个开发集问题 ID，通过 `--max-output-tokens` 设置实验应用中的模型输出参数。只有模型参数表支持的 `max_tokens` 项会覆盖。当前本机尚无已保存的 LLM，真实 API 数据待配置后测量。
+可通过 `--questions` 指定 10–20 个开发集问题 ID，通过 `--max-output-tokens` 设置实验应用中的模型输出参数。只有模型参数表支持的 `max_tokens` 项会覆盖。2026-11-13 已完成 DeepSeek Flash 的 12 题真实对照，数据见 [API 实验报告](../eval/results/week5/README.md)。
 
 ## 已知限制与 v2
 

@@ -9,11 +9,11 @@
 | 复杂文档解析 | MinerU 独立服务、可配置路由、占位预览、Celery 异步构建、哈希解析缓存 | 扫描件类 Recall@5 从 0/10 提升至 9/10，上传占位响应约 0.44 s |
 | 子块结构化 | 标题前缀、HTML/Markdown 表格按行分组并重复表头、关键词索引对齐修复 | 开发集 Recall@5 从 81.67% 提升至 89.17%，20 题留出集从 45.0% 提升至 67.5% |
 | 向量缓存 | 模型实例指纹与实际输入哈希、PG 文档向量缓存、Redis 查询向量缓存 | 热重建业务模型调用 102 → 0，总耗时 57.53 s → 9.83 s |
-| 问答缓存 | L1 精确匹配、向量层版本失效、single-flight、引用与权限校验 | 完成流式与非流式链路验收，真实 LLM 对照待补 |
+| 问答缓存 | L1 精确匹配、向量层版本失效、single-flight、引用与权限校验 | 12 题 DeepSeek Flash 单轮对照，响应 P50 为 1.243 s → 27.0 ms，模型调用 12 → 0 |
 
 向量缓存使用本地 CPU 模型。向量化阶段耗时为 50.13 s → 0.45 s，重复查询第二遍的模型调用为 0，平均检索耗时为 158.68 ms → 32.68 ms。缓存性能数据为单次本地实测，60 题检索结果逐题一致。
 
-评测口径、样本数量及限制见 [解析报告](docs/week2-report.md)、[结构化子块消融](eval/results/week3/README.md)、[冻结留出集](eval/results/week3/holdout/README.md) 和 [缓存报告](eval/results/week4/README.md)。L2 使用待人工审核标签进行离线风险分析，数据状态见 [L2 说明](eval/L2_README.md)。
+评测口径、样本数量及限制见 [解析报告](docs/week2-report.md)、[结构化子块消融](eval/results/week3/README.md)、[冻结留出集](eval/results/week3/holdout/README.md)、[缓存报告](eval/results/week4/README.md) 和 [真实 LLM 对照](eval/results/week5/README.md)。L2 使用待人工审核标签进行离线风险分析，数据状态见 [L2 说明](eval/L2_README.md)。
 
 ## 架构
 
@@ -61,7 +61,7 @@ python eval/l2_threshold.py --vectors eval/results/week4/l2/vectors.json --plot
 - PPT v1 提取 Flash 文字，内嵌扫描图的识别留待后续扩展。
 - ZIP 成员沿用原生解析，PDF 单页文字层探测采用软时间预算。
 - L1 的失效事件集中在向量存储层，绕过该层的修改及重建中间状态见 [缓存边界](docs/answer-cache.md)。
-- L2 标签保持待人工审核状态，真实模型 L1 对照和 rerank 实验按 [第 5 周计划](docs/week5-plan.md) 推进。
+- L2 标签保持待人工审核状态，rerank 实验按 [第 5 周计划](docs/week5-plan.md) 推进。
 
 ---
 
