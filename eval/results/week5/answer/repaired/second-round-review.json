@@ -1,0 +1,41 @@
+{
+  "method": "post_unblinding_qualitative_review_of_five_first_round_improvements",
+  "official_second_round_scores": null,
+  "checks": [
+    {
+      "question_id": "a01",
+      "off_second_round_observation": "仍否认中卫条款归属并误视作浙江制度",
+      "on_second_round_observation": "明确中卫非授权工作区由该授权区人员陪同",
+      "off_second_round_record_id": "01a1d41f-f8d7-7d11-89e5-4be8d51331b0",
+      "on_second_round_record_id": "01a1d422-cc95-7f32-a93f-5d99fe4e0359"
+    },
+    {
+      "question_id": "a02",
+      "off_second_round_observation": "给出流程但保留信阳归属确认",
+      "on_second_round_observation": "明确信阳第十三条及供应商流程",
+      "off_second_round_record_id": "01a1d420-0181-7d81-8789-90e1f42d2d58",
+      "on_second_round_record_id": "01a1d422-d393-7383-bfa5-84ca5708b6a7"
+    },
+    {
+      "question_id": "a06",
+      "off_second_round_observation": "引用隔离和保护现场但不确认信阳归属",
+      "on_second_round_observation": "明确信阳第九条及第一步",
+      "off_second_round_record_id": "01a1d420-1a19-7ab1-89ee-3a2fda2c6a1d",
+      "on_second_round_record_id": "01a1d422-ed24-78f2-aace-cafca0c233ef"
+    },
+    {
+      "question_id": "a07",
+      "off_second_round_observation": "给出制订机构但不确认学校归属",
+      "on_second_round_observation": "明确信阳第二条及制订机构",
+      "off_second_round_record_id": "01a1d420-2014-7f51-93d6-64ca0e3069a9",
+      "on_second_round_record_id": "01a1d422-f291-7703-88af-4ea32ca466d3"
+    },
+    {
+      "question_id": "t03",
+      "off_second_round_observation": "明确将信阳特定流程当作北方规定",
+      "on_second_round_observation": "首段将信阳流程作为北方要求，随后说明属于信阳且北方没有对应规定，存在自相矛盾",
+      "off_second_round_record_id": "01a1d420-70e1-7962-8d8b-de0d070ed99a",
+      "on_second_round_record_id": "01a1d423-479c-7903-8289-9d274d7f26a0"
+    }
+  ]
+}

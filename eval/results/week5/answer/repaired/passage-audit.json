@@ -1,0 +1,133 @@
+{
+  "method": "exact document plus the existing run_eval.normalize sentence containment",
+  "checks": [
+    {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a05",
+      "expected_document": "中卫市公开信息安全管理制度.pdf",
+      "expected_clause": "定期备份重要网络和通信设备配置文件",
+      "matching_paragraph_ids": [],
+      "paragraph_titles": [
+        "第二章职责",
+        "（三）制定备份与恢复策略",
+        "（四）系统备份",
+        "（五）网络设备管理",
+        "（四）主要安全策略"
+      ],
+      "clause_retrieved": false
+    },
+    {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a10",
+      "expected_document": "浙江财经大学东方学院_网络安全管理制度汇编.pdf",
+      "expected_clause": "备份信息须与原始信息分开存放",
+      "matching_paragraph_ids": [],
+      "paragraph_titles": [
+        "（七）信息恢复",
+        "（四）系统备份",
+        "（一）系统维护管理",
+        "四、人员网络安全管理制度",
+        "（三）网络安全方针和要求"
+      ],
+      "clause_retrieved": false
+    },
+    {
+      "tag": "prompt-off",
+      "round": 2,
+      "question_id": "a05",
+      "expected_document": "中卫市公开信息安全管理制度.pdf",
+      "expected_clause": "定期备份重要网络和通信设备配置文件",
+      "matching_paragraph_ids": [],
+      "paragraph_titles": [
+        "第二章职责",
+        "（三）制定备份与恢复策略",
+        "（四）系统备份",
+        "（五）网络设备管理",
+        "（四）主要安全策略"
+      ],
+      "clause_retrieved": false
+    },
+    {
+      "tag": "prompt-off",
+      "round": 2,
+      "question_id": "a10",
+      "expected_document": "浙江财经大学东方学院_网络安全管理制度汇编.pdf",
+      "expected_clause": "备份信息须与原始信息分开存放",
+      "matching_paragraph_ids": [],
+      "paragraph_titles": [
+        "（七）信息恢复",
+        "（四）系统备份",
+        "（一）系统维护管理",
+        "四、人员网络安全管理制度",
+        "（三）网络安全方针和要求"
+      ],
+      "clause_retrieved": false
+    },
+    {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a05",
+      "expected_document": "中卫市公开信息安全管理制度.pdf",
+      "expected_clause": "定期备份重要网络和通信设备配置文件",
+      "matching_paragraph_ids": [],
+      "paragraph_titles": [
+        "第二章职责",
+        "（三）制定备份与恢复策略",
+        "（四）系统备份",
+        "（五）网络设备管理",
+        "（四）主要安全策略"
+      ],
+      "clause_retrieved": false
+    },
+    {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a10",
+      "expected_document": "浙江财经大学东方学院_网络安全管理制度汇编.pdf",
+      "expected_clause": "备份信息须与原始信息分开存放",
+      "matching_paragraph_ids": [],
+      "paragraph_titles": [
+        "（七）信息恢复",
+        "（四）系统备份",
+        "（一）系统维护管理",
+        "四、人员网络安全管理制度",
+        "（三）网络安全方针和要求"
+      ],
+      "clause_retrieved": false
+    },
+    {
+      "tag": "prompt-on",
+      "round": 2,
+      "question_id": "a05",
+      "expected_document": "中卫市公开信息安全管理制度.pdf",
+      "expected_clause": "定期备份重要网络和通信设备配置文件",
+      "matching_paragraph_ids": [],
+      "paragraph_titles": [
+        "第二章职责",
+        "（三）制定备份与恢复策略",
+        "（四）系统备份",
+        "（五）网络设备管理",
+        "（四）主要安全策略"
+      ],
+      "clause_retrieved": false
+    },
+    {
+      "tag": "prompt-on",
+      "round": 2,
+      "question_id": "a10",
+      "expected_document": "浙江财经大学东方学院_网络安全管理制度汇编.pdf",
+      "expected_clause": "备份信息须与原始信息分开存放",
+      "matching_paragraph_ids": [],
+      "paragraph_titles": [
+        "（七）信息恢复",
+        "（四）系统备份",
+        "（一）系统维护管理",
+        "四、人员网络安全管理制度",
+        "（三）网络安全方针和要求"
+      ],
+      "clause_retrieved": false
+    }
+  ]
+}

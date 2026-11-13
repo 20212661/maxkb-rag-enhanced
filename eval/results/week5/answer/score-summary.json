@@ -1340,15 +1340,17 @@
     "scored_pairs": 18,
     "pending_pairs": 2,
     "mean_delta": 0.0,
+    "off_mean_score": 0.3333333333333333,
+    "on_mean_score": 0.3333333333333333,
     "improved": 0,
     "declined": 0,
     "tied": 18
   },
   "inputs": {
-    "review_sha256": "21eb787194df660e4d268ddca3d7e08d22c06fbd2273871490a5f8c58041f141",
+    "review_sha256": "52c629baa7b864830a5118e1332605d702ee3554dde7dc0f33dfb6a8cc4fcd71",
     "mapping_sha256": "efd22d19c72953d91819c306de28305edb8c7e16556b57d10d2387e472d50025",
     "stability_sha256": "9cac8b59624177a36bd47d38ac303692cad32216dba99468bd73b8febedee98a",
-    "script_sha256": "5e2db978dddd79d5d6c0414cfe5e683d48abcd5a1e2756b51c339e7f56a90334"
+    "script_sha256": "a1f972605c2d6fc58a5ff1ada845d1c5a160da7c16eb7be59acc42e41f79e8e6"
   },
   "review_type_counts": {
     "cross_unit_trap": 6,

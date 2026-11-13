@@ -1,0 +1,1390 @@
+{
+  "groups": {
+    "off": {
+      "tags": [
+        "prompt-off"
+      ],
+      "overall": {
+        "question_count": 20,
+        "scored_count": 18,
+        "pending_count": 2,
+        "mean_score": 0.5833333333333334,
+        "full_credit_count": 10,
+        "half_credit_count": 1,
+        "zero_credit_count": 7
+      },
+      "by_type": {
+        "attribution": {
+          "question_count": 11,
+          "scored_count": 11,
+          "pending_count": 0,
+          "mean_score": 0.45454545454545453,
+          "full_credit_count": 5,
+          "half_credit_count": 0,
+          "zero_credit_count": 6
+        },
+        "cross_unit_trap": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 0.6666666666666666,
+          "full_credit_count": 2,
+          "half_credit_count": 0,
+          "zero_credit_count": 1
+        },
+        "disambiguation": {
+          "question_count": 3,
+          "scored_count": 1,
+          "pending_count": 2,
+          "mean_score": 0.5,
+          "full_credit_count": 0,
+          "half_credit_count": 1,
+          "zero_credit_count": 0
+        },
+        "out_of_scope": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        }
+      },
+      "by_source": {
+        "all_expected_sources_retrieved": {
+          "question_count": 13,
+          "scored_count": 12,
+          "pending_count": 1,
+          "mean_score": 0.4166666666666667,
+          "full_credit_count": 5,
+          "half_credit_count": 0,
+          "zero_credit_count": 7
+        },
+        "retrieved_but_generation_error_count": 7,
+        "retrieved_but_generation_error_question_ids": [
+          "a10",
+          "a01",
+          "a07",
+          "t03",
+          "a02",
+          "a05",
+          "a06"
+        ],
+        "expected_sources_missing": {
+          "question_count": 4,
+          "scored_count": 3,
+          "pending_count": 1,
+          "mean_score": 0.8333333333333334,
+          "full_credit_count": 2,
+          "half_credit_count": 1,
+          "zero_credit_count": 0
+        },
+        "missing_source_question_ids": [
+          "t01",
+          "d03",
+          "d02",
+          "t02"
+        ],
+        "source_expectation_not_applicable": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        }
+      },
+      "exact_text_change_count": 19,
+      "stability_review_flag_count": 12
+    },
+    "on": {
+      "tags": [
+        "prompt-on"
+      ],
+      "overall": {
+        "question_count": 20,
+        "scored_count": 20,
+        "pending_count": 0,
+        "mean_score": 0.85,
+        "full_credit_count": 16,
+        "half_credit_count": 2,
+        "zero_credit_count": 2
+      },
+      "by_type": {
+        "attribution": {
+          "question_count": 11,
+          "scored_count": 11,
+          "pending_count": 0,
+          "mean_score": 0.8181818181818182,
+          "full_credit_count": 9,
+          "half_credit_count": 0,
+          "zero_credit_count": 2
+        },
+        "cross_unit_trap": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        },
+        "disambiguation": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 0.6666666666666666,
+          "full_credit_count": 1,
+          "half_credit_count": 2,
+          "zero_credit_count": 0
+        },
+        "out_of_scope": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        }
+      },
+      "by_source": {
+        "all_expected_sources_retrieved": {
+          "question_count": 13,
+          "scored_count": 13,
+          "pending_count": 0,
+          "mean_score": 0.8461538461538461,
+          "full_credit_count": 11,
+          "half_credit_count": 0,
+          "zero_credit_count": 2
+        },
+        "retrieved_but_generation_error_count": 2,
+        "retrieved_but_generation_error_question_ids": [
+          "a05",
+          "a10"
+        ],
+        "expected_sources_missing": {
+          "question_count": 4,
+          "scored_count": 4,
+          "pending_count": 0,
+          "mean_score": 0.75,
+          "full_credit_count": 2,
+          "half_credit_count": 2,
+          "zero_credit_count": 0
+        },
+        "missing_source_question_ids": [
+          "t01",
+          "d02",
+          "t02",
+          "d03"
+        ],
+        "source_expectation_not_applicable": {
+          "question_count": 3,
+          "scored_count": 3,
+          "pending_count": 0,
+          "mean_score": 1.0,
+          "full_credit_count": 3,
+          "half_credit_count": 0,
+          "zero_credit_count": 0
+        }
+      },
+      "exact_text_change_count": 18,
+      "stability_review_flag_count": 14
+    }
+  },
+  "pairs": [
+    {
+      "question_id": "a01",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B004",
+        "question_id": "a01",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 0.0
+        },
+        "note": "已给出授权工作区人员陪同的事实，却错误否认中卫归属并将相关资料视作浙江。目标文档已回收，归属错误。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9544419134396356,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B014",
+        "question_id": "a01",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "明确中卫第十条的授权区人员陪同和登记条件，并区分浙江外来人员规定。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.6926070038910506,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": 1.0
+    },
+    {
+      "question_id": "a02",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B017",
+        "question_id": "a02",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 0.0
+        },
+        "note": "报告和联系供应商的流程正确，但否认能确认信阳归属。目标文档已回收，归属错误。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.4855305466237942,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B031",
+        "question_id": "a02",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "明确信阳第十三条，报告信息化领导部门并联系有关产品供应商。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": true,
+        "stability_review_required": false,
+        "text_similarity": 1.0,
+        "stability_reasons": []
+      },
+      "delta": 1.0
+    },
+    {
+      "question_id": "a03",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B030",
+        "question_id": "a03",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "正确回答浙江外来人员登记、全程陪同和离场登记。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9547738693467337,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B024",
+        "question_id": "a03",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "登记、中心责任人全程陪同及离场登记完整，并区分汇集机房管理条件。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.9,
+        "stability_reasons": [
+          "numbers_changed"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a04",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B015",
+        "question_id": "a04",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "正确回答中卫谁主管、谁负责及分层责任。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": true,
+        "stability_review_required": false,
+        "text_similarity": 1.0,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B019",
+        "question_id": "a04",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "明示中卫文件及第七条，责任原则准确。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": true,
+        "stability_review_required": false,
+        "text_similarity": 1.0,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a05",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B022",
+        "question_id": "a05",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "正确区分浙江规定，但未回答中卫设备配置文件。来源文档1/1，目标第十三条是否回收需逐段核查。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.6055045871559633,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "on": {
+        "blind_id": "B020",
+        "question_id": "a05",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "能区分中卫与浙江来源，但未给中卫设备配置文件备份要求。目标文档在引用中，需核查第十三条是否实际回收，避免文档名代理误判。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.7726027397260274,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a06",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B026",
+        "question_id": "a06",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 0.0
+        },
+        "note": "隔离受攻击设备并保护现场的内容正确，却拒绝确认其属于信阳。目标文档已回收。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8768898488120951,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B028",
+        "question_id": "a06",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "明确信阳第九条，第一步隔离被攻击设备并保护现场准确。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.6938775510204082,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": 1.0
+    },
+    {
+      "question_id": "a07",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B006",
+        "question_id": "a07",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 0.0
+        },
+        "note": "制订机构内容正确，但对信阳单位归属保留确认意见并否认其资料存在。目标文档已回收。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.42592592592592593,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B008",
+        "question_id": "a07",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "明确信阳预案和信息化建设与管理中心，符合第二条。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.6575342465753424,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": 1.0
+    },
+    {
+      "question_id": "a08",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B036",
+        "question_id": "a08",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "北方预案启动组织正确，并区分公共互联网预案启动主体。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.7005347593582888,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B039",
+        "question_id": "a08",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "明确北方第六条及启动组织，内容正确。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.4713804713804714,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a09",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B002",
+        "question_id": "a09",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "明确北方工业大学、网络安全与信息化中心及两项职责，来源完整。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.7224334600760456,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B034",
+        "question_id": "a09",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "明确北方网络安全与信息化中心负责基础网络及病毒疫情，两项要点正确。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.5833333333333334,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a10",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B003",
+        "question_id": "a10",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "单位及所引相关条款有出处，但未答分开存放和按保密级别采取措施。文档覆盖1/1不能证明目标（三）第6项已回收，需核查具体段落。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.7856191744340879,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B037",
+        "question_id": "a10",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "所述相关备份条款有出处，但未回答备份与原始信息分开存放及保密措施。需核对目标（三）第6项是否回收。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.4888888888888889,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "a11",
+      "type": "attribution",
+      "off": {
+        "blind_id": "B012",
+        "question_id": "a11",
+        "type": "attribution",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "正确归属河南附件1，回答备案号。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.7487684729064039,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B005",
+        "question_id": "a11",
+        "type": "attribution",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "明确河南报告表，正确回答备案号。第8项本身非单位特有，本文有正确文档归属。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 1,
+          "expected": 1
+        },
+        "coverage_label": "全部（1/1）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.75,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "d01",
+      "type": "disambiguation",
+      "off": {
+        "blind_id": "B011",
+        "question_id": "d01",
+        "type": "disambiguation",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": null,
+        "components": {
+          "归属正确": null,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "条款按标题分开且内容完整，但未把两种规定明确映射到中卫和浙江单位名。段落标题是否足以满足出处标注标准，留用户裁定。来源2/2。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 2,
+          "expected": 2
+        },
+        "coverage_label": "全部（2/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.8521256931608133,
+        "stability_reasons": [
+          "numbers_changed"
+        ]
+      },
+      "on": {
+        "blind_id": "B029",
+        "question_id": "d01",
+        "type": "disambiguation",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "中卫与浙江两种陪同条件分别标明单位和出处，覆盖全部预期单位。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 2,
+          "expected": 2
+        },
+        "coverage_label": "全部（2/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.6858275520317145,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "delta": null
+    },
+    {
+      "question_id": "d02",
+      "type": "disambiguation",
+      "off": {
+        "blind_id": "B021",
+        "question_id": "d02",
+        "type": "disambiguation",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": null,
+        "components": {
+          "归属正确": null,
+          "内容正确": 1.0,
+          "拒答正确": null,
+          "出处标注正确": null
+        },
+        "note": "只把责任原则标成局内，未写中卫单位名，北方来源也未回收。局内加章节标题能否视为一个预期单位已正确标注，留用户裁定。来源1/2。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 1,
+          "expected": 2
+        },
+        "coverage_label": "部分（1/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.43687374749499,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B016",
+        "question_id": "d02",
+        "type": "disambiguation",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.5,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "中卫原则及出处正确，未覆盖预期北方原则。北方文档未回收，来源1/2，遗漏按来源缺失记录。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 1,
+          "expected": 2
+        },
+        "coverage_label": "部分（1/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.5277777777777778,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "delta": null
+    },
+    {
+      "question_id": "d03",
+      "type": "disambiguation",
+      "off": {
+        "blind_id": "B018",
+        "question_id": "d03",
+        "type": "disambiguation",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.5,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "至少北方预案及年度要求标注正确。信阳适时条款未标单位，中卫未覆盖；中卫文档未回收，预期来源2/3。按单个预期单位正确给部分分。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 2,
+          "expected": 3
+        },
+        "coverage_label": "部分（2/3）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.6776586974443528,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "on": {
+        "blind_id": "B040",
+        "question_id": "d03",
+        "type": "disambiguation",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 0.5,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 0.0,
+          "拒答正确": null,
+          "出处标注正确": 1.0
+        },
+        "note": "北方和信阳两个预期单位均正确标注并说明频次，中卫未覆盖且其文档未回收。按采集前已存在的部分多单位规则记0.5，来源2/3。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 2,
+          "expected": 3
+        },
+        "coverage_label": "部分（2/3）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.5706806282722513,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "o01",
+      "type": "out_of_scope",
+      "off": {
+        "blind_id": "B035",
+        "question_id": "o01",
+        "type": "out_of_scope",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "说明缺少天气证据并拒绝猜测温度。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.7763157894736842,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B027",
+        "question_id": "o01",
+        "type": "out_of_scope",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "天气资料缺失，未给出猜测气温。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8776978417266187,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "o02",
+      "type": "out_of_scope",
+      "off": {
+        "blind_id": "B032",
+        "question_id": "o02",
+        "type": "out_of_scope",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "缺少指定日期值班名单和联系方式，拒绝推断个人信息。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.7882037533512064,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B010",
+        "question_id": "o02",
+        "type": "out_of_scope",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "正确说明缺少信阳当日值班人员和手机号，未编造具体人员。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.2800982800982801,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "o03",
+      "type": "out_of_scope",
+      "off": {
+        "blind_id": "B013",
+        "question_id": "o03",
+        "type": "out_of_scope",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "明确缺少指定月份事件统计，不以其他单位预案分级推算事件数量。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.7030075187969925,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B038",
+        "question_id": "o03",
+        "type": "out_of_scope",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": null,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": null
+        },
+        "note": "正确说明无2026年10月事件台账及数量记录，不从制度推断实际数量。",
+        "coverage": {
+          "all_retrieved": null,
+          "found": 0,
+          "expected": 0
+        },
+        "coverage_label": "不适用",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.39092495636998253,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "t01",
+      "type": "cross_unit_trap",
+      "off": {
+        "blind_id": "B001",
+        "question_id": "t01",
+        "type": "cross_unit_trap",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": 1.0
+        },
+        "note": "准确拒绝将浙江离场登记规定归给信阳，并明确标注浙江出处。期望来源1/2，信阳文档未回收。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 1,
+          "expected": 2
+        },
+        "coverage_label": "部分（1/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.9745222929936306,
+        "stability_reasons": []
+      },
+      "on": {
+        "blind_id": "B007",
+        "question_id": "t01",
+        "type": "cross_unit_trap",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": 1.0
+        },
+        "note": "明确浙江陪同人员负责离场登记，并拒绝套用给信阳。信阳来源未回收，期望覆盖1/2。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 1,
+          "expected": 2
+        },
+        "coverage_label": "部分（1/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": false,
+        "text_similarity": 0.8311688311688312,
+        "stability_reasons": []
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "t02",
+      "type": "cross_unit_trap",
+      "off": {
+        "blind_id": "B023",
+        "question_id": "t02",
+        "type": "cross_unit_trap",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": 0.0
+        },
+        "note": "未将1小时和1个工作日套给中卫，符合陷阱拒答规则。引用的预案时限未明确标北方，出处列单独记0。中卫文档未回收，覆盖1/2。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 1,
+          "expected": 2
+        },
+        "coverage_label": "部分（1/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.6594059405940594,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "on": {
+        "blind_id": "B033",
+        "question_id": "t02",
+        "type": "cross_unit_trap",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": null,
+          "拒答正确": 1.0,
+          "出处标注正确": 1.0
+        },
+        "note": "明确北方报告时限与接收部门，同时说明不能作为中卫依据。中卫文档未回收，覆盖1/2。",
+        "coverage": {
+          "all_retrieved": false,
+          "found": 1,
+          "expected": 2
+        },
+        "coverage_label": "部分（1/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.5235223160434258,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "delta": 0.0
+    },
+    {
+      "question_id": "t03",
+      "type": "cross_unit_trap",
+      "off": {
+        "blind_id": "B009",
+        "question_id": "t03",
+        "type": "cross_unit_trap",
+        "group": "off",
+        "tag": "prompt-off",
+        "score": 0.0,
+        "components": {
+          "归属正确": 0.0,
+          "内容正确": 0.0,
+          "拒答正确": 0.0,
+          "出处标注正确": 0.0
+        },
+        "note": "将信阳第十三条的信息化领导部门及有关产品供应商流程明确说成北方工业大学规定，落入跨单位陷阱。A和B文档均回收。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 2,
+          "expected": 2
+        },
+        "coverage_label": "全部（2/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.45112781954887216,
+        "stability_reasons": [
+          "text_similarity_below_threshold"
+        ]
+      },
+      "on": {
+        "blind_id": "B025",
+        "question_id": "t03",
+        "type": "cross_unit_trap",
+        "group": "on",
+        "tag": "prompt-on",
+        "score": 1.0,
+        "components": {
+          "归属正确": 1.0,
+          "内容正确": 1.0,
+          "拒答正确": 1.0,
+          "出处标注正确": 1.0
+        },
+        "note": "明确信阳第十三条与北方第十四条的区别，拒绝将信阳特定升级流程用于北方。",
+        "coverage": {
+          "all_retrieved": true,
+          "found": 2,
+          "expected": 2
+        },
+        "coverage_label": "全部（2/2）",
+        "text_identical_between_rounds": false,
+        "stability_review_required": true,
+        "text_similarity": 0.3531746031746032,
+        "stability_reasons": [
+          "text_similarity_below_threshold",
+          "numbers_changed"
+        ]
+      },
+      "delta": 1.0
+    }
+  ],
+  "all_in_scope_expected_sources_absent": false,
+  "paired_comparison": {
+    "scored_pairs": 18,
+    "pending_pairs": 2,
+    "mean_delta": 0.2777777777777778,
+    "off_mean_score": 0.5833333333333334,
+    "on_mean_score": 0.8611111111111112,
+    "improved": 5,
+    "declined": 0,
+    "tied": 13
+  },
+  "inputs": {
+    "review_sha256": "31cc3d05765b151db42a12c799fbba943546887b4d6393d3b326fe617f3e8c61",
+    "mapping_sha256": "64a19083e70d3e7acd6a59284ed93ef0fe9bd69b1ab1f45ad9c87efecea75643",
+    "stability_sha256": "025727ebdbe9847ba3130ba15d5dcefb88c4b78170acd83737f61809a855b6e0",
+    "script_sha256": "a1f972605c2d6fc58a5ff1ada845d1c5a160da7c16eb7be59acc42e41f79e8e6"
+  },
+  "review_type_counts": {
+    "cross_unit_trap": 6,
+    "attribution": 22,
+    "out_of_scope": 6,
+    "disambiguation": 6
+  },
+  "question_type_counts": {
+    "attribution": 11,
+    "disambiguation": 3,
+    "out_of_scope": 3,
+    "cross_unit_trap": 3
+  }
+}

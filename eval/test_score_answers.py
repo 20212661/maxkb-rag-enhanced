@@ -104,11 +104,15 @@ class ScoreSummaryTests(unittest.TestCase):
     def test_pair_delta_and_pending_denominators(self):
         mapping, stability = self.metadata()
         joined = join_metadata([self.review(), self.review("B002", 1)], mapping, stability)
-        self.assertEqual(summarize(joined)["paired_comparison"]["mean_delta"], 1)
+        paired = summarize(joined)["paired_comparison"]
+        self.assertEqual(paired["mean_delta"], 1)
+        self.assertEqual(paired["off_mean_score"], 0)
+        self.assertEqual(paired["on_mean_score"], 1)
         joined[1]["score"] = None
         summary = summarize(joined)
         self.assertIsNone(summary["pairs"][0]["delta"])
         self.assertEqual(summary["paired_comparison"]["scored_pairs"], 0)
+        self.assertIsNone(summary["paired_comparison"]["off_mean_score"])
 
     def test_entirely_missing_sources_are_flagged_as_an_experiment_issue(self):
         mapping, stability = self.metadata()

@@ -26,5 +26,7 @@
     "QUERY_EMBEDDING_CACHE_ENABLED": true
   },
   "backend_tests_passed": 19,
-  "evaluation_tests_passed": 31
+  "evaluation_tests_passed": 31,
+  "experiment_validity": "invalid_empty_published_knowledge_binding",
+  "validity_audit": "eval/results/week5/answer/validity-audit.json"
 }

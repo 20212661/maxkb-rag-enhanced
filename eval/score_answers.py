@@ -160,11 +160,16 @@ def summarize(rows):
         delta = on["score"] - off["score"] if off["score"] is not None and on["score"] is not None else None
         pairs.append({"question_id": question_id, "type": off["type"], "off": off, "on": on, "delta": delta})
     deltas = [p["delta"] for p in pairs if p["delta"] is not None]
+    scored_pairs = [pair for pair in pairs if pair["delta"] is not None]
     in_scope = [row for row in rows if row["coverage"]["expected"] > 0]
     no_expected_sources = bool(in_scope) and all(row["coverage"]["found"] == 0 for row in in_scope)
     return {"groups": groups, "pairs": pairs, "all_in_scope_expected_sources_absent": no_expected_sources,
             "paired_comparison": {"scored_pairs": len(deltas), "pending_pairs": len(pairs) - len(deltas),
                                   "mean_delta": statistics.mean(deltas) if deltas else None,
+                                  "off_mean_score": statistics.mean(p["off"]["score"] for p in scored_pairs)
+                                  if scored_pairs else None,
+                                  "on_mean_score": statistics.mean(p["on"]["score"] for p in scored_pairs)
+                                  if scored_pairs else None,
                                   "improved": sum(d > 0 for d in deltas), "declined": sum(d < 0 for d in deltas),
                                   "tied": sum(d == 0 for d in deltas)}}
 
@@ -193,8 +198,11 @@ def write_reports(summary, output_dir):
     paired = summary["paired_comparison"]
     lines.extend(["", "## 逐题配对", "",
                   f"已决配对{paired['scored_pairs']}题，待复核配对{paired['pending_pairs']}题。"
-                  f"开启组提高{paired['improved']}题，下降{paired['declined']}题，相同{paired['tied']}题。", "",
-                  "## 来源覆盖与错误", "",
+                  f"开启组提高{paired['improved']}题，下降{paired['declined']}题，相同{paired['tied']}题。"])
+    if paired["mean_delta"] is not None:
+        lines.extend(["", f"同一已决配对上的关闭组均分{paired['off_mean_score']:.4f}，"
+                      f"开启组均分{paired['on_mean_score']:.4f}，平均变化{paired['mean_delta']:+.4f}。"])
+    lines.extend(["", "## 来源覆盖与错误", "",
                   "文档名覆盖作为检索诊断代理。全部期望文档均在引用列表、且得分低于1的项归入检索到但生成出错。"
                   "部分或全部期望文档缺失的项归入来源缺失组。具体条款召回及资料预算仍需结合证据检查。", "",
                   "| 组别 | 全部来源检索到 | 其中得分低于1 | 来源有缺失 | 来源缺失组均分 | 来源不适用 |",

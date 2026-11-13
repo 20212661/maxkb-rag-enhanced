@@ -8,12 +8,17 @@
   "collection_commit": "6e359082a",
   "pre_collection_controls_commit": "567548e98",
   "input_review_sha256": "f7307a05349fa204708f2728d2850c25a765552f4dde7926af2cabfa98fbc6c6",
-  "graded_review_sha256": "6680a0e3671ce03c66822f309fdcf438addea91063acb950d7cfd0e015b6434b",
+  "graded_review_sha256": "31cc3d05765b151db42a12c799fbba943546887b4d6393d3b326fe617f3e8c61",
   "rubric_sha256": "2072af6160d73ad8261e472fe1dc54c9f40dfdb3cf510b79306c10a67d46cae9",
   "mapping_and_group_answers_opened_during_this_review": false,
   "uncertain_blind_ids": [
     "B011",
     "B021"
   ],
-  "note": "本次40条AI评阅在读取本批次mapping和分组回答前冻结。按文档名统计的来源覆盖与具体条款召回在备注中区分。"
+  "note": "本次40条AI评阅在读取本批次mapping和分组回答前冻结。按文档名统计的来源覆盖与具体条款召回在备注中区分。",
+  "graded_working_copy_sha256_before_lf_normalization": "6680a0e3671ce03c66822f309fdcf438addea91063acb950d7cfd0e015b6434b",
+  "graded_git_blob_sha256": "31cc3d05765b151db42a12c799fbba943546887b4d6393d3b326fe617f3e8c61",
+  "input_git_blob_sha256": "03bc0f4b0d845f2631de406143630723ef264ae65096ec9fac0e43c1fb586565",
+  "score_frozen_commit": "35cc61bd3",
+  "hash_line_endings_note": "原始工作区Markdown使用CRLF，Git按属性保存LF。本次统一为LF，评分文字与解盲前冻结的Git内容字节相同。"
 }
