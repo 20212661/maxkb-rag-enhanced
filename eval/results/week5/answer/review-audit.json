@@ -1,0 +1,16 @@
+{
+  "reviewer": "Codex AI",
+  "reviewer_independent_of_implementation": false,
+  "review_started_at_utc": "2026-11-13 08:43:07 UTC",
+  "review_completed_at_utc": "2026-11-13 08:46:12 UTC",
+  "reviewed_rows": 40,
+  "pending_rows": 4,
+  "pre_review_commit": "5a6d4f1f5",
+  "input_review_sha256": "b97755db5bfcb0f13d4c28e7f1c5499f2827dd6a2a872c9a2bad451cac801e27",
+  "graded_review_sha256": "21eb787194df660e4d268ddca3d7e08d22c06fbd2273871490a5f8c58041f141",
+  "rubric_sha256": "ef4f97acc39b72eaa17a2d924f5d4c5c5399f4b0e32cc9d010c50077824801d0",
+  "mapping_and_group_answers_opened_during_this_review": false,
+  "prior_tool_mapping_integrity_checks_disclosed": true,
+  "observation": "全部40条引用文档列表为空。当前批次无法验证文档名注入效果，待解盲后核查采集配置。",
+  "note": "评分中的待复核项由用户裁定。AI评阅和文本稳定性统计分别记录。"
+}
