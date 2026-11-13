@@ -14,6 +14,7 @@ from django.db.models import QuerySet
 
 from application.flow.i_step_node import NodeResult
 from application.flow.step_node.search_knowledge_node.i_search_knowledge_node import ISearchKnowledgeStepNode
+from application.services.prompt_sources import format_paragraphs
 from common.config.embedding_config import VectorStore
 from common.constants.permission_constants import RoleConstants
 from common.database_model_manage.database_model_manage import DatabaseModelManage
@@ -64,9 +65,8 @@ class BaseSearchKnowledgeNode(ISearchKnowledgeStepNode):
         self.context['question'] = details.get('question')
         self.context['run_time'] = details.get('run_time')
         self.context['is_hit_handling_method_list'] = [row for row in result if row.get('is_hit_handling_method')]
-        self.context['data'] = '\n'.join(
-            [f"{paragraph.get('title', '')}:{paragraph.get('content')}" for paragraph in
-             result])[0:knowledge_setting.get('max_paragraph_char_number', 5000)]
+        self.context['data'] = format_paragraphs(
+            result, knowledge_setting.get('max_paragraph_char_number', 5000))
         self.context['directly_return'] = directly_return
         self.context['exception_message'] = details.get('err_message')
 
@@ -125,9 +125,9 @@ class BaseSearchKnowledgeNode(ISearchKnowledgeStepNode):
         result = sorted(result, key=lambda p: p.get('similarity'), reverse=True)
         return NodeResult({'paragraph_list': result,
                            'is_hit_handling_method_list': [row for row in result if row.get('is_hit_handling_method')],
-                           'data': '\n'.join(
-                               [f"{reset_title(paragraph.get('title', ''))}{paragraph.get('content')}" for paragraph in
-                                result])[0:knowledge_setting.get('max_paragraph_char_number', 5000)],
+                           'data': format_paragraphs(
+                               result, knowledge_setting.get('max_paragraph_char_number', 5000),
+                               legacy_format=lambda p: f"{reset_title(p.get('title', ''))}{p.get('content')}"),
                            'directly_return': '\n'.join(
                                [paragraph.get('content') for paragraph in
                                 result if

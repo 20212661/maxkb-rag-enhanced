@@ -12,6 +12,7 @@ from langchain_core.documents import Document
 
 from application.flow.i_step_node import NodeResult
 from application.flow.step_node.reranker_node.i_reranker_node import IRerankerNode
+from application.services.prompt_sources import join_sources, source_prefix
 from models_provider.tools import get_model_instance_by_model_workspace_id
 
 
@@ -107,7 +108,10 @@ class BaseRerankerNode(IRerankerNode):
         max_paragraph_char_number = reranker_setting.get('max_paragraph_char_number', 5000)
         result = reset_result_list(result, documents)
         r = filter_result(result, max_paragraph_char_number, top_n, similarity)
-        return NodeResult({'result_list': r, 'result': ''.join([item.get('page_content') for item in r]),
+        prompt_result = join_sources(
+            [(source_prefix(item['metadata'].get('document_name')), item['page_content']) for item in r],
+            max_paragraph_char_number, separator='')
+        return NodeResult({'result_list': r, 'result': prompt_result,
                            'is_hit_handling_method_list': [row for row in r if
                                                            row.get('metadata').get('is_hit_handling_method')]}, {})
 
