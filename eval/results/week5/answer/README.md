@@ -110,3 +110,14 @@ python eval/run_answer_eval.py blind \
 工作流由单元回归覆盖正常执行、历史恢复、重排输入和排名记录，真实HTTP回答实验使用简单应用。实验完成后已恢复应用temperature=0.2，文档向量缓存、查询向量缓存及L1恢复开启，默认文档名注入开启，web已重启并响应请求。
 
 运行清单由本机控制脚本根据实际启动web的环境和数据库发布版本导出，脚本另外通过HTTP核对发布版本并读取消息记录。本次原始结果中的token来自框架消息记录。
+
+## 评分后汇总
+
+`eval/score_answers.py`读取已填写的盲评表、组别映射和稳定性记录，汇总显式填写的得分。待复核得分单列并从已决平均分分母排除。脚本开发及测试使用合成数据，在本轮评分前提交。
+
+```bash
+python eval/score_answers.py
+python -m unittest discover -s eval -p test_score_answers.py -v
+```
+
+默认输出本目录中的 `score-summary.json`、`score-summary.md` 和 `question-comparison.md`。分组均分按四类题分别统计，逐题表包含两组得分、变化、期望来源覆盖、两遍文字是否完全一致及差异复核标记。全部期望文档在引用中且得分低于1的项计入“检索到但生成出错”，期望文档部分或全部缺失的项计入“来源有缺失”，知识库外题的来源覆盖记不适用。该拆分使用文档名代理，具体条款和资料预算需要结合证据审查。
