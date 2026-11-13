@@ -1,0 +1,30 @@
+{
+  "formal_requests": 80,
+  "successful_requests": 80,
+  "l1_cache_hits": 0,
+  "unique_chat_ids": 80,
+  "unique_record_ids": 80,
+  "blind_rows": 40,
+  "stability_comparisons": 40,
+  "stability_review_flags": 12,
+  "temperature": 0,
+  "automated_answer_scores": null,
+  "pre_evaluation_commit": "9b1309a08",
+  "rubric_sha256": "30c300faacce9a96235bae4d6c5107d37dbf14618669e3b87c47745616c83234",
+  "dataset_sha256": "d34101dec21e6996e35db61bfb081e33993666df0a40f4cafb7dd7d3159c8f2d",
+  "extra_http_smoke_requests": 1,
+  "application_parameters_restored": true,
+  "model_params_setting": {
+    "max_tokens": 512,
+    "temperature": 0.2,
+    "reasoning_effort": "none"
+  },
+  "effective_flags": {
+    "PROMPT_INCLUDE_DOCUMENT_NAME": true,
+    "QA_L1_CACHE_ENABLED": true,
+    "EMBEDDING_CACHE_ENABLED": true,
+    "QUERY_EMBEDDING_CACHE_ENABLED": true
+  },
+  "backend_tests_passed": 19,
+  "evaluation_tests_passed": 31
+}
