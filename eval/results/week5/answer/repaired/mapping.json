@@ -1,0 +1,326 @@
+{
+  "seed": 12899461946968033104,
+  "dataset_sha256": "d34101dec21e6996e35db61bfb081e33993666df0a40f4cafb7dd7d3159c8f2d",
+  "entries": {
+    "B001": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "t01",
+      "record_id": "01a1d41f-c8c0-7cf3-a113-b2e753cbaf4e",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B002": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a09",
+      "record_id": "01a1d41f-96e1-79a0-b44b-89ddb99a1705",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B003": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a10",
+      "record_id": "01a1d41f-9da2-7b11-a428-05892ec5f1c9",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B004": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a01",
+      "record_id": "01a1d41f-6017-7200-bb56-c3a90ff27fb3",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B005": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a11",
+      "record_id": "01a1d422-778b-7f51-9e88-6a3392f51fe5",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B006": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a07",
+      "record_id": "01a1d41f-8998-7552-804a-1c9f29c568d4",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B007": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "t01",
+      "record_id": "01a1d422-999a-77a2-8f14-273f0214f428",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B008": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a07",
+      "record_id": "01a1d422-5177-71e3-9078-91d9d049159d",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B009": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "t03",
+      "record_id": "01a1d41f-dc29-7483-b538-60b840760ad2",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B010": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "o02",
+      "record_id": "01a1d422-bb9a-7611-822a-682d73c098f8",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B011": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "d01",
+      "record_id": "01a1d41f-ab1a-71f0-be21-70846005ee93",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B012": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a11",
+      "record_id": "01a1d41f-a69e-77c2-8309-59059ff653a8",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B013": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "o03",
+      "record_id": "01a1d41f-f116-77b1-9790-1f46ac6113bd",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B014": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a01",
+      "record_id": "01a1d422-1a44-7c83-928f-8691fcdc9c07",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B015": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a04",
+      "record_id": "01a1d41f-769e-7eb0-b35e-1b13a453454f",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B016": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "d02",
+      "record_id": "01a1d422-88bc-77d3-84ec-67e22e769992",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B017": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a02",
+      "record_id": "01a1d41f-6a90-70a0-b30d-c4a4c167f6cf",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B018": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "d03",
+      "record_id": "01a1d41f-bdfa-7fc3-b03b-348191defa5b",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B019": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a04",
+      "record_id": "01a1d422-2f4f-75a1-93b3-32cabfc5e372",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B020": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a05",
+      "record_id": "01a1d422-350d-7e33-b08d-0199abeb866a",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B021": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "d02",
+      "record_id": "01a1d41f-b481-7bc3-a223-d8402036b5f1",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B022": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a05",
+      "record_id": "01a1d41f-7b4c-7200-9cdc-6549aae368ea",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B023": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "t02",
+      "record_id": "01a1d41f-cfc5-7560-8576-344d9f69a0c2",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B024": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a03",
+      "record_id": "01a1d422-2717-7060-9d82-05aeebbc4a11",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B025": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "t03",
+      "record_id": "01a1d422-ab32-7741-871d-695cb6c1fa08",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B026": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a06",
+      "record_id": "01a1d41f-82c9-7da2-b7d5-37953077186d",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B027": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "o01",
+      "record_id": "01a1d422-b433-7f10-b08d-19aa2f2c1a82",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B028": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a06",
+      "record_id": "01a1d422-4396-7d12-bf25-576de609eeec",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B029": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "d01",
+      "record_id": "01a1d422-7db2-7e40-8928-aa52ca68c48b",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B030": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a03",
+      "record_id": "01a1d41f-7157-70a1-82c4-ec2ce952ddf3",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B031": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a02",
+      "record_id": "01a1d422-22e0-7f10-b710-9d38d61d482d",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B032": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "o02",
+      "record_id": "01a1d41f-eb03-7942-9d36-cdd23facc04c",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B033": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "t02",
+      "record_id": "01a1d422-a216-7a42-bbde-737a077095bc",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B034": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a09",
+      "record_id": "01a1d422-66ff-7b41-a3ad-9d99b9a8a6e4",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B035": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "o01",
+      "record_id": "01a1d41f-e38a-7f21-ac74-199575285a00",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B036": {
+      "tag": "prompt-off",
+      "round": 1,
+      "question_id": "a08",
+      "record_id": "01a1d41f-902d-7573-88fa-fac76c363600",
+      "status": "ok",
+      "prompt_include_document_name": false
+    },
+    "B037": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a10",
+      "record_id": "01a1d422-6dd9-7c42-bfc0-11bb12f056f8",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B038": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "o03",
+      "record_id": "01a1d422-c244-7352-b8c5-7f959e65bd2d",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B039": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "a08",
+      "record_id": "01a1d422-5f47-74f2-bfb0-68375bb76218",
+      "status": "ok",
+      "prompt_include_document_name": true
+    },
+    "B040": {
+      "tag": "prompt-on",
+      "round": 1,
+      "question_id": "d03",
+      "record_id": "01a1d422-90c2-7721-939f-3b3c164d4cad",
+      "status": "ok",
+      "prompt_include_document_name": true
+    }
+  }
+}
