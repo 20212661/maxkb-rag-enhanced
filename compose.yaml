@@ -1,28 +1,40 @@
 name: maxkb-rag
 
 x-maxkb: &maxkb
-  image: maxkb-rag:local
+  image: ${MAXKB_IMAGE:-maxkb-rag:local}
   build:
     context: .
     dockerfile: installer/Dockerfile
+    args:
+      HTTP_PROXY: ${BUILD_HTTP_PROXY:-}
+      HTTPS_PROXY: ${BUILD_HTTPS_PROXY:-}
+      NO_PROXY: ${BUILD_NO_PROXY:-}
   working_dir: /opt/maxkb-app
   environment: &maxkb-env
     MAXKB_CONFIG_TYPE: ENV
-    MAXKB_SECRET_KEY: ${SECRET_KEY:?Run bash deploy/up.sh first}
-    MAXKB_HMAC_SIGNED_SERIALIZER_SECRET_KEY: ${SECRET_KEY:?Run bash deploy/up.sh first}
-    MAXKB_DB_NAME: maxkb
-    MAXKB_DB_HOST: postgres
-    MAXKB_DB_PORT: "5432"
-    MAXKB_DB_USER: maxkb
-    MAXKB_DB_PASSWORD: ${DB_PASSWORD:?Run bash deploy/up.sh first}
-    MAXKB_REDIS_HOST: redis
-    MAXKB_REDIS_PORT: "6379"
-    MAXKB_REDIS_PASSWORD: ${REDIS_PASSWORD:?Run bash deploy/up.sh first}
-    MAXKB_REDIS_DB: "0"
-    MAXKB_LOCAL_MODEL_HOST: local-model
-    MAXKB_LOCAL_MODEL_PORT: "11636"
-    MAXKB_MINERU_CONTENT_LIST_URL: http://mineru-content:8004
+    MAXKB_SECRET_KEY: ${SECRET_KEY:?Run python3 deploy/configure.py}
+    MAXKB_HMAC_SIGNED_SERIALIZER_SECRET_KEY: ${SECRET_KEY:?Run python3 deploy/configure.py}
+    MAXKB_DEFAULT_PASSWORD: ${ADMIN_PASSWORD:?Run python3 deploy/configure.py}
+    MAXKB_DB_NAME: ${DB_NAME:-maxkb}
+    MAXKB_DB_HOST: ${DB_HOST:-postgres}
+    MAXKB_DB_PORT: ${DB_PORT:-5432}
+    MAXKB_DB_USER: ${DB_USER:-maxkb}
+    MAXKB_DB_PASSWORD: ${DB_PASSWORD:?Run python3 deploy/configure.py}
+    MAXKB_REDIS_HOST: ${REDIS_HOST:-redis}
+    MAXKB_REDIS_PORT: ${REDIS_PORT:-6379}
+    MAXKB_REDIS_PASSWORD: ${REDIS_PASSWORD:?Run python3 deploy/configure.py}
+    MAXKB_REDIS_DB: ${REDIS_DB:-0}
+    MAXKB_LOCAL_MODEL_HOST: ${LOCAL_MODEL_HOST:-local-model}
+    MAXKB_LOCAL_MODEL_PORT: ${LOCAL_MODEL_PORT:-11636}
+    MAXKB_LOCAL_MODEL_PROTOCOL: ${LOCAL_MODEL_PROTOCOL:-http}
+    MAXKB_MINERU_CONTENT_LIST_URL: ${MINERU_CONTENT_LIST_URL:-http://mineru-content:8004}
+    MAXKB_MINERU_TIMEOUT_BASE_SECONDS: ${MINERU_TIMEOUT_BASE_SECONDS:-120}
+    MAXKB_MINERU_TIMEOUT_PER_PAGE_SECONDS: ${MINERU_TIMEOUT_PER_PAGE_SECONDS:-30}
     MAXKB_EMBEDDING_CACHE_EPOCH: ${EMBEDDING_CACHE_EPOCH:-1}
+    MAXKB_EMBEDDING_CACHE_ENABLED: ${EMBEDDING_CACHE_ENABLED:-true}
+    MAXKB_QUERY_EMBEDDING_CACHE_ENABLED: ${QUERY_EMBEDDING_CACHE_ENABLED:-true}
+    MAXKB_QA_L1_CACHE_ENABLED: ${QA_L1_CACHE_ENABLED:-true}
+    MAXKB_PROMPT_INCLUDE_DOCUMENT_NAME: ${PROMPT_INCLUDE_DOCUMENT_NAME:-true}
     PYTHONPATH: /opt/maxkb-app/apps
     C_FORCE_ROOT: "1"
     SERVER_NAME: web
@@ -30,20 +42,26 @@ x-maxkb: &maxkb
   volumes:
     - maxkb-data:/opt/maxkb
     - maxkb-static:/opt/maxkb-app/apps/static
+  tmpfs:
+    - /opt/maxkb-app/tmp
   restart: unless-stopped
 
 x-mineru: &mineru
-  image: maxkb-rag-mineru:4.1.7
+  image: ${MINERU_IMAGE:-maxkb-rag-mineru:4.1.7}
   build:
     context: services/mineru
     dockerfile: Dockerfile
+    args:
+      HTTP_PROXY: ${BUILD_HTTP_PROXY:-}
+      HTTPS_PROXY: ${BUILD_HTTPS_PROXY:-}
+      NO_PROXY: ${BUILD_NO_PROXY:-}
   environment: &mineru-env
     MINERU_HOME: /var/lib/mineru
     MINERU_CONFIG: /srv/mineru/config.yaml
     MINERU_TELEMETRY_DISABLED: "1"
     MINERU_MODEL_SMALL_BACKEND: onnx
     MINERU_MODEL_ONNX_DEVICE: cpu
-    OMP_NUM_THREADS: "4"
+    OMP_NUM_THREADS: ${MINERU_THREADS:-4}
     OPENBLAS_NUM_THREADS: "1"
     TOKENIZERS_PARALLELISM: "false"
   volumes:
@@ -52,11 +70,11 @@ x-mineru: &mineru
 
 services:
   postgres:
-    image: pgvector/pgvector:0.8.7-pg17-bookworm
+    image: ${POSTGRES_IMAGE:-pgvector/pgvector:0.8.7-pg17-bookworm}
     environment:
-      POSTGRES_DB: maxkb
-      POSTGRES_USER: maxkb
-      POSTGRES_PASSWORD: ${DB_PASSWORD:?Run bash deploy/up.sh first}
+      POSTGRES_DB: ${DB_NAME:-maxkb}
+      POSTGRES_USER: ${DB_USER:-maxkb}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Run python3 deploy/configure.py}
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./deploy/init-db.sql:/docker-entrypoint-initdb.d/10-extensions.sql:ro
@@ -68,9 +86,9 @@ services:
     restart: unless-stopped
 
   redis:
-    image: redis:7.4-bookworm
+    image: ${REDIS_IMAGE:-redis:7.4-bookworm}
     environment:
-      REDIS_PASSWORD: ${REDIS_PASSWORD:?Run bash deploy/up.sh first}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?Run python3 deploy/configure.py}
     command: [sh, -c, 'exec redis-server --appendonly yes --requirepass "$$REDIS_PASSWORD"']
     volumes:
       - redis-data:/data
@@ -96,7 +114,7 @@ services:
     command: [maxkb.wsgi:application, --chdir, apps, --bind, "0.0.0.0:8080", --workers, "1",
               --worker-class, gthread, --threads, "16", --timeout, "180", --access-logfile, "-"]
     ports:
-      - "127.0.0.1:${WEB_PORT:-8088}:8080"
+      - "${WEB_BIND_HOST:-127.0.0.1}:${WEB_PORT:-8088}:8080"
     depends_on:
       maxkb-init: {condition: service_completed_successfully}
       local-model: {condition: service_healthy}
@@ -133,6 +151,12 @@ services:
     depends_on:
       maxkb-init: {condition: service_completed_successfully}
       local-model: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import os,time; p='/opt/maxkb-app/tmp/worker_heartbeat_worker'; assert os.path.exists('/opt/maxkb-app/tmp/worker_ready_worker') and time.time()-os.path.getmtime(p)<30"]
+      interval: 10s
+      timeout: 5s
+      start_period: 60s
+      retries: 30
 
   worker-mineru:
     <<: *maxkb
@@ -143,6 +167,12 @@ services:
     depends_on:
       maxkb-init: {condition: service_completed_successfully}
       mineru-content: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import os,time; p='/opt/maxkb-app/tmp/worker_heartbeat_mineru'; assert os.path.exists('/opt/maxkb-app/tmp/worker_ready_mineru') and time.time()-os.path.getmtime(p)<30"]
+      interval: 10s
+      timeout: 5s
+      start_period: 60s
+      retries: 30
 
   mineru-models:
     <<: *mineru
@@ -170,7 +200,7 @@ services:
   mineru-file:
     <<: *mineru
     command: [file-parse-server, --host, "0.0.0.0", --port, "8003", --api-url,
-              "http://mineru-api:8000", --state-dir, /var/lib/mineru/file-parse]
+              "${MINERU_TASK_API_URL:-http://mineru-api:8000}", --state-dir, /var/lib/mineru/file-parse]
     depends_on:
       mineru-api: {condition: service_healthy}
     healthcheck:
@@ -184,9 +214,10 @@ services:
     <<: *mineru
     environment:
       <<: *mineru-env
-      MINERU_TASK_API_URL: http://mineru-api:8000
-      MINERU_FILE_PARSE_URL: http://mineru-file:8003
+      MINERU_TASK_API_URL: ${MINERU_TASK_API_URL:-http://mineru-api:8000}
+      MINERU_FILE_PARSE_URL: ${MINERU_FILE_PARSE_URL:-http://mineru-file:8003}
       MINERU_PARSE_CONCURRENCY: "1"
+      WEB_CONCURRENCY: "1"
     entrypoint: [python, /srv/mineru/content_list_api.py]
     command: [--host, "0.0.0.0", --port, "8004"]
     depends_on:
@@ -197,6 +228,32 @@ services:
       timeout: 8s
       start_period: 30s
       retries: 30
+
+  demo-import:
+    <<: *maxkb
+    profiles: [demo]
+    environment:
+      WEB_API_URL: ${WEB_API_URL:-http://web:8080/admin/api}
+      CHAT_API_URL: ${CHAT_API_URL:-http://web:8080/chat/api}
+      WEB_PUBLIC_URL: ${WEB_PUBLIC_URL:-http://localhost:8088}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Run python3 deploy/configure.py}
+      LLM_API_BASE: ${LLM_API_BASE:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL_NAME: ${LLM_MODEL_NAME:-}
+      LLM_PROVIDER: ${LLM_PROVIDER:-model_openai_provider}
+      LLM_TEMPERATURE: ${LLM_TEMPERATURE:-0.2}
+      LLM_MAX_TOKENS: ${LLM_MAX_TOKENS:-512}
+      DEMO_WORKSPACE_ID: ${DEMO_WORKSPACE_ID:-default}
+      DEMO_EMBEDDING_MODEL_ID: ${DEMO_EMBEDDING_MODEL_ID:-42f63a3d-427e-11ef-b3ec-a8a1595801ab}
+      DEMO_WAIT_SECONDS: ${DEMO_WAIT_SECONDS:-1800}
+    entrypoint: [python, demo-data/import_demo.py]
+    command: []
+    depends_on:
+      web: {condition: service_healthy}
+      worker: {condition: service_healthy}
+      worker-mineru: {condition: service_healthy}
+    restart: "no"
 
 volumes:
   postgres-data:

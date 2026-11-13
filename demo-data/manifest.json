@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "publisher": "中卫市人民政府网站",
+  "source_url": "https://www.nxzw.gov.cn/zwgk/bmxxgkml/swsjkwyh/fdzdgknr_49861/wsyl_49877/201811/P020181121330110409821.pdf",
+  "provenance": "复用 services/mineru/samples/business_policy_scan.provenance.json 中记录的公开制度栅格化扫描件",
+  "files": [
+    {
+      "file": "security-policy-original.pdf",
+      "sha256": "adeb7dcecb2f26d1c76645439b7f0bbd0928a577a87cfbcee51a5ba6a444a240",
+      "import": false,
+      "role": "公开原件，供核验来源与条款",
+      "pages": 7
+    },
+    {
+      "file": "security-policy-scan.pdf",
+      "sha256": "af9c8034076ae12343850b23acff624ab30614d66bbc2e3aa0ef2022d5988411",
+      "import": true,
+      "title": "中卫市公开信息安全管理制度",
+      "pages": 7,
+      "text_layer": false,
+      "source_file": "security-policy-original.pdf",
+      "raster_long_edge_pixels": 1800
+    }
+  ]
+}

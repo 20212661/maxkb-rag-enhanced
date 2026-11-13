@@ -1,6 +1,6 @@
 FROM python:3.11-slim-bookworm
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ca-certificates libgl1 libglib2.0-0 libgomp1 && \
+    ca-certificates libgl1 libglib2.0-0 libgomp1 libvulkan1 mesa-vulkan-drivers && \
     rm -rf /var/lib/apt/lists/* && pip install --no-cache-dir uv
 WORKDIR /srv/mineru
 COPY requirements.txt requirements.lock ./

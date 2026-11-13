@@ -1,0 +1,7 @@
+[
+  {
+    "question": "中卫市卫生和计划生育局公开的信息安全管理制度采用什么责任原则？",
+    "document_name": "security-policy-scan.pdf",
+    "expected_answer_parts": ["谁主管", "谁负责"]
+  }
+]

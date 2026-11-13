@@ -122,7 +122,14 @@ flowchart LR
 
 ### 快速开始
 
-在 Linux 或启用 Docker 的 WSL 中使用 Docker Compose。进入本 fork 的全新 clone 后执行以下三步。
+在 Linux 或启用 Docker 的 WSL 中使用 Docker Compose，先克隆本 fork。
+
+```bash
+git clone https://github.com/20212661/maxkb-rag-enhanced.git
+cd maxkb-rag-enhanced
+```
+
+在仓库根目录执行以下三步。
 
 1. 创建配置文件。
 
@@ -130,7 +137,7 @@ flowchart LR
    cp .env.example .env
    ```
 
-2. 生成随机本地密码，并在 `.env` 填写 `LLM_API_BASE`、`LLM_MODEL_NAME` 和 `LLM_API_KEY`。
+2. 将 `.env` 中的 `change-me` 替换为独立密码，或运行下面的命令自动生成随机值。首次启动前确认 `ADMIN_PASSWORD`、`DB_PASSWORD`、`REDIS_PASSWORD` 和 `SECRET_KEY` 已完成替换，并填写 `LLM_API_BASE`、`LLM_MODEL_NAME` 和 `LLM_API_KEY`。
 
    ```bash
    python3 deploy/configure.py
@@ -150,7 +157,7 @@ docker compose run --rm demo-import
 
 管理端地址由 `.env` 的 `WEB_PUBLIC_URL` 配置，登录账号与密码为 `ADMIN_USERNAME`、`ADMIN_PASSWORD`。首次启动会下载基础镜像、依赖和 MinerU Basic 模型。前端构建设置 `NODE_OPTIONS=--max-old-space-size=4096`，管理端与聊天端顺序构建，由 web 提供静态资源。
 
-GPU 的可选 profile、配置说明及日常操作见 [部署说明](deploy/README.md)，公开样例与来源见 [demo-data](demo-data/README.md)，从零启动的实测状态见 [部署验收](docs/deploy-verification.md)。
+GPU 的可选 profile、配置说明及日常操作见 [部署说明](deploy/README.md)，当前标记为“未在 GPU 硬件上验证”。公开样例与来源见 [demo-data](demo-data/README.md)，评测语料来源见 [语料清单](eval/assets/README.md)，从零启动的实测状态见 [部署验收](docs/deploy-verification.md)。
 
 ### 评测方法
 

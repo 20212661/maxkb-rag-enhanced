@@ -8,15 +8,15 @@ RUN cd ui && ls -la && if [ -d "dist" ]; then exit 0; fi && \
 
 FROM ghcr.io/1panel-dev/maxkb-base:python3.11-pg17.11-20260903 AS stage-build
 COPY --chmod=700 . /opt/maxkb-app
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gcc g++ gettext libexpat1-dev libffi-dev && \
+RUN apt-get -o Acquire::Retries=3 update && \
+    apt-get -o Acquire::Retries=3 install -y --no-install-recommends gcc g++ gettext libexpat1-dev libffi-dev && \
     apt-get clean all  && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /opt/maxkb-app
 RUN gcc -shared -fPIC -o ${MAXKB_SANDBOX_HOME}/lib/sandbox.so /opt/maxkb-app/installer/sandbox.c -ldl && \
     rm -rf /opt/maxkb-app/ui && \
     pip install uv --break-system-packages && \
-    python -m uv pip install -r pyproject.toml && \
+    python -m uv pip install --torch-backend=cpu -r pyproject.toml && \
     find /opt/maxkb-app  -depth \( -name ".git*" -o -name ".docker*" -o -name ".idea*" -o -name ".editorconfig*" -o -name ".prettierrc*" -o -name "README.md" -o -name "poetry.lock" -o -name "pyproject.toml"  \) -exec rm -rf {} + && \
     python /opt/maxkb-app/apps/manage.py compilemessages && \
     export PIP_TARGET=/opt/maxkb-app/sandbox/python-packages && \

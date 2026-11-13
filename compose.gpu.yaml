@@ -1,0 +1,49 @@
+# Optional Linux NVIDIA ONNX/WebGPU parser. Enable with COMPOSE_FILE and COMPOSE_PROFILES in .env.
+services:
+  mineru-api:
+    profiles: [cpu]
+
+  mineru-api-gpu:
+    profiles: [gpu]
+    image: ${MINERU_IMAGE:-maxkb-rag-mineru:4.1.7}
+    build:
+      context: services/mineru
+      dockerfile: Dockerfile
+      args:
+        HTTP_PROXY: ${BUILD_HTTP_PROXY:-}
+        HTTPS_PROXY: ${BUILD_HTTPS_PROXY:-}
+        NO_PROXY: ${BUILD_NO_PROXY:-}
+    environment:
+      MINERU_HOME: /var/lib/mineru
+      MINERU_CONFIG: /srv/mineru/config.yaml
+      MINERU_TELEMETRY_DISABLED: "1"
+      MINERU_MODEL_SMALL_BACKEND: onnx
+      MINERU_MODEL_ONNX_DEVICE: gpu
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,graphics
+      OMP_NUM_THREADS: ${MINERU_THREADS:-4}
+      OPENBLAS_NUM_THREADS: "1"
+      TOKENIZERS_PARALLELISM: "false"
+    volumes:
+      - mineru-data:/var/lib/mineru
+    command: [api-server, --host, "0.0.0.0", --port, "8000", --tier, basic,
+              --concurrency, "1", --upload-dir, /var/lib/mineru/uploads]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${MINERU_GPU_DEVICE_ID:-0}"]
+              capabilities: [gpu]
+    depends_on:
+      mineru-models: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/v1/health', timeout=5)"]
+      interval: 10s
+      timeout: 8s
+      start_period: 60s
+      retries: 30
+    restart: unless-stopped
+
+  mineru-file:
+    depends_on: !override
+      mineru-api-gpu: {condition: service_healthy}

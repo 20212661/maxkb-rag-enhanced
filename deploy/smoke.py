@@ -4,8 +4,11 @@ import json
 import math
 import os
 from pathlib import Path
+import re
 import sys
 import tempfile
+import urllib.parse
+import urllib.request
 import uuid
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "apps"))
@@ -22,6 +25,18 @@ def main():
     from common.utils.mineru_client import MinerUClient
     from models_provider.tools import get_model_instance_by_model_workspace_id
 
+    static_assets = []
+    for surface in ("admin", "chat"):
+        page_url = f"http://127.0.0.1:8080/{surface}/"
+        with urllib.request.urlopen(page_url, timeout=10) as response:
+            page = response.read().decode("utf-8")
+        scripts = re.findall(r'<script[^>]+src=["\']([^"\']+)["\']', page)
+        assert scripts, f"No frontend script in {surface} HTML"
+        asset_url = urllib.parse.urljoin(page_url, scripts[0])
+        with urllib.request.urlopen(asset_url, timeout=10) as response:
+            assert "javascript" in response.headers.get("Content-Type", ""), asset_url
+            assert response.read(100), f"Empty static asset for {surface}"
+        static_assets.append(surface)
     with connection.cursor() as cursor:
         cursor.execute("SELECT extname FROM pg_extension WHERE extname IN ('vector', 'pg_trgm')")
         extensions = sorted(row[0] for row in cursor.fetchall())
@@ -47,7 +62,8 @@ def main():
             result = client.parse(path, request_id="deploy-" + uuid.uuid4().hex)
         assert result["content_list"], "MinerU returned an empty Content List"
     print(json.dumps({"database_extensions": extensions, "migrations": "ready", "redis": "ready",
-                      "embedding_dimension": len(vector), "mineru_blocks": len(result["content_list"])}, indent=2))
+                      "static_assets": static_assets, "embedding_dimension": len(vector),
+                      "mineru_blocks": len(result["content_list"])}, indent=2))
 
 
 if __name__ == "__main__":
